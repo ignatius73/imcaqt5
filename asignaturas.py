@@ -16,7 +16,7 @@ class Asignaturas(QtWidgets.QWidget):
     def inscribir(self, dni):
         '''Creo lista para guardar los GroupBox a recorrer'''
         self.lista = []
-        self.v = QtGui.QVBoxLayout()
+        self.v = QtWidgets.QVBoxLayout()
         '''Obtengo la consulta'''
         self.dni = dni
         q = self.ObtengoCalificaciones()
@@ -45,8 +45,8 @@ class Asignaturas(QtWidgets.QWidget):
             layCursos = self.ListoCursos()
             self.lista = [layFoba, layCursos]
 
-        txt = QtGui.QLabel("Por favor, seleccioná las materias a las que deseas inscribirte")
-        ly = QtGui.QGridLayout()
+        txt = QtWidgets.QLabel("Por favor, seleccioná las materias a las que deseas inscribirte")
+        ly = QtWidgets.QGridLayout()
         ly.addWidget(txt, 0, 0)
         ly.sizeHint()
         self.v.addLayout(ly)
@@ -54,15 +54,15 @@ class Asignaturas(QtWidgets.QWidget):
             self.v.addWidget(i)
         #  self.v.addWidget(layFoba)
         #  self.v.addWidget(layCursos)
-        h = QtGui.QHBoxLayout()
-        BtnOk = QtGui.QPushButton("&Anotar")
-        BtnCancel = QtGui.QPushButton("&Limpiar")
+        h = QtWidgets.QHBoxLayout()
+        BtnOk = QtWidgets.QPushButton("&Anotar")
+        BtnCancel = QtWidgets.QPushButton("&Limpiar")
         h.addStretch(1)
         h.addWidget(BtnOk)
         h.addWidget(BtnCancel)
         self.v.addLayout(h)
         self.control = 0
-        QtCore.QObject.connect(BtnOk, QtCore.SIGNAL("clicked()"), self.anotar)
+        BtnOk.clicked.connect(self.anotar)
         return self.v
 
     def ObtengoCalificaciones(self):
@@ -117,17 +117,17 @@ class Asignaturas(QtWidgets.QWidget):
 
     def CreoGridLista(self, q, titulo):
         '''Crea un GridLayout. Recibe un List y devuelve un GroupBox'''
-        lay = QtGui.QGridLayout()
+        lay = QtWidgets.QGridLayout()
         lay.setObjectName(titulo)
         f = 0
         c = 0
-        gb = QtGui.QGroupBox(titulo)
+        gb = QtWidgets.QGroupBox(titulo)
         for i in q:
             if c == 4:
                 c = 0
                 f = f + 1
                 '''Creo el CheckBox y lo agrego al Layout'''
-            ckb = QtGui.QCheckBox(i.value(1), gb)
+            ckb = QtWidgets.QCheckBox(i.value(1), gb)
             ckb.setObjectName(str(i.value(0)))
 
             lay.addWidget(ckb, f, c)
@@ -143,17 +143,17 @@ class Asignaturas(QtWidgets.QWidget):
 
     def CreoGrid(self, q, titulo):
         '''Crea un GridLayout. Recibe un QtSql.SqlQuery devuelve un GroupBox'''
-        lay = QtGui.QGridLayout()
+        lay = QtWidgets.QGridLayout()
         lay.setObjectName(titulo)
         f = 0
         c = 0
-        gb = QtGui.QGroupBox(titulo)
+        gb = QtWidgets.QGroupBox(titulo)
         while q.next():
             if c > 4:
                 c = 0
                 f = f + 1
                 '''Creo el CheckBox y lo agrego al Layout'''
-            ckb = QtGui.QCheckBox(q.value(1), gb)
+            ckb = QtWidgets.QCheckBox(q.value(1), gb)
             ckb.setObjectName(str(q.value(0)))
 
             lay.addWidget(ckb, f, c)
@@ -172,8 +172,8 @@ class Asignaturas(QtWidgets.QWidget):
         self.materias = []
         '''Obtengo largo de la lista'''
         for i in self.lista:
-            if isinstance(i, QtGui.QGroupBox):
-                for c in i.findChildren(QtGui.QCheckBox):
+            if isinstance(i, QtWidgets.QGroupBox):
+                for c in i.findChildren(QtWidgets.QCheckBox):
                     if c.isChecked():
                         self.materias.append("(")
                         self.materias.append(c.objectName())
@@ -239,24 +239,25 @@ class Asignaturas(QtWidgets.QWidget):
         n2 = 0
         n3 = 0
         n4 = 0
-        if isinstance(e.value(2), QtCore.QPyNullVariant):
+        print(type(e.value(2)))
+#        if e.value(2).isNull():  #  isinstance(e.value(2), QtCore.QPyNullVariant):
+#            print("es nulo")
+#            n1 = 0
+#        else:
+        n1 = e.value(2)
+#        if isinstance(e.value(3), QtCore.QPyNullVariant):
 
-            n1 = 0
-        else:
-            n1 = e.value(2)
-        if isinstance(e.value(3), QtCore.QPyNullVariant):
+#            n2 = 0
+        n2 = e.value(3)
+#        if isinstance(e.value(4), QtCore.QPyNullVariant):
 
-            n2 = 0
-        else: n2 = e.value(3)
-        if isinstance(e.value(4), QtCore.QPyNullVariant):
-
-            n3 = 0
-        else:
-            n3 = e.value(4)
-        if isinstance(e.value(9), QtCore.QPyNullVariant):
-            n4 = 0
-        else:
-            n4 = e.value(9)
+#            n3 = 0
+#        else:
+        n3 = e.value(4)
+#        if isinstance(e.value(9), QtCore.QPyNullVariant):
+#            n4 = 0
+#        else:
+        n4 = e.value(9)
         if n4 >= 4:
 
             return True
@@ -416,8 +417,9 @@ class Asignaturas(QtWidgets.QWidget):
 ##############################################################################
 
     def Correlativas(self, co, ca):
-        print(co)
-        if isinstance(co, QtCore.QPyNullVariant):
+        print(type(co))
+        print("Valor co" + co)
+        if co != 0:
             return True
         else:
             return False

@@ -38,3 +38,18 @@ class Utilidades():
             return l
         else:
             return "No me diste un Query"
+
+##############################################################################
+
+    def ejecuto(self, q, db):
+            estado = q.exec_()
+            pipi = q.executedQuery()
+            if estado is True:
+                print("estado true")
+                if q.isActive() is False:
+                    print("La consulta no está activa")
+                else:
+                    return q
+            else:
+                print(pipi)
+                print((self.db.database(db).lastError()))

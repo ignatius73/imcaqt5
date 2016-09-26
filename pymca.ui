@@ -32,6 +32,7 @@
     <addaction name="action_Listar_Alumno"/>
     <addaction name="action_Borrar_Alumno"/>
     <addaction name="actionInscri_pciones"/>
+    <addaction name="actionCalificacio_nes"/>
    </widget>
    <widget class="QMenu" name="menuCooperadora">
     <property name="title">
@@ -115,6 +116,11 @@
   <action name="actionInscri_pciones">
    <property name="text">
     <string>Inscri&amp;pciones</string>
+   </property>
+  </action>
+  <action name="actionCalificacio_nes">
+   <property name="text">
+    <string>Calificacio&amp;nes</string>
    </property>
   </action>
  </widget>

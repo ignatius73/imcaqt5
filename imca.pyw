@@ -7,6 +7,7 @@ from asignaturas import *
 from conn import *
 from utilidades import *
 from login import *
+from calificaciones import *
 
 class SubVentana(QtWidgets.QWidget):
 
@@ -31,11 +32,16 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         #self.setCentralWidget(self.mdi)
         self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
         self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
+        self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
+
+##############################################################################
 
     def calcular(self):
         print("entro a calcular")
         self.hijo = Inscripciones(self.usuario)
         self.setCentralWidget(self.hijo)
+
+##############################################################################
 
     def inscribe_a_asignaturas(self):
         self.cargoDNI()
@@ -56,6 +62,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
                 print("Entro")
                 self.calcular()
 
+##############################################################################
 
     def cargoDNI(self):
         etiqueta = QtWidgets.QLabel("Ingrese DNI del Alumno")
@@ -88,7 +95,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         OkBtn.clicked.connect(self.cargo)
         self.dialog.exec_()
 
-
+##############################################################################
 
 #Devuelve self.dni
     def cargo(self):
@@ -101,6 +108,8 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.dialog.repaint
             return
 
+##############################################################################
+
 #Conecto a la BD
     def login(self):
         login = Login()
@@ -110,19 +119,15 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.conn.SetUsuario(self.usuario)
         self.db = self.conn.CreateConnection('principal')
 
+##############################################################################
 
-'''
+    def Cargo_Notas(self):
+        self.cargoDNI()
+        self.hijo = Calificaciones(self.usuario)
+        self.hijo.Listado(self.dni)
+        self.setCentralWidget(self.hijo)
 
-#Crea self.db y self.conn
-    def conecto(self):
-        try:
-            self.conn
-            self.conn.conecto(self.usuario)
-        except:
-            self.conn = Connection()
-            self.conecto()
 
-'''
 
 
 #    def showEvent(self):
