@@ -19,12 +19,20 @@ class Calificaciones(QtWidgets.QWidget):
 
         # Doy nombre a la ventana
         self.setWindowTitle("Módulo de Calificaciones")
-        self.resize(800, 600)
+        self.frm = QtWidgets.QFrame()
         self.layout = QtWidgets.QGridLayout()
         self.setLayout(self.layout)
+        self.sb = QtWidgets.QScrollArea()
+        self.et = QtWidgets.QLabel()
+        self.et.setText("Nombre del Alumno")
+        self.nombre = QtWidgets.QLineEdit()
+
         self.table = QtWidgets.QTableWidget()
+        self.sb.setWidget(self.frm)
+        self.layout.addWidget(self.et)
+        self.layout.addWidget(self.nombre)
         self.layout.addWidget(self.table)
-        self.table.itemChanged.connect(self.Actualizar_Nota)
+
 
         sql = "SELECT calificaciones.*, alumnos.Nombre as alum, " \
         "asignaturas.nombre as asig from calificaciones " \
@@ -33,20 +41,26 @@ class Calificaciones(QtWidgets.QWidget):
         "on asignaturas.id_asignatura = calificaciones.id_asign " \
         "WHERE alumnos.DNI = :dni"
 
-        self.table.setColumnCount(12)
-        self.table.setHorizontalHeaderLabels(['Nombre', 'Asignatura', '1er Parcial', '2do Parcial', 'Recuperatorio', 'Final 1', 'Final 2', 'Final 3', 'Final 4', 'Nota Final', 'Fecha Final', 'ID'])
+        self.table.setColumnCount(10)
+        self.table.setHorizontalHeaderLabels(['Asignatura', '1er Parcial', '2do Parcial', 'Recuperatorio', 'Final 1', 'Final 2', 'Final 3', 'Final 4', 'Nota Final', 'ID'])
         q= QtSql.QSqlQuery(self.db.database("calificaciones"))
         q.prepare(sql)
         q.bindValue(":dni", self.dni)
-        ej = Utilidades()
-        estado = ej.ejecuto(q, 'calificaciones')
-        print(estado.size())
+        self.ej = Utilidades()
+        estado = self.ej.ejecuto(q, 'calificaciones')
+
+
         row = 0
+
+
         while estado.next():
+            self.nombre.setText(estado.value(12))
             self.table.insertRow(row)
-            id = QtWidgets.QTableWidgetItem(str(estado.value(0)))
-            nombre = QtWidgets.QTableWidgetItem(str(estado.value(12)))
+            ide = QtWidgets.QTableWidgetItem(str(estado.value(0)))
+            ide.setFlags(QtCore.Qt.ItemIsEnabled)
+
             asig = QtWidgets.QTableWidgetItem(str(estado.value(13)))
+            asig.setFlags(QtCore.Qt.ItemIsEnabled)
             p1 = QtWidgets.QTableWidgetItem(str(estado.value(2)))
             p2 = QtWidgets.QTableWidgetItem(str(estado.value(3)))
             re = QtWidgets.QTableWidgetItem(str(estado.value(4)))
@@ -55,21 +69,19 @@ class Calificaciones(QtWidgets.QWidget):
             fi3 = QtWidgets.QTableWidgetItem(str(estado.value(7)))
             fi4 = QtWidgets.QTableWidgetItem(str(estado.value(8)))
             nota = QtWidgets.QTableWidgetItem(str(estado.value(9)))
-            fecha = QtWidgets.QTableWidgetItem(str(estado.value(10)))
-            self.table.setItem(row, 0, nombre)
-            self.table.setItem(row, 1, asig)
-            self.table.setItem(row, 2, p1)
-            self.table.setItem(row, 3, p2)
-            self.table.setItem(row, 4, re)
-            self.table.setItem(row, 5, fi1)
-            self.table.setItem(row, 6, fi2)
-            self.table.setItem(row, 7, fi3)
-            self.table.setItem(row, 8, fi4)
-            self.table.setItem(row, 9, nota)
-            self.table.setItem(row, 10, fecha)
-            self.table.setItem(row,11, id)
+            self.table.setItem(row, 0, asig)
+            self.table.setItem(row, 1, p1)
+            self.table.setItem(row, 2, p2)
+            self.table.setItem(row, 3, re)
+            self.table.setItem(row, 4, fi1)
+            self.table.setItem(row, 5, fi2)
+            self.table.setItem(row, 6, fi3)
+            self.table.setItem(row, 7, fi4)
+            self.table.setItem(row, 8, nota)
+            self.table.setItem(row,9, ide)
             row = row + 1
 
+        self.table.itemChanged.connect(self.Actualizar_Nota)
 ##############################################################################
 
     def Conecto_a_DB(self):
@@ -87,29 +99,36 @@ class Calificaciones(QtWidgets.QWidget):
     def Actualizar_Nota(self):
         column = self.table.currentColumn()
         row = self.table.currentRow()
-        ide = self.table.item(row, 12)
-        print("ID " + str(id))
-        value = self.table.currentItem()
-        columns = ['Nombre', 'Asignatura', '1er Parcial', '2do Parcial', 'Recuperatorio', 'Final 1', 'Final 2', 'Final 3', 'Final 4', 'Nota Final', 'Fecha Final', 'id']
-        sql = "UPDATE calificaciones SET " + columns[column] + "= :value WHERE id = :id"
-        q = QtSql.QSqlQuery(self.db.database('calificaciones'))
-        q.prepare(sql)
-        q.bindValue(":value", value)
-        q.bindValue(":id", ide)
-        self.ejecuto(q, 'calificaciones')
+        ide = self.table.item(row, 9).text()
+        max = self.table.columnCount()
 
+        v = self.table.currentItem().text()
+        value = self.ej.Pruebo_Tipo(v)
+        if value is False:
+            msg = self.ej.Mensaje("Debe ser un número")
+            msg.exec_()
+        else:
+            ide = int(ide)
+            columns = ['Asignatura', '1er Parcial', '2do Parcial', 'Recuperatorio', 'Final 1', 'Final 2', 'Final 3', 'Final 4', 'Nota Final', 'id']
+            columnas = ['asig','cuatri1', 'cuatri2', 'recup', 'final1', 'final2', 'final3', 'final4', 'nota', 'fecha_final']
+            sql = "UPDATE calificaciones SET " + columnas[column] + "= :value WHERE id_calif = :id"
+            q = QtSql.QSqlQuery(self.db.database('calificaciones'))
+            q.prepare(sql)
+            q.bindValue(":value", value)
+            q.bindValue(":id", ide)
+            self.ejecuto(q, 'calificaciones')
 
 ################################################################
 
     def ejecuto(self, q, db):
-            estado = q.exec_()
-            pipi = q.executedQuery()
-            if estado is True:
-                print("estado true")
-                if q.isActive() is False:
-                    print("La consulta no está activa")
-                else:
-                    return q
+        estado = q.exec_()
+        pipi = q.executedQuery()
+        if estado is True:
+            print("estado true")
+            if q.isActive() is False:
+                print("La consulta no está activa")
             else:
-                print(pipi)
-                print((self.db.database(db).lastError()))
+                return q
+        else:
+            print(pipi)
+            print((self.db.database(db).lastError()))

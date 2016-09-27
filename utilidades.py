@@ -53,3 +53,23 @@ class Utilidades():
             else:
                 print(pipi)
                 print((self.db.database(db).lastError()))
+
+##############################################################################
+
+    def Pruebo_Tipo(self, v):
+        try:
+            v = float(v)
+            return v
+        except:
+            return False
+
+#################################################################
+
+    def Mensaje(self, msg):
+        ventana = QtWidgets.QMessageBox()
+        ventana.setText(msg)
+        ventana.setIcon(QMessageBox.Information)
+        ventana.setStandardButtons(QMessageBox.Ok)
+        return ventana
+
+#################################################################
