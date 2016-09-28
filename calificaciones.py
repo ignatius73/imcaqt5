@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtCore, QtSql, uic, QtWidgets
+from PyQt5 import QtCore, QtSql, uic, QtWidgets, QtPrintSupport
 from conn import *
 from utilidades import *
 from asignaturas import *
@@ -26,12 +26,14 @@ class Calificaciones(QtWidgets.QWidget):
         self.et = QtWidgets.QLabel()
         self.et.setText("Nombre del Alumno")
         self.nombre = QtWidgets.QLineEdit()
+        self.print = QtWidgets.QPushButton("Imprimir")
 
         self.table = QtWidgets.QTableWidget()
         self.sb.setWidget(self.frm)
         self.layout.addWidget(self.et)
         self.layout.addWidget(self.nombre)
         self.layout.addWidget(self.table)
+        self.layout.addWidget(self.print)
 
 
         sql = "SELECT calificaciones.*, alumnos.Nombre as alum, " \
@@ -82,6 +84,7 @@ class Calificaciones(QtWidgets.QWidget):
             row = row + 1
 
         self.table.itemChanged.connect(self.Actualizar_Nota)
+        self.print.clicked.connect(self.Imprimir)
 ##############################################################################
 
     def Conecto_a_DB(self):
@@ -132,3 +135,18 @@ class Calificaciones(QtWidgets.QWidget):
         else:
             print(pipi)
             print((self.db.database(db).lastError()))
+
+##############################################################################
+
+    def Imprimir(self):
+        '''Imprime el objeto en table'''
+
+        prt = QtPrintSupport.QPrinter()
+        dialog = QtPrintSupport.QPrintDialog(prt, self)
+        if(dialog.exec_() != QtWidgets.QDialog.Accepted):
+            return
+        printLabel = self.table
+
+        painter = QtGui.QPainter(prt)
+        printLabel.render(painter)
+        painter.end()

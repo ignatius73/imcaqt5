@@ -14,6 +14,8 @@ class Inscripciones(QtWidgets.QWidget):
         super(Inscripciones, self).__init__()
         '''Cargo el archivo ui'''
         self.ui = uic.loadUi("inscripcion.ui", self)
+        self.frm = QtWidgets.QFrame()
+        self.sb = QtWidgets.QScrollArea()
         self.ui.lnCiclo.setText("2016")
         self.ui.lnCiclo.setDisabled(True)
         validator = QtGui.QIntValidator()

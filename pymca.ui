@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>788</width>
     <height>600</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>788</width>
      <height>19</height>
     </rect>
    </property>
@@ -53,6 +53,18 @@
    <addaction name="menu_Estad_sticas"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionImprimir"/>
+  </widget>
   <action name="action_Nuevo_Alumno">
    <property name="text">
     <string>&amp;Nuevo Alumno</string>
@@ -121,6 +133,16 @@
   <action name="actionCalificacio_nes">
    <property name="text">
     <string>Calificacio&amp;nes</string>
+   </property>
+  </action>
+  <action name="actionImprimir">
+   <property name="icon">
+    <iconset>
+     <normalon>impresora.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Imprimir</string>
    </property>
   </action>
  </widget>

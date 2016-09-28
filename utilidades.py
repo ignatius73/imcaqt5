@@ -14,7 +14,7 @@ class Utilidades():
             p = QtCore.QPoint()
             p.setX = 50
             p.setY = 82
-            QtGui.QToolTip.showText(p, "No puede estar vacío", i)
+            QtWidgets.QToolTip.showText(p, "No puede estar vacío", i)
             return False
         else:
             return True

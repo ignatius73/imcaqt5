@@ -33,6 +33,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
         self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
         self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
+        self.ui.actionImprimir.triggered.connect(self.imprimo)
 
 ##############################################################################
 
@@ -51,7 +52,8 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         if dni_exist is True:
             lay = self.hijo.inscribir(self.dni)
             self.hijo.setLayout(lay)
-            self.hijo.resize(500, 500)
+#            self.hijo.resize(500, 500)
+            self.sb = QtWidgets.QScrollArea()
             self.setCentralWidget(self.hijo)
 
         else:
@@ -127,7 +129,18 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.hijo.Listado(self.dni)
         self.setCentralWidget(self.hijo)
 
+##############################################################################
 
+    def imprimo(self):
+        prt = QtPrintSupport.QPrinter()
+        dialog = QtPrintSupport.QPrintDialog(prt, self)
+        if(dialog.exec_() != QtWidgets.QDialog.Accepted):
+            return
+        printLabel = self.hijo
+
+        painter = QtGui.QPainter(prt)
+        printLabel.render(painter)
+        painter.end()
 
 
 #    def showEvent(self):

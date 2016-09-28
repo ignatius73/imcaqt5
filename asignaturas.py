@@ -15,8 +15,11 @@ class Asignaturas(QtWidgets.QWidget):
 
     def inscribir(self, dni):
         '''Creo lista para guardar los GroupBox a recorrer'''
+
         self.lista = []
         self.v = QtWidgets.QVBoxLayout()
+#        self.v = QtWidgets.QGridLayout()
+
         '''Obtengo la consulta'''
         self.dni = dni
         q = self.ObtengoCalificaciones()
@@ -46,9 +49,10 @@ class Asignaturas(QtWidgets.QWidget):
             self.lista = [layFoba, layCursos]
 
         txt = QtWidgets.QLabel("Por favor, seleccioná las materias a las que deseas inscribirte")
-        ly = QtWidgets.QGridLayout()
-        ly.addWidget(txt, 0, 0)
-        ly.sizeHint()
+#        ly = QtWidgets.QGridLayout()
+        ly = QtWidgets.QVBoxLayout()
+        ly.addWidget(txt)
+#        ly.sizeHint()
         self.v.addLayout(ly)
         for i in self.lista:
             self.v.addWidget(i)
@@ -82,6 +86,7 @@ class Asignaturas(QtWidgets.QWidget):
     def ListoMaterias(self, ctrl, c):
         pass
 
+##############################################################################
 
     def ListoFOBA(self, control=0):
         '''Lista todas las posibilidades de presentación de materias FOBA''' \
@@ -103,7 +108,7 @@ class Asignaturas(QtWidgets.QWidget):
             print("paso por aca")
         return gl
 
-########################################################################
+##############################################################################
 
     def ListoCursos(self):
         '''Crea un GroupBox con todas las cursos disponibles''' \
@@ -118,6 +123,7 @@ class Asignaturas(QtWidgets.QWidget):
     def CreoGridLista(self, q, titulo):
         '''Crea un GridLayout. Recibe un List y devuelve un GroupBox'''
         lay = QtWidgets.QGridLayout()
+#        lay = QtWidgets.QVBoxLayout()
         lay.setObjectName(titulo)
         f = 0
         c = 0
@@ -126,11 +132,12 @@ class Asignaturas(QtWidgets.QWidget):
             if c == 4:
                 c = 0
                 f = f + 1
-                '''Creo el CheckBox y lo agrego al Layout'''
+            '''Creo el CheckBox y lo agrego al Layout'''
             ckb = QtWidgets.QCheckBox(i.value(1), gb)
             ckb.setObjectName(str(i.value(0)))
 
             lay.addWidget(ckb, f, c)
+#            lay.addWidget(ckb)
             c = c + 1
             '''seteo el layout al grid'''
 #        gb = QtGui.QGroupBox(titulo)
@@ -406,6 +413,7 @@ class Asignaturas(QtWidgets.QWidget):
                             l.remove(i)
                     else:
                         corre = self.Correlativas(i.value(3), calif)
+                        print(corre)
                         if corre is False:
                             l.remove(i)
 
@@ -417,9 +425,21 @@ class Asignaturas(QtWidgets.QWidget):
 ##############################################################################
 
     def Correlativas(self, co, ca):
-        print(type(co))
-        print("Valor co" + co)
-        if co != 0:
-            return True
+        diccio = []
+        if co != "":
+            co = co.split(',')
+            for c in co:
+                v = False
+                for i in ca:
+
+                    if c == str(i.value(1)):
+                        print("La encontré")
+                        cnotas = self.ControloNotas(i)
+                        print("Cnotas " + str(cnotas) + " Cuatri1 " + str(i.value(2)) + " Numero de Asignatura " + str(c))
+                        if cnotas is True:
+                            v = True
+                        else:
+                            v = False
+            return v
         else:
-            return False
+            return True
