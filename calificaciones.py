@@ -1,6 +1,10 @@
 import sys
 from PyQt5 import QtCore, QtSql, uic, QtWidgets, QtPrintSupport
+from PyQt5.QtGui import QPainter, QColor, QPen, QBrush, QFont
 from conn import *
+from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QRectF, QLineF
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsTextItem
 from utilidades import *
 from asignaturas import *
 
@@ -140,12 +144,28 @@ class Calificaciones(QtWidgets.QWidget):
 
     def Imprimir(self):
         '''Imprime el objeto en table'''
+        obj = QtWidgets.QGraphicsView()
+        obj.setSceneRect(QRectF(obj.viewport().rect()))
+        obj.scene = QGraphicsScene()
+        pen = QPen(Qt.black)
+        brush = QBrush(Qt.Dense6Pattern)
+        ft = QFont()
+        ft.Helvetica
+        ft.setPointSize(4)
+        txt = QtWidgets.QGraphicsTextItem("hOLA mUNDO")
+
+        txt.setPos(2000, 100)
+        obj.scene.addItem(txt)
+#        obj.scene.addLine(QLineF(2.0, 2.0, 1.0, 1.5), pen)
+
+        qp = QPainter()
 
         prt = QtPrintSupport.QPrinter()
         dialog = QtPrintSupport.QPrintDialog(prt, self)
         if(dialog.exec_() != QtWidgets.QDialog.Accepted):
             return
-        printLabel = self.table
+
+        printLabel = obj.scene
 
         painter = QtGui.QPainter(prt)
         printLabel.render(painter)
