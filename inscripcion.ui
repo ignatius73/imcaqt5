@@ -504,17 +504,17 @@
       </item>
       <item>
        <property name="text">
-        <string>Tecnicatura</string>
+        <string>TECNICATURA</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Profesorado de Artes Plásticas</string>
+        <string>PROFESORADO DE ARTES PLASTICAS</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Cursos Extraprogramáticos</string>
+        <string>CURSOS EXTRAPROGRAMATICOS</string>
        </property>
       </item>
      </widget>

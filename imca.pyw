@@ -8,6 +8,7 @@ from conn import *
 from utilidades import *
 from login import *
 from calificaciones import *
+from listados import *
 
 class SubVentana(QtWidgets.QWidget):
 
@@ -34,6 +35,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
         self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
         self.ui.actionImprimir.triggered.connect(self.imprimo)
+        self.ui.action_Listados.triggered.connect(self.modulo_Listados)
 
 ##############################################################################
 
@@ -141,6 +143,14 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         painter = QtGui.QPainter(prt)
         printLabel.render(painter)
         painter.end()
+
+##############################################################################
+
+    def modulo_Listados(self):
+        print("entro")
+        self.hijo = Listados(self.usuario)
+        self.hijo.Seleccion_Listado()
+        self.setCentralWidget(self.hijo)
 
 
 #    def showEvent(self):

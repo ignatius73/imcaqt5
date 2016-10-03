@@ -29,7 +29,7 @@
     </property>
     <addaction name="action_Nuevo_Alumno"/>
     <addaction name="action_Modificar_Alumno"/>
-    <addaction name="action_Listar_Alumno"/>
+    <addaction name="action_Listados"/>
     <addaction name="action_Borrar_Alumno"/>
     <addaction name="actionInscri_pciones"/>
     <addaction name="actionCalificacio_nes"/>
@@ -75,9 +75,12 @@
     <string>&amp;Modificar Alumno</string>
    </property>
   </action>
-  <action name="action_Listar_Alumno">
+  <action name="action_Listados">
    <property name="text">
-    <string>&amp;Listar Alumno</string>
+    <string>&amp;Listados</string>
+   </property>
+   <property name="toolTip">
+    <string>Listados</string>
    </property>
   </action>
   <action name="action_Borrar_Alumno">
