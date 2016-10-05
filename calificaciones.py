@@ -10,10 +10,11 @@ from asignaturas import *
 
 class Calificaciones(QtWidgets.QWidget):
 
-    def __init__(self, usr):
+    def __init__(self, usr=0):
         super(Calificaciones, self).__init__()
-        self.usr = usr
-        self.Conecto_a_DB()
+        if usr != 0:
+            self.usr = usr
+            self.Conecto_a_DB()
 
 ##############################################################################
 
@@ -142,31 +143,3 @@ class Calificaciones(QtWidgets.QWidget):
 
 ##############################################################################
 
-    def Imprimir(self):
-        '''Imprime el objeto en table'''
-        obj = QtWidgets.QGraphicsView()
-        obj.setSceneRect(QRectF(obj.viewport().rect()))
-        obj.scene = QGraphicsScene()
-        pen = QPen(Qt.black)
-        brush = QBrush(Qt.Dense6Pattern)
-        ft = QFont()
-        ft.Helvetica
-        ft.setPointSize(4)
-        txt = QtWidgets.QGraphicsTextItem("hOLA mUNDO")
-
-        txt.setPos(2000, 100)
-        obj.scene.addItem(txt)
-#        obj.scene.addLine(QLineF(2.0, 2.0, 1.0, 1.5), pen)
-
-        qp = QPainter()
-
-        prt = QtPrintSupport.QPrinter()
-        dialog = QtPrintSupport.QPrintDialog(prt, self)
-        if(dialog.exec_() != QtWidgets.QDialog.Accepted):
-            return
-
-        printLabel = obj.scene
-
-        painter = QtGui.QPainter(prt)
-        printLabel.render(painter)
-        painter.end()

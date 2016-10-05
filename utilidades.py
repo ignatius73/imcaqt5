@@ -2,6 +2,7 @@ import sys, re
 from PyQt5 import QtCore, QtGui, QtSql, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
+
 class Utilidades():
 
     def __init__(self):
@@ -73,3 +74,33 @@ class Utilidades():
         return ventana
 
 #################################################################
+
+    def CreoTabla(self, q, campos):
+        '''Recibe una query'''
+#        self.setWindowTitle("Módulo de Calificaciones")
+#        self.frm = QtWidgets.QFrame()
+#        self.layout = QtWidgets.QGridLayout()
+#        self.setLayout(self.layout)
+#        self.sb = QtWidgets.QScrollArea()
+#        self.et = QtWidgets.QLabel()
+        self.table = QtWidgets.QTableWidget()
+#        self.sb.setWidget(self.frm)
+#        self.layout.addWidget(self.table)
+        self.table.setColumnCount(len(campos))
+        self.table.setHorizontalHeaderLabels(campos)
+        row = 0
+        col = 0
+        while q.next():
+            self.table.insertRow(row)
+            for i in campos:
+                self.table.setItem(row, col, QtWidgets.QTableWidgetItem(str(q.value(col))))
+                self.table.resizeColumnToContents(col)
+                col = col + 1
+            self.table.resizeRowToContents(row)
+
+            row = row + 1
+            col = 0
+
+        '''Divido el ancho por la cantidad de filas'''
+
+        return self.table
