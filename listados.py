@@ -4,10 +4,14 @@ from asignaturas import *
 from conn import *
 from datetime import datetime, date, time, timedelta
 from calificaciones import *
-from PyQt5.QtGui import QPainter, QColor, QPen, QBrush, QFont
+from PyQt5.QtGui import QPainter, QColor, QPen, QBrush, QFont, QPageLayout
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import QRectF, QLineF, QPoint
 from PyQt5.QtWidgets import QGraphicsScene, QGraphicsTextItem
+from PyQt5.QtPrintSupport import QPrinter
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, A4, landscape
+from reportlab.lib.units import inch
 
 class Listados(QtWidgets.QWidget):
 
@@ -28,7 +32,7 @@ class Listados(QtWidgets.QWidget):
         self.Listo()
         self.lay2 = QtWidgets.QHBoxLayout()
         self.BtnListar = QtWidgets.QPushButton('Listar')
-        self.lay2.addStretch()
+#        self.lay2.addStretch()
         self.lay2.addWidget(self.BtnListar)
         self.layout.addItem(self.lay2)
         self.setLayout(self.layout)
@@ -85,8 +89,9 @@ class Listados(QtWidgets.QWidget):
         q.prepare(sql)
         estado = util.ejecuto(q, self.db)
         self.table = util.CreoTabla(q, labels)
-        self.Imprimir()
+#        self.Imprimir()
 #        self.Imprimir2()
+        self.toPdf()
 #        self.imprimo()
 #        imprimo = Calificaciones()
 #        imprimo.Imprimir()
@@ -113,9 +118,12 @@ class Listados(QtWidgets.QWidget):
         obj = QtWidgets.QGraphicsView()
         obj.setSceneRect(QRectF(obj.viewport().rect()))
         obj.scene = QGraphicsScene()
-        obj.scene.addItem
-        lbl = QtWidgets.QLabel("INstituto Municipal de Cerámica de Avellaneda")
+#        obj.scene.addItem
+        f = QtGui.QFont("Arial", 6, QFont.Normal)
+        lbl = QtWidgets.QLabel("Instituto Municipal de Cerámica de Avellaneda")
         lbl.setStyleSheet("background-color: #fefefe ")
+        lbl.setFont(f)
+
         logo = QtGui.QPixmap("index.jpe")
         logo2 = logo.scaled(128, 128, QtCore.Qt.KeepAspectRatio)
 #        lbl.setPixmap(logo2)
@@ -124,11 +132,14 @@ class Listados(QtWidgets.QWidget):
 #        obj.scene.addWidget(self.table)
         qp = QPainter()
         prt = QtPrintSupport.QPrinter()
+
+        prt.setPageOrientation(QPageLayout.Landscape)
+
         dialog = QtPrintSupport.QPrintDialog(prt, self)
         if(dialog.exec_() != QtWidgets.QDialog.Accepted):
             return
 
-        printLabel = obj.scene
+        printLabel = obj
 
         painter = QtGui.QPainter(prt)
         printLabel.render(painter)
@@ -153,8 +164,8 @@ class Listados(QtWidgets.QWidget):
         dialog = QtPrintSupport.QPrintDialog(prt, self)
 
 
-        qp = QPainter()
-        qp.begin(prt)
+        qp = QPainter(prt)
+        qp.begin()
         pen = QPen()
         pen.setWidth(3)
         pen.setColor(QColor(128, 250, 25, 255))
@@ -180,3 +191,15 @@ class Listados(QtWidgets.QWidget):
 #        printLabel.render(qp)
         prt.newPage()
         qp.end()
+
+##############################################################################
+
+    def toPdf(self,):
+        c = canvas.Canvas("hello.pdf")
+        c.setPageSize(landscape(A4))
+        width, height = A4
+        c.drawString(1*inch,1*inch,"Welcome to Reportlab!")
+        c.drawImage("index.jpg", 0.1*inch, 7.2*inch, width=70, height=45)
+        c.setFont("Helvetica", 12)
+        c.drawString(1.6*inch, 2*inch, "Instituto Municipal de Cerámica de Avellaneda")
+        c.save()

@@ -36,6 +36,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
         self.ui.actionImprimir.triggered.connect(self.imprimo)
         self.ui.action_Listados.triggered.connect(self.modulo_Listados)
+        self.ui.action_Salir.triggered.connect(self.salir)
 
 ##############################################################################
 
@@ -152,6 +153,10 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.hijo.Seleccion_Listado()
         self.setCentralWidget(self.hijo)
 
+##############################################################################
+
+    def salir(self):
+        self.close()
 
 #    def showEvent(self):
 #        self.ui.resize(1000, 600)
@@ -164,9 +169,9 @@ ventana = VentanaPrincipal()
 #ventana.resize(screenShape.width(), screenShape.height())
 #muestro la ventana
 #ventana.showMaximized()
-ventana.move(600,0)
+ventana.move(0,600)
 #  ventana.resize(1230,1200)
-ventana.resize(1230,1000)
+ventana.resize(600,600)
 ventana.show()
 #Ejecutamos la app
 app.exec_()
