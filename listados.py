@@ -85,7 +85,8 @@ class Listados(QtWidgets.QWidget):
         q.prepare(sql)
         estado = util.ejecuto(q, self.db)
         self.table = util.CreoTabla(q, labels)
-        self.Imprimir2()
+        self.Imprimir()
+#        self.Imprimir2()
 #        self.imprimo()
 #        imprimo = Calificaciones()
 #        imprimo.Imprimir()
@@ -113,7 +114,14 @@ class Listados(QtWidgets.QWidget):
         obj.setSceneRect(QRectF(obj.viewport().rect()))
         obj.scene = QGraphicsScene()
         obj.scene.addItem
-        obj.scene.addWidget(self.table)
+        lbl = QtWidgets.QLabel("INstituto Municipal de Cerámica de Avellaneda")
+        lbl.setStyleSheet("background-color: #fefefe ")
+        logo = QtGui.QPixmap("index.jpe")
+        logo2 = logo.scaled(128, 128, QtCore.Qt.KeepAspectRatio)
+#        lbl.setPixmap(logo2)
+#        lbl.resize(180, 16)
+        obj.scene.addWidget(lbl)
+#        obj.scene.addWidget(self.table)
         qp = QPainter()
         prt = QtPrintSupport.QPrinter()
         dialog = QtPrintSupport.QPrintDialog(prt, self)
@@ -143,13 +151,14 @@ class Listados(QtWidgets.QWidget):
 
         prt = QtPrintSupport.QPrinter()
         dialog = QtPrintSupport.QPrintDialog(prt, self)
+
+
+        qp = QPainter()
+        qp.begin(prt)
         pen = QPen()
         pen.setWidth(3)
         pen.setColor(QColor(128, 250, 25, 255))
         pen.setStyle(Qt.DotLine)
-
-        qp = QPainter()
-        qp.begin(prt)
         qp.setPen(pen)
         qp.drawLine(QPoint(10, 10), QPoint(1280 - 10, 10))
 
