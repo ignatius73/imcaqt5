@@ -1,7 +1,7 @@
 {
   "mainFile": "imca.pyw", 
   "use-tabs": false, 
-  "venv": "", 
+  "venv": "/home/ignatius/imcaqt5/bin/python", 
   "relatedProjects": [], 
   "name": "imca", 
   "license": "GNU General Public License v3", 

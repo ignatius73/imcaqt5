@@ -8,6 +8,7 @@ from conn import *
 from utilidades import *
 from login import *
 from calificaciones import *
+from listados import *
 from modificaciones import *
 
 class SubVentana(QtWidgets.QWidget):
@@ -31,16 +32,18 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         #Agrego un mdi area
         #self.mdi = Mdi()
         #self.setCentralWidget(self.mdi)
-
         self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
         self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
         self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
         self.ui.actionImprimir.triggered.connect(self.imprimo)
-        self.ui.action_Modificar_Alumno.triggered.connect(self.Modificar_Alumno)
+        self.ui.action_Modificar_Alumno.triggered.connect(self.modifico_alumno)
+        self.ui.action_Listados.triggered.connect(self.modulo_Listados)
+        self.ui.action_Salir.triggered.connect(self.salir)
 
 ##############################################################################
 
     def calcular(self):
+        print("entro a calcular")
         self.hijo = Inscripciones(self.usuario)
         self.setCentralWidget(self.hijo)
 
@@ -70,7 +73,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
     def cargoDNI(self):
         etiqueta = QtWidgets.QLabel("Ingrese DNI del Alumno")
-        self.lnAlumno = QtWidgets.QLineEdit("23235867")
+        self.lnAlumno = QtWidgets.QLineEdit()
         OkBtn = QtWidgets.QPushButton('Acep&tar')
         CancelBtn = QtWidgets.QPushButton('Canc&elar')
 
@@ -146,13 +149,24 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
 ##############################################################################
 
-    def Modificar_Alumno(self):
+    def modifico_alumno(self):
         self.cargoDNI()
-        print("voy a cargar")
         self.hijo = Modificaciones(self.usuario)
-        print("ya carguè")
         self.hijo.Cargo_Datos_Alumno(self.dni)
         self.setCentralWidget(self.hijo)
+
+##############################################################################
+
+    def modulo_Listados(self):
+        print("entro")
+        self.hijo = Listados(self.usuario)
+        self.hijo.Seleccion_Listado()
+        self.setCentralWidget(self.hijo)
+
+##############################################################################
+
+    def salir(self):
+        self.close()
 
 #    def showEvent(self):
 #        self.ui.resize(1000, 600)
@@ -165,9 +179,9 @@ ventana = VentanaPrincipal()
 #ventana.resize(screenShape.width(), screenShape.height())
 #muestro la ventana
 #ventana.showMaximized()
-ventana.move(0,0)
+ventana.move(0,600)
 #  ventana.resize(1230,1200)
-#ventana.resize(1230,1000)
+ventana.resize(600,600)
 ventana.show()
 #Ejecutamos la app
 app.exec_()
