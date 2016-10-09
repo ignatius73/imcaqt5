@@ -49,10 +49,11 @@
     </property>
     <addaction name="action_Nuevo_Alumno"/>
     <addaction name="action_Modificar_Alumno"/>
-    <addaction name="action_Listar_Alumno"/>
+    <addaction name="action_Listados"/>
     <addaction name="action_Borrar_Alumno"/>
     <addaction name="actionInscri_pciones"/>
     <addaction name="actionCalificacio_nes"/>
+    <addaction name="action_Salir"/>
    </widget>
    <widget class="QMenu" name="menuCooperadora">
     <property name="title">
@@ -95,9 +96,12 @@
     <string>&amp;Modificar Alumno</string>
    </property>
   </action>
-  <action name="action_Listar_Alumno">
+  <action name="action_Listados">
    <property name="text">
-    <string>&amp;Listar Alumno</string>
+    <string>&amp;Listados</string>
+   </property>
+   <property name="toolTip">
+    <string>Listados</string>
    </property>
   </action>
   <action name="action_Borrar_Alumno">
@@ -163,6 +167,11 @@
    </property>
    <property name="text">
     <string>Imprimir</string>
+   </property>
+  </action>
+  <action name="action_Salir">
+   <property name="text">
+    <string>&amp;Salir</string>
    </property>
   </action>
  </widget>

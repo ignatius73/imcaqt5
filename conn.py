@@ -79,3 +79,10 @@ class Connection(QtSql.QSqlDatabase):
             except:
                 self.db = self.CreateConnection(self.usr[0], self.usr[1])
                 return self.db
+
+    def conecto_a_DB(self, usr, base):
+        self.SetUsuario(usr)
+        self.dba = self.CreateConnection(base)
+        if self.dba.database(base).isOpen():
+            print("Conexión exitosa a " + base)
+        return self.dba
