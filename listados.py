@@ -88,6 +88,7 @@ class Listados(QtWidgets.QWidget):
         q = QtSql.QSqlQuery(self.db.database('Listados'))
         q.prepare(sql)
         estado = util.ejecuto(q, self.db)
+        self.lista = util.Convierto_a_Lista(q)
         self.table = util.CreoTabla(q, labels)
 #        self.Imprimir()
 #        self.Imprimir2()
@@ -194,12 +195,17 @@ class Listados(QtWidgets.QWidget):
 
 ##############################################################################
 
-    def toPdf(self,):
-        c = canvas.Canvas("hello.pdf")
-        c.setPageSize(landscape(A4))
-        width, height = A4
-        c.drawString(1*inch,1*inch,"Welcome to Reportlab!")
-        c.drawImage("index.jpg", 0.1*inch, 7.2*inch, width=70, height=45)
-        c.setFont("Helvetica", 12)
-        c.drawString(1.6*inch, 2*inch, "Instituto Municipal de Cerámica de Avellaneda")
-        c.save()
+    def toPdf(self):
+
+        doc = BaseDocTemplate("test.pdf", pagesize = A4)
+        story=[]
+#        c.setPageSize(landscape(A4))
+#        width, height = A4
+        story.append(drawString(1*inch,1*inch,"Welcome to Reportlab!"))
+        story.append(drawImage("index.jpg", 0.1*inch, 7.2*inch, width=70, height=45))
+#        c.setFont("Helvetica", 12)
+        story.append(drawString(1.6*inch, 2*inch, "Instituto Municipal de Cerámica de Avellaneda"))
+        story.append(Table(self.lista, colWidths=None, rowHeights=None, style=None, splitByRow=1,
+repeatRows=0, repeatCols=0, rowSplitRange=None, spaceBefore=None,
+spaceAfter=None))
+        doc.build(story)
