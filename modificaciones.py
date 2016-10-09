@@ -4,16 +4,16 @@ import sys
 from PyQt5 import QtCore, QtGui, uic, QtSql, QtWidgets
 from asignaturas import *
 from conn import *
+from utilidades import *
 
-
-
-class Inscripciones(QtWidgets.QWidget):
+class Modificaciones(QtWidgets.QWidget):
 #Class Inscripciones - Inscribe a los alumnos.
     def __init__(self, usr):
 
-        super(Inscripciones, self).__init__()
+        super(Modificaciones, self).__init__()
         '''Cargo el archivo ui'''
-        self.ui = uic.loadUi("inscripcion3.ui", self)
+        print("modif1")
+        self.ui = uic.loadUi("inscripcion.ui", self)
         self.frm = QtWidgets.QFrame()
         self.sb = QtWidgets.QScrollArea()
         self.ui.lnCiclo.setText("2016")
@@ -27,42 +27,93 @@ class Inscripciones(QtWidgets.QWidget):
         #  Instancio un objeto conexion
         self.usr = usr
         self.Conecto_a_DB()
-        self.BtnOk.clicked.connect(self.IngresaAlumno)
+        self.BtnOk.clicked.connect(self.ModificaAlumno)
         #  QtCore.QObject.connect(self.ui.Children(QtGui.QLineEdit), QtCore.SIGNAL("textChanged()"), self.IngresaAlumno)
 
-    def IngresaAlumno(self):
+##############################################################################
+
+    def Cargo_Datos_Alumno(self, dni):
+        print("entro")
+        self.dni = dni
+        print(self.dni)
+        '''Obtengo datos del alumno a modificar'''
+        sql = "SELECT * FROM alumnos WHERE DNI = :dni"
+        q = QtSql.QSqlQuery(self.db.database("inscripciones"))
+        print("pase el query")
+        q.prepare(sql)
+        q.bindValue(":dni", self.dni)
+        ej = Utilidades()
+        q = ej.ejecuto(q, "inscripciones")
+        while q.next():
+            self.lnNombre.text(q.value(1))
+            '''       self.cBCarrera.currentText()
+        self.lnCiclo.text()
+        self.cBSexo.currentText(q.value(22))
+        self.sBEdad.text(q.value(5))
+        self.lnDni.text()
+        self.dENac.text()
+        self.lnLugar.text()
+        self.ui.lnNac.text()
+        self.cBCivil.currentText()
+        self.cBHijos.currentText()
+        self.lnFamiliar.text()
+        self.lnCalle.text()
+        self.lnNum.text()
+        self.lnPiso.text()
+        self.lnDepto.text()
+        self.lnLocal.text()
+        self.lnPartido.text()
+        self.lnCP.text()
+        self.lnTel.text()
+        self.lnMov.text()
+        self.lnMail.text()
+        self.lntitulo.text()
+        self.dEEgr.text()
+        self.lnEscuela.text()
+        self.lnDistrito.text()
+        self.lnOtros.text()
+        self.lnInsti1.text()
+        self.lnInsti2.text()'''
+
+##############################################################################
+
+    def ModificaAlumno(self):
+        pass
+
+##############################################################################
+
+    '''    def IngresaAlumno(self):
         print(self.lnDni.text())
         edits = self.ui.findChildren(QtWidgets.QLineEdit)
-
-        self.Nombre = self.lnNombre.text()
-        self.carrera = self.cBCarrera.currentText()
-        self.anio = self.lnCiclo.text()
-        self.sexo = self.cBSexo.currentText()
-        self.edad = self.sBEdad.text()
-        self.dni = self.lnDni.text()
-        self.fenac = self.dENac.text()
-        self.lunac = self.lnLugar.text()
-        self.lnNa = self.ui.lnNac.text()
-        self.civil = self.cBCivil.currentText()
-        self.hijos = self.cBHijos.currentText()
-        self.familia = self.lnFamiliar.text()
-        self.calle = self.lnCalle.text()
-        self.numero = self.lnNum.text()
-        self.piso = self.lnPiso.text()
-        self.depto = self.lnDepto.text()
-        self.local = self.lnLocal.text()
-        self.partido = self.lnPartido.text()
-        self.cp = self.lnCP.text()
-        self.tel = self.lnTel.text()
-        self.movil = self.lnMov.text()
-        self.mail = self.lnMail.text()
-        self.titulo = self.lntitulo.text()
-        self.egreso = self.dEEgr.text()
-        self.escuela = self.lnEscuela.text()
-        self.distrito = self.lnDistrito.text()
-        self.otros = self.lnOtros.text()
-        self.insti1 = self.lnInsti1.text()
-        self.insti2 = self.lnInsti2.text()
+        self.lnNombre.text()
+        self.cBCarrera.currentText()
+        self.lnCiclo.text()
+        self.cBSexo.currentText()
+        self.sBEdad.text()
+        self.lnDni.text()
+        self.dENac.text()
+        self.lnLugar.text()
+        self.ui.lnNac.text()
+        self.cBCivil.currentText()
+        self.cBHijos.currentText()
+        self.lnFamiliar.text()
+        self.lnCalle.text()
+        self.lnNum.text()
+        self.lnPiso.text()
+        self.lnDepto.text()
+        self.lnLocal.text()
+        self.lnPartido.text()
+        self.lnCP.text()
+        self.lnTel.text()
+        self.lnMov.text()
+        self.lnMail.text()
+        self.lntitulo.text()
+        self.dEEgr.text()
+        self.lnEscuela.text()
+        self.lnDistrito.text()
+        self.lnOtros.text()
+        self.lnInsti1.text()
+        self.lnInsti2.text()
         if self.rBtnSi.isChecked() == True:
             self.trab = 1
         else:
@@ -94,7 +145,9 @@ class Inscripciones(QtWidgets.QWidget):
         if self.validar_vacios(self.ui.lnDni):
             self.Insertar()
         else:
-            self.repaint()
+            self.repaint()'''
+
+##############################################################################
 
     def Insertar(self):
         print("entro a insertar")
