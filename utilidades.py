@@ -1,6 +1,7 @@
-import sys, re
+import sys, re, datetime
 from PyQt5 import QtCore, QtGui, QtSql, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QWidget
+
 
 
 class Utilidades():
@@ -125,3 +126,9 @@ class Utilidades():
         '''Divido el ancho por la cantidad de filas'''
 
         return self.table
+
+##############################################################################
+
+    def convierte_Fechas(self, fe):
+        nueva = datetime.datetime.strptime(fe,"%d/%m/%Y").date().strftime("%Y-%m-%d")
+        return nueva

@@ -24,21 +24,11 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>993</width>
-        <height>1867</height>
+        <width>979</width>
+        <height>1933</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Carrera</string>
-         </property>
-         <property name="buddy">
-          <cstring>cBCarrera</cstring>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QComboBox" name="cBCarrera">
          <property name="sizePolicy">
@@ -111,6 +101,9 @@
          </property>
         </widget>
        </item>
+       <item row="6" column="0">
+        <widget class="QLineEdit" name="lnNombre"/>
+       </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
@@ -120,9 +113,6 @@
           <cstring>lnNombre</cstring>
          </property>
         </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLineEdit" name="lnNombre"/>
        </item>
        <item row="7" column="0">
         <widget class="QLabel" name="label_5">
@@ -209,6 +199,9 @@
          </property>
         </widget>
        </item>
+       <item row="16" column="0">
+        <widget class="QLineEdit" name="lnLugar"/>
+       </item>
        <item row="15" column="0">
         <widget class="QLabel" name="label_9">
          <property name="text">
@@ -219,8 +212,12 @@
          </property>
         </widget>
        </item>
-       <item row="16" column="0">
-        <widget class="QLineEdit" name="lnLugar"/>
+       <item row="18" column="0">
+        <widget class="QLineEdit" name="lnNac">
+         <property name="inputMethodHints">
+          <set>Qt::ImhNone</set>
+         </property>
+        </widget>
        </item>
        <item row="17" column="0">
         <widget class="QLabel" name="label_38">
@@ -229,13 +226,6 @@
          </property>
          <property name="buddy">
           <cstring>lnNac</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="0">
-        <widget class="QLineEdit" name="lnNac">
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
          </property>
         </widget>
        </item>
@@ -283,11 +273,14 @@
          </property>
         </widget>
        </item>
+       <item row="24" column="0">
+        <widget class="QLineEdit" name="lnFamiliar"/>
+       </item>
        <item row="22" column="0">
         <widget class="QComboBox" name="cBHijos">
          <item>
           <property name="text">
-           <string>No</string>
+           <string>0</string>
           </property>
          </item>
          <item>
@@ -352,8 +345,8 @@
          </property>
         </widget>
        </item>
-       <item row="24" column="0">
-        <widget class="QLineEdit" name="lnFamiliar"/>
+       <item row="26" column="0">
+        <widget class="QLineEdit" name="lnCalle"/>
        </item>
        <item row="25" column="0">
         <widget class="QLabel" name="label_13">
@@ -365,8 +358,15 @@
          </property>
         </widget>
        </item>
-       <item row="26" column="0">
-        <widget class="QLineEdit" name="lnCalle"/>
+       <item row="28" column="0">
+        <widget class="QLineEdit" name="lnNum">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
        </item>
        <item row="27" column="0">
         <widget class="QLabel" name="label_14">
@@ -378,10 +378,13 @@
          </property>
         </widget>
        </item>
-       <item row="28" column="0">
-        <widget class="QLineEdit" name="lnNum">
+       <item row="61" column="0">
+        <widget class="QLineEdit" name="lnInsti2"/>
+       </item>
+       <item row="30" column="0">
+        <widget class="QLineEdit" name="lnPiso">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -398,8 +401,8 @@
          </property>
         </widget>
        </item>
-       <item row="30" column="0">
-        <widget class="QLineEdit" name="lnPiso">
+       <item row="32" column="0">
+        <widget class="QLineEdit" name="lnDepto">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -418,15 +421,8 @@
          </property>
         </widget>
        </item>
-       <item row="32" column="0">
-        <widget class="QLineEdit" name="lnDepto">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
+       <item row="34" column="0">
+        <widget class="QLineEdit" name="lnLocal"/>
        </item>
        <item row="33" column="0">
         <widget class="QLabel" name="label_17">
@@ -438,8 +434,8 @@
          </property>
         </widget>
        </item>
-       <item row="34" column="0">
-        <widget class="QLineEdit" name="lnLocal"/>
+       <item row="36" column="0">
+        <widget class="QLineEdit" name="lnPartido"/>
        </item>
        <item row="35" column="0">
         <widget class="QLabel" name="label_18">
@@ -451,8 +447,15 @@
          </property>
         </widget>
        </item>
-       <item row="36" column="0">
-        <widget class="QLineEdit" name="lnPartido"/>
+       <item row="38" column="0">
+        <widget class="QLineEdit" name="lnCP">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
        </item>
        <item row="37" column="0">
         <widget class="QLabel" name="label_19">
@@ -464,8 +467,8 @@
          </property>
         </widget>
        </item>
-       <item row="38" column="0">
-        <widget class="QLineEdit" name="lnCP">
+       <item row="40" column="0">
+        <widget class="QLineEdit" name="lnTel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -484,10 +487,10 @@
          </property>
         </widget>
        </item>
-       <item row="40" column="0">
-        <widget class="QLineEdit" name="lnTel">
+       <item row="42" column="0">
+        <widget class="QLineEdit" name="lnMov">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -504,11 +507,11 @@
          </property>
         </widget>
        </item>
-       <item row="42" column="0">
-        <widget class="QLineEdit" name="lnMov">
+       <item row="44" column="0">
+        <widget class="QLineEdit" name="lnMail">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>100</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
@@ -524,15 +527,8 @@
          </property>
         </widget>
        </item>
-       <item row="44" column="0">
-        <widget class="QLineEdit" name="lnMail">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>100</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
+       <item row="47" column="0">
+        <widget class="QLineEdit" name="lntitulo"/>
        </item>
        <item row="45" column="0">
         <widget class="QLabel" name="label_33">
@@ -551,16 +547,6 @@
          </property>
         </widget>
        </item>
-       <item row="47" column="0">
-        <widget class="QLineEdit" name="lntitulo"/>
-       </item>
-       <item row="48" column="0">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Año de Egreso&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
        <item row="49" column="0">
         <widget class="QDateEdit" name="dEEgr">
          <property name="currentSection">
@@ -574,6 +560,33 @@
          </property>
         </widget>
        </item>
+       <item row="48" column="0">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Año de Egreso&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Carrera</string>
+         </property>
+         <property name="buddy">
+          <cstring>cBCarrera</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="51" column="0">
+        <widget class="QLineEdit" name="lnEscuela">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
        <item row="50" column="0">
         <widget class="QLabel" name="label_27">
          <property name="text">
@@ -584,8 +597,8 @@
          </property>
         </widget>
        </item>
-       <item row="51" column="0">
-        <widget class="QLineEdit" name="lnEscuela">
+       <item row="53" column="0">
+        <widget class="QLineEdit" name="lnDistrito">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -604,15 +617,8 @@
          </property>
         </widget>
        </item>
-       <item row="53" column="0">
-        <widget class="QLineEdit" name="lnDistrito">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
+       <item row="55" column="0">
+        <widget class="QLineEdit" name="lnOtros"/>
        </item>
        <item row="54" column="0">
         <widget class="QLabel" name="label_28">
@@ -624,8 +630,8 @@
          </property>
         </widget>
        </item>
-       <item row="55" column="0">
-        <widget class="QLineEdit" name="lnOtros"/>
+       <item row="57" column="0">
+        <widget class="QLineEdit" name="lnInsti1"/>
        </item>
        <item row="56" column="0">
         <widget class="QLabel" name="label_29">
@@ -636,9 +642,6 @@
           <cstring>lnInsti1</cstring>
          </property>
         </widget>
-       </item>
-       <item row="57" column="0">
-        <widget class="QLineEdit" name="lnInsti1"/>
        </item>
        <item row="58" column="0">
         <widget class="QLabel" name="label_31">
@@ -673,19 +676,6 @@
          </property>
         </widget>
        </item>
-       <item row="61" column="0">
-        <widget class="QLineEdit" name="lnInsti2"/>
-       </item>
-       <item row="62" column="0">
-        <widget class="QLabel" name="label_32">
-         <property name="text">
-          <string>Año de Egreso</string>
-         </property>
-         <property name="buddy">
-          <cstring>dEEgr_3</cstring>
-         </property>
-        </widget>
-       </item>
        <item row="63" column="0">
         <widget class="QDateEdit" name="dEEgr_3">
          <property name="currentSection">
@@ -699,14 +689,17 @@
          </property>
         </widget>
        </item>
-       <item row="64" column="0">
-        <widget class="QLabel" name="label_34">
+       <item row="62" column="0">
+        <widget class="QLabel" name="label_32">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Datos Laborales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>Año de Egreso</string>
+         </property>
+         <property name="buddy">
+          <cstring>dEEgr_3</cstring>
          </property>
         </widget>
        </item>
-       <item row="65" column="0">
+       <item row="66" column="0">
         <widget class="QLabel" name="label_23">
          <property name="enabled">
           <bool>true</bool>
@@ -719,14 +712,21 @@
          </property>
         </widget>
        </item>
-       <item row="66" column="0">
+       <item row="68" column="0">
         <widget class="QLineEdit" name="lnAct">
          <property name="enabled">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="67" column="0">
+       <item row="64" column="0">
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Datos Laborales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="69" column="0">
         <widget class="QLabel" name="label_35">
          <property name="enabled">
           <bool>true</bool>
@@ -739,7 +739,7 @@
          </property>
         </widget>
        </item>
-       <item row="68" column="0">
+       <item row="70" column="0">
         <widget class="QLineEdit" name="lnHorario">
          <property name="enabled">
           <bool>true</bool>
@@ -758,42 +758,7 @@
          </property>
         </widget>
        </item>
-       <item row="69" column="0">
-        <widget class="QGroupBox" name="gBoxTrab">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="title">
-          <string>Trabaja</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QRadioButton" name="rBtnSi">
-            <property name="text">
-             <string>Sí</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rBtnNo">
-            <property name="text">
-             <string>No</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="70" column="0">
+       <item row="72" column="0">
         <widget class="QLabel" name="label_36">
          <property name="enabled">
           <bool>true</bool>
@@ -806,14 +771,14 @@
          </property>
         </widget>
        </item>
-       <item row="71" column="0">
+       <item row="73" column="0">
         <widget class="QLineEdit" name="lnOS">
          <property name="enabled">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="72" column="0">
+       <item row="74" column="0">
         <widget class="QLabel" name="label_37">
          <property name="enabled">
           <bool>true</bool>
@@ -826,7 +791,7 @@
          </property>
         </widget>
        </item>
-       <item row="73" column="0">
+       <item row="75" column="0">
         <widget class="QLineEdit" name="lnTelEmer">
          <property name="enabled">
           <bool>true</bool>
@@ -839,7 +804,7 @@
          </property>
         </widget>
        </item>
-       <item row="74" column="0">
+       <item row="76" column="0">
         <widget class="QGroupBox" name="gBDocs">
          <property name="title">
           <string>Documentación Presentada</string>
@@ -889,7 +854,7 @@
          </layout>
         </widget>
        </item>
-       <item row="75" column="0">
+       <item row="77" column="0">
         <widget class="QSplitter" name="splitter">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -904,6 +869,41 @@
            <string>&amp;Limpiar</string>
           </property>
          </widget>
+        </widget>
+       </item>
+       <item row="65" column="0">
+        <widget class="QGroupBox" name="gBoxTrab">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="title">
+          <string>Trabaja</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QRadioButton" name="rBtnSi">
+            <property name="text">
+             <string>Sí</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rBtnNo">
+            <property name="text">
+             <string>No</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -945,10 +945,10 @@
   <tabstop>dEEgr_2</tabstop>
   <tabstop>lnInsti2</tabstop>
   <tabstop>dEEgr_3</tabstop>
-  <tabstop>lnAct</tabstop>
-  <tabstop>lnHorario</tabstop>
   <tabstop>rBtnSi</tabstop>
   <tabstop>rBtnNo</tabstop>
+  <tabstop>lnAct</tabstop>
+  <tabstop>lnHorario</tabstop>
   <tabstop>lnOS</tabstop>
   <tabstop>lnTelEmer</tabstop>
   <tabstop>cBDni</tabstop>

@@ -1,9 +1,11 @@
-import sys
+import sys, datetime
 #  import pymysql
 
 from PyQt5 import QtCore, QtGui, uic, QtSql, QtWidgets
 from asignaturas import *
 from conn import *
+from PyQt5.QtCore import QDate, QVariant
+from utilidades import *
 
 
 
@@ -20,8 +22,8 @@ class Inscripciones(QtWidgets.QWidget):
         self.ui.lnCiclo.setDisabled(True)
         validator = QtGui.QIntValidator()
         self.ui.lnDni.setValidator(validator)
-        self.ui.lnTel.setInputMask('999_9999_9999')
-        self.ui.lnMov.setInputMask('999_99_9999_9999')
+        self.ui.lnTel.setInputMask('99999999999')
+        self.ui.lnMov.setInputMask('9999999999999')
         self.ui.lnMail.setValidator
         print(self.lnDni.text())
         #  Instancio un objeto conexion
@@ -31,6 +33,7 @@ class Inscripciones(QtWidgets.QWidget):
         #  QtCore.QObject.connect(self.ui.Children(QtGui.QLineEdit), QtCore.SIGNAL("textChanged()"), self.IngresaAlumno)
 
     def IngresaAlumno(self):
+        util = Utilidades()
         print(self.lnDni.text())
         edits = self.ui.findChildren(QtWidgets.QLineEdit)
 
@@ -40,7 +43,7 @@ class Inscripciones(QtWidgets.QWidget):
         self.sexo = self.cBSexo.currentText()
         self.edad = self.sBEdad.text()
         self.dni = self.lnDni.text()
-        self.fenac = self.dENac.text()
+        self.fenac = util.convierte_Fechas(self.dENac.text())
         self.lunac = self.lnLugar.text()
         self.lnNa = self.ui.lnNac.text()
         self.civil = self.cBCivil.currentText()
@@ -58,6 +61,8 @@ class Inscripciones(QtWidgets.QWidget):
         self.mail = self.lnMail.text()
         self.titulo = self.lntitulo.text()
         self.egreso = self.dEEgr.text()
+        print(self.egreso)
+        print(type(self.egreso))
         self.escuela = self.lnEscuela.text()
         self.distrito = self.lnDistrito.text()
         self.otros = self.lnOtros.text()
@@ -82,7 +87,7 @@ class Inscripciones(QtWidgets.QWidget):
         if self.cBReg.isChecked():
             self.numReg = 1
         else:
-            self.numreg = 0
+            self.numReg = 0
         if self.cBFoto.isChecked():
             self.fotos = 1
         else:
@@ -104,13 +109,9 @@ class Inscripciones(QtWidgets.QWidget):
         #Obtengo listado de campos de la tabla
         campos = "SHOW COLUMNS from alumnos WHERE Field <> 'IdAlumnos' AND Field <> 'Apellido' AND Field <> 'cohorte' AND Field <> 'Grupo_Sanguineo' AND Field <> 'Ántitetanica' AND Field <> 'Presion_Arterial' AND Field <> 'Enfermedades' AND Field <> 'Tratamiento' AND Field <> 'alergias' AND Field <> 'foto'"
         print("Nombre de la conexión " + self.db.connectionName())
-        if self.db.database('inscripciones').isOpen() is False:
-            print("database está cerrada")
-            q = QtSql.QSqlQuery(self.db.database('inscripciones'))
-            q.prepare(campos)
-            q.exec_()
-        else:
-            print("database está abierta")
+        q = QtSql.QSqlQuery(self.db.database('inscripciones'))
+        q.prepare(campos)
+        q.exec_()
         cadena = ""
         print("entro al while")
         while q.next():
@@ -120,7 +121,7 @@ class Inscripciones(QtWidgets.QWidget):
         print("Cadena " + cadena1)
 
         #Preparo la cadena sql
-        values = ":nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :lunac, :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert"
+        values = ":nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :hora, :lunac, :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert"
         #sql = "INSERT INTO alumnos (" + cadena1 + ") VALUES (:nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :lunac, :hijos, :flia, :mail, :egreso, :insti1, :insti2, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert)"
         sql = "INSERT INTO alumnos(" + cadena1 + ") VALUES (" + values + ")"
         print(" Este sql " + sql)
@@ -131,7 +132,7 @@ class Inscripciones(QtWidgets.QWidget):
         q.prepare(sql)
         q.bindValue(":nombre", self.Nombre)
         q.bindValue(":dni", self.dni)
-        q.bindValue(":lugar", self.lnNa)
+        q.bindValue(":lugar", self.lunac)
         q.bindValue(":fenac", self.fenac)
         q.bindValue(":edad", self.edad)
         q.bindValue(":calle", self.calle)
@@ -165,10 +166,10 @@ class Inscripciones(QtWidgets.QWidget):
         print(self.fotoDni)
         q.bindValue(":doc_dni", self.fotoDni)
         q.bindValue(":doc_Tit", self.fotoTit)
-        q.bindValue(":doc_reg", self.numreg)
+        q.bindValue(":doc_reg", self.numReg)
         q.bindValue(":doc_fot", self.fotos)
         q.bindValue(":doc_cert", self.certif)
-        '''q.bindValue(":hora", self.horario)'''
+        q.bindValue(":hora", self.horario)
         if self.db.database('inscripciones').isOpen():
             print("Damned world")
         else:
@@ -193,7 +194,7 @@ class Inscripciones(QtWidgets.QWidget):
             p = QtCore.QPoint()
             p.setX = 50
             p.setY = 82
-            QtGui.QToolTip.showText(p, "No puede estar vacío", i)
+            QtWidgets.QToolTip.showText(p, "No puede estar vacío", i)
             return False
         else:
             return True
