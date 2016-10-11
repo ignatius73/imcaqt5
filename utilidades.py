@@ -42,6 +42,27 @@ class Utilidades():
 
 ##############################################################################
 
+    def Convierto_a_tabla(self, obj):
+        '''Recibe un QtSqlQuery y devuelve una Lista de listas'''
+        if isinstance(obj, QtSql.QSqlQuery):
+            l = []
+            a = []
+
+            while obj.next():
+                l.append(obj.record())
+            for i in l:
+                b = []
+                for r in range(i.count()):
+                    b.append(i.value(r))
+                a.append(b)
+                b = None
+
+            return a
+        else:
+            return "No me diste un Query"
+
+##############################################################################
+
     def ejecuto(self, q, db):
             estado = q.exec_()
             pipi = q.executedQuery()
