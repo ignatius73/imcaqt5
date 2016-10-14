@@ -5,6 +5,8 @@ from PyQt5 import QtCore, QtGui, uic, QtSql, QtWidgets
 from asignaturas import *
 from conn import *
 from utilidades import *
+from PyQt5.QtCore import QDate
+from inscribirAlumno import *
 
 class Modificaciones(QtWidgets.QWidget):
 #Class Inscripciones - Inscribe a los alumnos.
@@ -13,26 +15,27 @@ class Modificaciones(QtWidgets.QWidget):
         super(Modificaciones, self).__init__()
         '''Cargo el archivo ui'''
         print("modif1")
-        self.ui = uic.loadUi("inscripcion3.ui", self)
+        self.ui = uic.loadUi("inscripcion4.ui", self)
         self.frm = QtWidgets.QFrame()
         self.sb = QtWidgets.QScrollArea()
         self.ui.lnCiclo.setText("2016")
         self.ui.lnCiclo.setDisabled(True)
         validator = QtGui.QIntValidator()
         self.ui.lnDni.setValidator(validator)
-        self.ui.lnTel.setInputMask('999_9999_9999')
-        self.ui.lnMov.setInputMask('999_99_9999_9999')
+        self.ui.lnTel.setInputMask('99999999999')
+        self.ui.lnMov.setInputMask('9999999999999')
         self.ui.lnMail.setValidator
         print(self.lnDni.text())
         #  Instancio un objeto conexion
         self.usr = usr
         self.Conecto_a_DB()
-        self.BtnOk.clicked.connect(self.ModificaAlumno)
+        self.BtnOk.clicked.connect(self.IngresaAlumno)
         #  QtCore.QObject.connect(self.ui.Children(QtGui.QLineEdit), QtCore.SIGNAL("textChanged()"), self.IngresaAlumno)
 
 ##############################################################################
 
     def Cargo_Datos_Alumno(self, dni):
+
         print("entro")
         self.dni = dni
         print(self.dni)
@@ -51,7 +54,6 @@ class Modificaciones(QtWidgets.QWidget):
             self.cBSexo.setCurrentText(q.value(22))
             self.sBEdad.setValue(q.value(5))
             self.lnDni.setText(str(q.value(2)))
-            print(type(q.value(4)))
             self.dENac.setDate(q.value(4))
             self.lnLugar.setText(q.value(3))
             self.ui.lnNac.setText(q.value(26))
@@ -69,11 +71,30 @@ class Modificaciones(QtWidgets.QWidget):
             self.lnMov.setText(str(q.value(15)))
             self.lnMail.setText(q.value(29))
             self.lntitulo.setText(q.value(16))
-            self.dEEgr.setDate(q.value(30))
+            print("Tipe linea 73 " + str(type(q.value(30))))  #  fecha = ej.convierte_Fechas(q.value(30))
+#            print(type(fecha)
+            date = QDate.fromString(str(q.value(30)), "yyyy")
+            self.dEEgr.setDate(QDate.fromString(str(q.value(30)), "yyyy"))
             self.lnEscuela.setText(q.value(32))
             self.lnDistrito.setText(q.value(33))
             self.lnOtros.setText(q.value(31))
-
+            if(q.value(18) == 0):
+                self.rBtnNo.setChecked(True)
+                self.rBtnSi.setChecked(False)
+            else:
+                self.rBtnSi.setChecked(True)
+                self.rBtnNo.setChecked(False)
+            self.lnAct.setText(q.value(19))
+            self.lnHorario.setText(q.value(25))
+            self.lnOS.setText(q.value(21))
+            self.lnTelEmer.setText(q.value(20))
+            diccio = {self.cBDni: q.value(34), self.cBTit : q.value(35) , self.cBReg : q.value(36) , self.cBCert : q.value(38), self.cBFoto : q.value(37)}
+            for k in diccio:
+                print (str(diccio.get(k)))
+                if diccio.get(k) == b'\x01':
+                    k.setChecked(True)
+                else:
+                    k.setChecked(False)
 
 ##############################################################################
 
@@ -82,38 +103,43 @@ class Modificaciones(QtWidgets.QWidget):
 
 ##############################################################################
 
-    '''    def IngresaAlumno(self):
+    def IngresaAlumno(self):
+        util = Utilidades()
+        print(self.dni)
         print(self.lnDni.text())
         edits = self.ui.findChildren(QtWidgets.QLineEdit)
-        self.lnNombre.text()
-        self.cBCarrera.currentText()
-        self.lnCiclo.text()
-        self.cBSexo.currentText()
-        self.sBEdad.text()
-        self.lnDni.text()
-        self.dENac.text()
-        self.lnLugar.text()
-        self.ui.lnNac.text()
-        self.cBCivil.currentText()
-        self.cBHijos.currentText()
-        self.lnFamiliar.text()
-        self.lnCalle.text()
-        self.lnNum.text()
-        self.lnPiso.text()
-        self.lnDepto.text()
-        self.lnLocal.text()
-        self.lnPartido.text()
-        self.lnCP.text()
-        self.lnTel.text()
-        self.lnMov.text()
-        self.lnMail.text()
-        self.lntitulo.text()
-        self.dEEgr.text()
-        self.lnEscuela.text()
-        self.lnDistrito.text()
-        self.lnOtros.text()
-        self.lnInsti1.text()
-        self.lnInsti2.text()
+
+        self.Nombre = self.lnNombre.text()
+        self.carrera = self.cBCarrera.currentText()
+        self.anio = self.lnCiclo.text()
+        self.sexo = self.cBSexo.currentText()
+        self.edad = int(self.sBEdad.text())
+        self.dni = int(self.lnDni.text())
+        self.fenac = util.convierte_Fechas(self.dENac.text())
+        self.lunac = self.lnLugar.text()
+        self.lnNa = self.ui.lnNac.text()
+        self.civil = self.cBCivil.currentText()
+        self.hijos = self.cBHijos.currentText()
+        self.familia = self.lnFamiliar.text()
+        self.calle = self.lnCalle.text()
+        self.numero = int(self.lnNum.text())
+        self.piso = self.lnPiso.text()
+        self.depto = self.lnDepto.text()
+        self.local = self.lnLocal.text()
+        self.partido = self.lnPartido.text()
+        self.cp = self.lnCP.text()
+        self.tel = self.lnTel.text()
+        self.movil = self.lnMov.text()
+        self.mail = self.lnMail.text()
+        self.titulo = self.lntitulo.text()
+        self.egreso = self.dEEgr.text()
+        print(self.egreso)
+        print(type(self.egreso))
+        self.escuela = self.lnEscuela.text()
+        self.distrito = self.lnDistrito.text()
+        self.otros = self.lnOtros.text()
+        self.insti1 = self.lnInsti1.text()
+        self.insti2 = self.lnInsti2.text()
         if self.rBtnSi.isChecked() == True:
             self.trab = 1
         else:
@@ -133,7 +159,7 @@ class Modificaciones(QtWidgets.QWidget):
         if self.cBReg.isChecked():
             self.numReg = 1
         else:
-            self.numreg = 0
+            self.numReg = 0
         if self.cBFoto.isChecked():
             self.fotos = 1
         else:
@@ -145,25 +171,22 @@ class Modificaciones(QtWidgets.QWidget):
         if self.validar_vacios(self.ui.lnDni):
             self.Insertar()
         else:
-            self.repaint()'''
+            self.repaint()
 
 ##############################################################################
 
     def Insertar(self):
         print("entro a insertar")
+        print("Insertar" + str(self.dni))
         # db = self.db.CreateConnection(self.usr, self.passw)
         #  Obtengo un cursor de DB abierto
         print("Nombre de la conexión " + self.db.connectionName())
         #Obtengo listado de campos de la tabla
         campos = "SHOW COLUMNS from alumnos WHERE Field <> 'IdAlumnos' AND Field <> 'Apellido' AND Field <> 'cohorte' AND Field <> 'Grupo_Sanguineo' AND Field <> 'Ántitetanica' AND Field <> 'Presion_Arterial' AND Field <> 'Enfermedades' AND Field <> 'Tratamiento' AND Field <> 'alergias' AND Field <> 'foto'"
         print("Nombre de la conexión " + self.db.connectionName())
-        if self.db.database('inscripciones').isOpen() is False:
-            print("database está cerrada")
-            q = QtSql.QSqlQuery(self.db.database('inscripciones'))
-            q.prepare(campos)
-            q.exec_()
-        else:
-            print("database está abierta")
+        q = QtSql.QSqlQuery(self.db.database('inscripciones'))
+        q.prepare(campos)
+        q.exec_()
         cadena = ""
         print("entro al while")
         while q.next():
@@ -173,10 +196,25 @@ class Modificaciones(QtWidgets.QWidget):
         print("Cadena " + cadena1)
 
         #Preparo la cadena sql
-        values = ":nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :lunac, :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert"
-        #sql = "INSERT INTO alumnos (" + cadena1 + ") VALUES (:nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :lunac, :hijos, :flia, :mail, :egreso, :insti1, :insti2, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert)"
-        sql = "INSERT INTO alumnos(" + cadena1 + ") VALUES (" + values + ")"
-        print(" Este sql " + sql)
+        '''diccio = {'Nombre': :nombre, 'DNI': :dni, 'Lugar_Nacimiento': :lunac, 'Fecha_Nacimiento': ':fenac', 'Edad': ':edad', 'Domicilio': ':calle', 'numero': ':numero', 'piso': ':piso', 'depto': ':depto', 'Estado_Civil': ':civil', 'Localidad': ':local', 'Partido': ':partido', 'CP': ':cp', 'Telefono': ':tel', 'Celular': ':mov', 'Estudios_Cursados': ':ecurs', 'Otros': ':otros', 'Trabaja': ':trab', 'Ocupacion': ':activ', 'emergencias': ':emer', 'osocial': ':os', 'Sexo': ':sexo', 'Carrera': ':carrera', 'ciclo': ':anio', 'horario': ':hora', 'Nacionalidad': ':lugar', 'hijos': ':hijos', 'acargo': ':flia', 'mail': ':mail', 'egreso': ':egreso', 'insti_otros': ':insti', 'escuela': ':escuela', 'distrito': ':distri', 'doc_dni': ':doc_dni', 'doc_Tit': ':doc_Tit', 'doc_Reg': ':doc_reg', 'doc_fot': ':doc_fot', 'doc_cert': ':doc_cert'}'''
+
+        sql = "UPDATE alumnos SET Nombre = :nombre, DNI = :dni, "\
+        " Lugar_Nacimiento = :lunac, Fecha_Nacimiento = :fenac, "\
+        "Edad = :edad, Domicilio = :calle, numero = :numero, "\
+        "piso = :piso, depto = :depto, Estado_Civil = :civil, "\
+        "Localidad = :local, Partido = :partido, CP = :cp, "\
+        "Telefono = :tel, Celular = :mov, "\
+        "Estudios_Cursados = :ecurs, Otros = :otros, "\
+        "Trabaja = :trab, Ocupacion = :activ, emergencias = :emer, "\
+        "osocial = :os, Sexo = :sexo, Carrera = :carrera, "\
+        "ciclo = :anio, horario = :hora, Nacionalidad = :lugar, "\
+        "hijos = :hijos, acargo = :flia, mail = :mail, "\
+        "egreso = :egreso, insti_otros = :insti, "\
+        "escuela = :escuela, distrito = :distri, doc_dni = :doc_dni, "\
+        "doc_Tit = :doc_Tit, doc_Reg = :doc_reg, doc_fot = :doc_fot, "\
+        "doc_cert = :doc_cert "\
+        " WHERE DNI = :selfdni"
+        print(" Este sql " + str(sql))
         # sql = "INSERT INTO alumnos(Nombre, DNI, Lugar_Nacimiento, Fecha_Nacimiento, Edad, Domicilio, numero, piso, depto, Estado_Civil, Localidad, Partido, CP, Telefono, Celular, Estudios_Cursados, Otros, Trabaja, Ocupacion, emergencias, osocial, Sexo, Carrera, ciclo, Nacionalidad, hijos, acargo, mail, egreso, insti_otros, escuela, distrito, doc_dni, doc_Tit, doc_Reg, doc_fot, doc_cert) VALUES (:nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :lunac, :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert)"  # , Fecha_Nacimiento, Edad, Domicilio, numero, piso, depto, Estado_Civil, Localidad, Partido, CP, Telefono, Celular, Estudios_Cursados, Otros, Trabaja, Ocupacion, emergencias, osocial, Sexo, Carrera, ciclo, Nacionalidad, hijos, acargo, mail, egreso, insti_otros, escuela, distrito, doc_dni, doc_Tit, doc_Reg, doc_fot, doc_cert) VALUES (:nombre,:dni,:lugar,:fenac,:edad,:calle,:numero,:piso,:depto,:civil,:local,:partido,:cp,:tel,:mov,:ecurs,:otros,:trab,:activ,:emer,:os,:sexo,:carrera,:anio,:lunac,:hijos,:flia,:mail,:egreso,:insti,:escuela :distri :doc_dni :doc_Tit :doc_reg :doc_fot)"'''
         #Creo el objeto para hacer la consulta
         print("Nombre de la conexión " + self.db.connectionName())
@@ -218,10 +256,11 @@ class Modificaciones(QtWidgets.QWidget):
         print(self.fotoDni)
         q.bindValue(":doc_dni", self.fotoDni)
         q.bindValue(":doc_Tit", self.fotoTit)
-        q.bindValue(":doc_reg", self.numreg)
+        q.bindValue(":doc_reg", self.numReg)
         q.bindValue(":doc_fot", self.fotos)
         q.bindValue(":doc_cert", self.certif)
-        '''q.bindValue(":hora", self.horario)'''
+        q.bindValue(":hora", self.horario)
+        q.bindValue(":selfdni", self.dni)
         if self.db.database('inscripciones').isOpen():
             print("Damned world")
         else:
@@ -233,7 +272,7 @@ class Modificaciones(QtWidgets.QWidget):
             print("tudobom")
             self.close()
         else:
-            print("DNI " + self.dni)
+            print("DNI " + str(self.dni))
             print(pipi)
             print((self.db.database('inscripciones').lastError()))
 

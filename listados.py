@@ -14,6 +14,7 @@ from reportlab.lib.pagesizes import letter, A4, landscape
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib import colors
+from impresiones import *
 
 class Listados(QtWidgets.QWidget):
 
@@ -64,7 +65,7 @@ class Listados(QtWidgets.QWidget):
 
     def Listo(self):
         self.cbo_anio = QtWidgets.QComboBox()
-        a = datetime.now()
+        a = datetime.datetime.now()
 
         rg = range((a.year-5), (a.year+10), 1)
         for i in rg:
@@ -75,6 +76,7 @@ class Listados(QtWidgets.QWidget):
 ##############################################################################
 
     def Listar(self, txt):
+        print("Anio " + str(self.cbo_anio.currentText()))
         txt = self.cbo.currentIndex()
         util = Utilidades()
         '''Instancio un objeto Connection'''
@@ -94,7 +96,18 @@ class Listados(QtWidgets.QWidget):
         self.table = util.CreoTabla(q, self.labels)
 #        self.Imprimir()
 #        self.Imprimir2()
-        self.toPdf()
+        imp = Impresion()
+        imp.creoEstilo()
+        imp.creoStory()
+        imp.definoEstilos()
+        t = self.toPdf()
+        txt1 = "Listado de Alumnos FOBA año " + self.cbo_anio.currentText()
+        imp.agregoString(txt1)
+        imp.agregoTabla(t)
+        imp.createPageTemplate("portrait", "A4")
+        imp.cierroStory()
+        imp.imprimo()
+#        self.toPdf()
 #        self.imprimo()
 #        imprimo = Calificaciones()
 #        imprimo.Imprimir()
@@ -199,16 +212,6 @@ class Listados(QtWidgets.QWidget):
 
     def toPdf(self):
 
-#        doc = SimpleDocTemplate("test.pdf", pagesize = A4, orientation = landscape)
-#        story=[]
-        c = canvas.Canvas("test1.pdf")
-        c.setPageSize(landscape(A4))
-
-#        width, height = A4
-#        a = drawString(1*inch,1*inch,"Welcome to Reportlab!"))
-#        story.append(drawImage("index.jpg", 0.1*inch, 7.2*inch, width=70, height=45))
-#        c.setFont("Helvetica", 12)
-#        story.append(drawString(1.6*inch, 2*inch, "Instituto Municipal de Cerámica de Avellaneda"))
         t = Table([self.labels] + self.lista, colWidths=1*inch, rowHeights=None, style=None, splitByRow=1,
 repeatRows=1, repeatCols=0, rowSplitRange=None, spaceBefore=None,
 spaceAfter=None)
@@ -221,13 +224,4 @@ spaceAfter=None)
                 ('FONTSIZE', (0, 0), (-1, -1), 10),
             ]
         ))
-#        story.append(t)
-#        doc.build(story)
-#        os.system("/home/ignatius/imcaqt5/imcaqt5/test.pdf")
-         #Establecemos el tamaño de la hoja que ocupará la tabla
-        t.wrapOn(c, 800, 600)
-        y = 200
-        #Definimos la coordenada donde se dibujará la tabla
-        t.drawOn(c, 60,y)
-        c.showPage()
-        c.save()
+        return t

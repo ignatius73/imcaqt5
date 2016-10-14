@@ -15,7 +15,7 @@ class Inscripciones(QtWidgets.QWidget):
 
         super(Inscripciones, self).__init__()
         '''Cargo el archivo ui'''
-        self.ui = uic.loadUi("inscripcion3.ui", self)
+        self.ui = uic.loadUi("inscripcion4.ui", self)
         self.frm = QtWidgets.QFrame()
         self.sb = QtWidgets.QScrollArea()
         self.ui.lnCiclo.setText("2016")

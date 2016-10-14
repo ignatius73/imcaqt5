@@ -11,6 +11,7 @@ from calificaciones import *
 from listados import *
 from modificaciones import *
 
+
 class SubVentana(QtWidgets.QWidget):
 
     def __init__(self):
@@ -151,9 +152,20 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
     def modifico_alumno(self):
         self.cargoDNI()
-        self.hijo = Modificaciones(self.usuario)
-        self.hijo.Cargo_Datos_Alumno(self.dni)
-        self.setCentralWidget(self.hijo)
+        dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
+
+        if dni_exist is True:
+            self.hijo = Modificaciones(self.usuario)
+            self.hijo.Cargo_Datos_Alumno(self.dni)
+            self.setCentralWidget(self.hijo)
+        else:
+            v= Utilidades()
+            t = "El Alumno no existe en nuestros registros. ¿Desea agregarlo?"
+            fin = v.Confirmar(t)
+            if fin == 1024:
+                print("Entro")
+                self.calcular()
+
 
 ##############################################################################
 
@@ -179,7 +191,7 @@ ventana = VentanaPrincipal()
 #ventana.resize(screenShape.width(), screenShape.height())
 #muestro la ventana
 #ventana.showMaximized()
-ventana.move(0,600)
+ventana.move(0,0)
 #  ventana.resize(1230,1200)
 ventana.resize(600,600)
 ventana.show()
