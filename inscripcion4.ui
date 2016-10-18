@@ -23,7 +23,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-66</y>
+        <y>0</y>
         <width>979</width>
         <height>1905</height>
        </rect>
@@ -547,17 +547,12 @@
          </property>
          <item>
           <property name="text">
-           <string>FOBA</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
            <string>Tecnicatura</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Profesorado de Artes Plásticas</string>
+           <string>Profesorado de Artes Visuales</string>
           </property>
          </item>
          <item>

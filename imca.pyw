@@ -33,6 +33,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         #Agrego un mdi area
         #self.mdi = Mdi()
         #self.setCentralWidget(self.mdi)
+        self.dni = None
         self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
         self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
         self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
@@ -43,10 +44,27 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
 ##############################################################################
 
-    def calcular(self):
-        print("entro a calcular")
-        self.hijo = Inscripciones(self.usuario)
-        self.setCentralWidget(self.hijo)
+    def calcular(self, m=0):
+        print(m)
+        if m == 0:
+            self.cargoDNI()
+            dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
+            if dni_exist is False:
+                self.hijo = Inscripciones(self.usuario, self.dni)
+                self.setCentralWidget(self.hijo)
+            else:
+                v= Utilidades()
+                t = "El alumno ya se encuentra inscripto. ¿Querés modificarlo?"
+                fin = v.Confirmar(t)
+                if fin == 1024:
+                    print("Entro")
+                    self.modifico_alumno(1)
+        else:
+            self.hijo = Inscripciones(self.usuario, self.dni)
+            self.setCentralWidget(self.hijo)
+
+
+
 
 ##############################################################################
 
@@ -68,7 +86,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             fin = v.Confirmar(t)
             if fin == 1024:
                 print("Entro")
-                self.calcular()
+                self.calcular(1)
 
 ##############################################################################
 
@@ -150,21 +168,26 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
 ##############################################################################
 
-    def modifico_alumno(self):
-        self.cargoDNI()
-        dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
+    def modifico_alumno(self, m=0):
 
-        if dni_exist is True:
+        if m==0:
+            self.cargoDNI()
+            dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
+            if dni_exist is True:
+                self.hijo = Modificaciones(self.usuario)
+                self.hijo.Cargo_Datos_Alumno(self.dni)
+                self.setCentralWidget(self.hijo)
+            else:
+                v= Utilidades()
+                t = "El Alumno no existe en nuestros registros. ¿Desea agregarlo?"
+                fin = v.Confirmar(t)
+                if fin == 1024:
+                    print("Entro")
+                    self.calcular(1)
+        else:
             self.hijo = Modificaciones(self.usuario)
             self.hijo.Cargo_Datos_Alumno(self.dni)
             self.setCentralWidget(self.hijo)
-        else:
-            v= Utilidades()
-            t = "El Alumno no existe en nuestros registros. ¿Desea agregarlo?"
-            fin = v.Confirmar(t)
-            if fin == 1024:
-                print("Entro")
-                self.calcular()
 
 
 ##############################################################################

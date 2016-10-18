@@ -70,22 +70,26 @@ class Impresion():
     def pie(self, canvas, doc):
         canvas.saveState()
         canvas.setFont('Times-Roman',9)
-        canvas.drawString(inch, 0.75 * inch, "Page %d" % doc.page)
+        canvas.drawString(inch, 0.75 * inch, "Av. Mitre 2724, Avellaneda "\
+        "(B1872GFF) Provincia de Buenos Aires. Telefax. 0054-11-4204-8223"\
+        "/6378 D I P R E G E P 7 5 7 8")
         canvas.restoreState()
 
 ##############################################################################
 
     def createPageTemplate(self, orientacion, size):
 
-        self.doc = BaseDocTemplate("phello.pdf")
-        self.doc.topMargin = 1*inch
-        frameT = Frame(self.doc.leftMargin, self.doc.bottomMargin, self.doc.topMargin, self.doc.width, self.doc.height, showBoundary=1, id='normal')
+        self.doc = SimpleDocTemplate("phello.pdf")
+        ancho, alto = A4
+
         if orientacion == "landscape":
+            frameT = Frame(0, 0, alto, ancho, showBoundary=1)
             self.doc.pagesize = landscape(A4)
             PTUnaColumna = PageTemplate(id='UnaColumna', frames=[frameT], onPage=self.encabezadoLandscape, onPageEnd=self.pie)
 
 
         else:
+            frameT = Frame(0, 0, ancho, alto, showBoundary=1)
             self.doc.pagesize = A4
             PTUnaColumna = PageTemplate(id='UnaColumna', frames=[frameT], onPage=self.encabezado, onPageEnd=self.pie)
         PTUnaColumna.pageBreakBefore=0
@@ -103,6 +107,7 @@ class Impresion():
 
     def creoStory(self):
         self.story = []
+        self.story.append(Spacer(1, 1.4*inch))
 
 
 
@@ -113,14 +118,14 @@ class Impresion():
 
 ##############################################################################
 
-    def agregoString(self, txt):
-        titulo = Paragraph(txt, self.styles['Normal'])
+    def agregoString(self, txt, estilo='Titulo'):
+        titulo = Paragraph(txt, self.styles[estilo])
         self.story.append(titulo)
 
 ##############################################################################
 
-    def definoEstilos(self):
-        self.styles.add(ParagraphStyle(name = "Titulo",  alignment=TA_CENTER, fontSize=20, fontName="Helvetica-BoldOblique"))
+    def definoEstilos(self, name='Titulo', size=16, font="Helvetica", lead=18):
+        self.styles.add(ParagraphStyle(name =name ,  alignment=TA_CENTER, fontSize=size, fontName=font, leading=lead))
 
 ##############################################################################
 
@@ -134,3 +139,16 @@ class Impresion():
             os.system('evince phello.pdf')
         except:
             print("No está instalado el evince")
+
+##############################################################################
+
+    def agregoTitulo(self, titulo):
+        canvas.saveState()
+        canvas.setFont('Times-Roman',9)
+        canvas.drawString(inch, 0.75 * inch, titulo)
+        canvas.restoreState()
+
+##############################################################################
+
+    def agregoSpacer(self):
+        self.story.append(Spacer(1,0.1*inch))

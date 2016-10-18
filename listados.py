@@ -25,13 +25,12 @@ class Listados(QtWidgets.QWidget):
     def Seleccion_Listado(self):
         '''Creo el Layout en donde presento los combos para seleccionar''' \
         '''el tipo de listado a imprimir'''
-
         self.layout = QtWidgets.QFormLayout()
         self.cbo = QtWidgets.QComboBox()
-
         listados = ['', 'Alumnos FOBA', 'Alumnos Tecnicatura', 'Alumnos Profesorado', 'Listados de Asistencia', 'Listar Alumnos por Cohorte']
+        print(type(listados))
         self.cbo.addItems(listados)
-        self.layout.addRow("¿Qué tipo listado deseas?",self.cbo)
+        self.layout.addRow("¿Qué tipo de listado deseas?",self.cbo)
         self.Listo()
         self.lay2 = QtWidgets.QHBoxLayout()
         self.BtnListar = QtWidgets.QPushButton('Listar')
@@ -40,33 +39,26 @@ class Listados(QtWidgets.QWidget):
         self.layout.addItem(self.lay2)
         self.setLayout(self.layout)
         self.BtnListar.clicked.connect(self.Listar)
+        self.cbo.activated.connect(self.onActivated)
+
+##############################################################################
 
     def onActivated(self):
+        self.limpioLay()
         txt = self.cbo.currentIndex()
         print("Activated " + str(txt))
-        if txt == 1:
-            '''Listado FOBA'''
-            self.Listar(txt)
-        elif txt == 2:
-            '''Listado Tecnicatura'''
-            self.Listar('Tecnicatura')
-        elif txt == 3:
-            '''Listado Profesorado'''
-            self.Listar('Profesorado de Artes Plásticas')
-        elif txt == 4:
+        if txt == 4:
             '''Listado por asignaturas'''
-            self.ListarAsistencias()
-        elif txt == 5:
-            self.ListarCohorte()
-        elif txt == 6:
-            self.Listar('Cursos Extraprogramáticos')
+            self.ListaXAsig()
+        else:
+            print("entro")
+
 
 ##############################################################################
 
     def Listo(self):
         self.cbo_anio = QtWidgets.QComboBox()
         a = datetime.datetime.now()
-
         rg = range((a.year-5), (a.year+10), 1)
         for i in rg:
             self.cbo_anio.addItem(str(i))
@@ -83,34 +75,87 @@ class Listados(QtWidgets.QWidget):
         conn = Connection()
         '''Obtengo un Cursor'''
         self.db = conn.conecto_a_DB(self.usr, 'Listados')
-        print(txt)
-        if txt == 1:
-            sql = "SELECT Nombre, DNI, Edad, Domicilio, Celular FROM alumnos "\
-            "WHERE cohorte is NULL"
-            col = 5
-            self.labels = ['Nombre', 'Dni', 'Edad', 'Domicilio', 'Celular']
-        q = QtSql.QSqlQuery(self.db.database('Listados'))
-        q.prepare(sql)
-        estado = util.ejecuto(q, self.db)
-        self.lista = util.Convierto_a_tabla(q)
-        self.table = util.CreoTabla(q, self.labels)
-#        self.Imprimir()
-#        self.Imprimir2()
         imp = Impresion()
         imp.creoEstilo()
         imp.creoStory()
-        imp.definoEstilos()
-        t = self.toPdf()
-        txt1 = "Listado de Alumnos FOBA año " + self.cbo_anio.currentText()
-        imp.agregoString(txt1)
+
+        if txt == 1:
+            sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
+            "WHERE cohorte is NULL"
+            col = 8
+            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'numero', 'piso', 'depto', 'Celular']
+            formato = "portrait"
+            txt1 = "Listado de Alumnos FOBA año " + self.cbo_anio.currentText()
+            imp.definoEstilos()
+            imp.agregoString(txt1)
+            co = 1.5
+        elif txt == 2:
+            sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
+            "WHERE Carrera = 'Tecnicatura'"
+            col = 8
+            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'numero', 'piso', 'depto', 'Celular']
+            formato = "portrait"
+            txt1 = "Listado de Alumnos Tecnicatura año " + self.cbo_anio.currentText()
+            imp.definoEstilos()
+            imp.agregoString(txt1)
+            co = 1.5
+        elif txt == 3:
+            sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
+            "WHERE Carrera = 'Licenciatura de Artes Visuales'"
+            col = 8
+            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'numero', 'piso', 'depto', 'Celular']
+            formato = "portrait"
+            txt1 = "Listado de Alumnos Licenciatura de Artes Visuales año " + self.cbo_anio.currentText()
+            imp.definoEstilos()
+            imp.agregoString(txt1)
+            co = 1.5
+        elif txt == 4:
+            '''Obtengo la asignatura a Listar'''
+            self.txtxt = self.cbo2.currentText()
+            sql = "SELECT alumnos.Nombre FROM alumnos INNER JOIN "\
+            "calificaciones on calificaciones.alumno = alumnos.DNI INNER JOIN"\
+            " asignaturas on asignaturas.id_asignatura = "\
+            "calificaciones.id_asign where calificaciones.nota "\
+            "IS NULL OR calificaciones.nota < 4 AND asignaturas.nombre "\
+            "= :asig"
+            self.labels = ['Nombre Alumno', 'Día','Día','Día', 'Día','Día', 'Día', 'Día','Día']
+            formato = "landscape"
+            mes = QDate.currentDate()
+            meses = util.meses()
+            txt1 = str(self.txtxt)
+            txt2 = "<br /> Listado de Asistencias <br />Mes de "  + str(meses.get(mes.month())) + " de " +  str(mes.year())
+            imp.definoEstilos('Materia', 14, "Courier", 10)
+            imp.agregoString(txt1, 'Materia')
+            imp.definoEstilos('Listado', 12, "Courier-Bold", 16)
+            imp.agregoString(txt2, 'Listado')
+            co = 1
+        elif txt == 5:
+            sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
+            "WHERE cohorte = :anio"
+            col = 8
+            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'numero', 'piso', 'depto', 'Celular']
+            formato = "portrait"
+            txt1 = "Listado de Alumnos Cohorte " + self.cbo_anio.currentText()
+            imp.definoEstilos()
+            imp.agregoString(txt1)
+            co = 1.5
+        q = QtSql.QSqlQuery(self.db.database('Listados'))
+        q.prepare(sql)
+        if txt == 4:
+            q.bindValue(":asig", self.txtxt)
+        elif txt == 5:
+            q.bindValue(":anio", self.cbo_anio.currentText())
+        estado = util.ejecuto(q, self.db)
+
+        self.lista = util.Convierto_a_tabla(q)
+        self.table = util.CreoTabla(q, self.labels)
+        t = self.toPdf(co)
+        imp.agregoSpacer()
         imp.agregoTabla(t)
-        imp.createPageTemplate("portrait", "A4")
+        imp.createPageTemplate(formato, "A4")
         imp.cierroStory()
         imp.imprimo()
-#        self.toPdf()
-#        self.imprimo()
-#        imprimo = Calificaciones()
-#        imprimo.Imprimir()
+
 
 ##############################################################################
 
@@ -142,10 +187,9 @@ class Listados(QtWidgets.QWidget):
 
         logo = QtGui.QPixmap("index.jpe")
         logo2 = logo.scaled(128, 128, QtCore.Qt.KeepAspectRatio)
-#        lbl.setPixmap(logo2)
-#        lbl.resize(180, 16)
+
         obj.scene.addWidget(lbl)
-#        obj.scene.addWidget(self.table)
+
         qp = QPainter()
         prt = QtPrintSupport.QPrinter()
 
@@ -164,18 +208,6 @@ class Listados(QtWidgets.QWidget):
 ##############################################################################
 
     def Imprimir2(self):
-        '''Imprime el objeto en table'''
-        '''        obj = QtWidgets.QGraphicsView()
-        obj.setSceneRect(QRectF(obj.viewport().rect()))
-        obj.scene = QGraphicsScene()
-        pen = QPen(Qt.black)
-        brush = QBrush(Qt.Dense6Pattern)
-        ft = QFont()
-        ft.Helvetica
-        obj.scene.
-        (10, )
-        obj.scene.addLine(QLineF(0, 0, 0, 1.0), pen).setPos(0,10)'''
-
         prt = QtPrintSupport.QPrinter()
         dialog = QtPrintSupport.QPrintDialog(prt, self)
 
@@ -200,19 +232,14 @@ class Listados(QtWidgets.QWidget):
         qp.drawLine(QPoint(10, 10 + 20), QPoint(1280 - 10, 10 + 20))
         if(dialog.exec_() != QtWidgets.QDialog.Accepted):
             return
-
-#        printLabel = qp
-
-#        painter = QtGui.QPainter(prt)
-#        printLabel.render(qp)
         prt.newPage()
         qp.end()
 
 ##############################################################################
 
-    def toPdf(self):
+    def toPdf(self, col=1.5):
 
-        t = Table([self.labels] + self.lista, colWidths=1*inch, rowHeights=None, style=None, splitByRow=1,
+        t = Table([self.labels] + self.lista, colWidths=None, rowHeights=None, style=None, splitByRow=1,
 repeatRows=1, repeatCols=0, rowSplitRange=None, spaceBefore=None,
 spaceAfter=None)
         t.setStyle(TableStyle([
@@ -225,3 +252,54 @@ spaceAfter=None)
             ]
         ))
         return t
+
+##############################################################################
+
+    def ListaXAsig(self):
+        conn = Connection()
+        util = Utilidades()
+        '''Obtengo un Cursor'''
+        self.db = conn.conecto_a_DB(self.usr, 'Listados')
+        sql = "SELECT nombre from asignaturas"
+
+        q = QtSql.QSqlQuery(self.db.database('Listados'))
+        q.prepare(sql)
+        estado = util.ejecuto(q, self.db)
+        listados= []
+        while estado.next():
+            listados.append(estado.value(0))
+        self.cbo2 = QtWidgets.QComboBox()
+        self.cbo2.setObjectName("cbo2")
+        self.cbo2.addItems(listados)
+        '''Remuevo el self.lay2'''
+        self.layout.removeItem(self.lay2)
+        '''Agrego el Combo de listado de Asignaturas'''
+        self.layout.addRow("Elegí la materia",self.cbo2)
+#
+#        self.layout.replaceWidget(self.BtnListar, self.cbo2)
+        '''Vuelvo a agregar el lay2'''
+        self.lay2.addWidget(self.BtnListar)
+        self.layout.addItem(self.lay2)
+
+
+
+##############################################################################
+
+    def asistencias(self):
+        print(self.cbo2.currentText())
+
+##############################################################################
+
+    def limpioLay(self):
+
+        items = (self.layout.itemAt(i) for i in range(self.layout.count()))
+        for i in items:
+            if type(i) == QtWidgets.QWidgetItem:
+                w = i.widget()
+                if type(w) == QtWidgets.QLabel:
+                    if w.text() == "Elegí la materia":
+                        w.deleteLater()
+                if type(w) == QtWidgets.QComboBox:
+                    if w.objectName() == "cbo2":
+                        w.deleteLater()
+

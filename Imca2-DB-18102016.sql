@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.1.16-MariaDB - MariaDB Server
--- SO del servidor:              Linux
--- HeidiSQL Versión:             9.3.0.5112
+-- Server version:               10.1.16-MariaDB - MariaDB Server
+-- Server OS:                    Linux
+-- HeidiSQL Version:             9.3.0.5112
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -12,11 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Volcando estructura de base de datos para imca
+-- Dumping database structure for imca
 CREATE DATABASE IF NOT EXISTS `imca` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `imca`;
 
--- Volcando estructura para tabla imca.alumnos
+-- Dumping structure for table imca.alumnos
 CREATE TABLE IF NOT EXISTS `alumnos` (
   `idAlumnos` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(255) DEFAULT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   `CP` varchar(30) DEFAULT NULL,
   `Telefono` int(10) unsigned DEFAULT NULL,
   `Celular` int(10) unsigned DEFAULT NULL,
-  `Estudios_Cursados` int(10) unsigned DEFAULT NULL,
+  `Estudios_Cursados` varchar(255) DEFAULT NULL,
   `Otros` varchar(255) DEFAULT NULL,
   `Trabaja` tinyint(1) DEFAULT NULL,
   `Ocupacion` varchar(255) DEFAULT NULL,
@@ -42,16 +42,16 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   `osocial` varchar(255) DEFAULT NULL,
   `Sexo` varchar(100) DEFAULT NULL,
   `Carrera` varchar(255) DEFAULT NULL,
-  `ciclo` date DEFAULT NULL,
-  `Apellido` varchar(255) DEFAULT NULL,
-  `Nacionalidad` int(10) unsigned DEFAULT NULL,
+  `ciclo` int(11) DEFAULT NULL,
+  `horario` varchar(255) DEFAULT NULL,
+  `Nacionalidad` varchar(255) DEFAULT NULL,
   `hijos` tinyint(3) unsigned DEFAULT NULL,
   `acargo` varchar(255) DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL,
-  `egreso` date DEFAULT NULL,
+  `egreso` year(4) DEFAULT NULL,
   `insti_otros` text,
   `escuela` varchar(255) DEFAULT NULL,
-  `distrito` tinyint(3) unsigned DEFAULT NULL,
+  `distrito` varchar(50) DEFAULT NULL,
   `doc_dni` tinyint(1) DEFAULT NULL,
   `doc_Tit` tinyint(1) DEFAULT NULL,
   `doc_Reg` tinyint(1) DEFAULT NULL,
@@ -64,25 +64,22 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   `Tratamiento` tinyint(1) DEFAULT NULL,
   `alergias` varchar(255) DEFAULT NULL,
   `foto` blob,
-  `cohorte` date DEFAULT NULL,
+  `cohorte` year(4) DEFAULT NULL,
   PRIMARY KEY (`idAlumnos`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla imca.alumnos: ~9 rows (aproximadamente)
+-- Dumping data for table imca.alumnos: ~6 rows (approximately)
 /*!40000 ALTER TABLE `alumnos` DISABLE KEYS */;
-REPLACE INTO `alumnos` (`idAlumnos`, `Nombre`, `DNI`, `Lugar_Nacimiento`, `Fecha_Nacimiento`, `Edad`, `Domicilio`, `numero`, `piso`, `depto`, `Estado_Civil`, `Localidad`, `Partido`, `CP`, `Telefono`, `Celular`, `Estudios_Cursados`, `Otros`, `Trabaja`, `Ocupacion`, `emergencias`, `osocial`, `Sexo`, `Carrera`, `ciclo`, `Apellido`, `Nacionalidad`, `hijos`, `acargo`, `mail`, `egreso`, `insti_otros`, `escuela`, `distrito`, `doc_dni`, `doc_Tit`, `doc_Reg`, `doc_fot`, `doc_cert`, `Grupo_Sanguineo`, `Antitetanica`, `Presion_Arterial`, `Enfermedades`, `Tratamiento`, `alergias`, `foto`, `cohorte`) VALUES
-	(1, NULL, 23235867, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(2, '', 23235866, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(3, '', 23235868, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(4, '', 48803377, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(5, '', 35330160, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(6, '', 1011121314, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(7, '', 44444444, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(8, '', 23235865, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(9, '', 23235864, '', '0000-00-00', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, 0, '', 0, '', '', '', 'Femenino', 'FOBA', '0000-00-00', NULL, 0, 0, '', '', '0000-00-00', ', ', '', 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+REPLACE INTO `alumnos` (`idAlumnos`, `Nombre`, `DNI`, `Lugar_Nacimiento`, `Fecha_Nacimiento`, `Edad`, `Domicilio`, `numero`, `piso`, `depto`, `Estado_Civil`, `Localidad`, `Partido`, `CP`, `Telefono`, `Celular`, `Estudios_Cursados`, `Otros`, `Trabaja`, `Ocupacion`, `emergencias`, `osocial`, `Sexo`, `Carrera`, `ciclo`, `horario`, `Nacionalidad`, `hijos`, `acargo`, `mail`, `egreso`, `insti_otros`, `escuela`, `distrito`, `doc_dni`, `doc_Tit`, `doc_Reg`, `doc_fot`, `doc_cert`, `Grupo_Sanguineo`, `Antitetanica`, `Presion_Arterial`, `Enfermedades`, `Tratamiento`, `alergias`, `foto`, `cohorte`) VALUES
+	(1, 'Gabriel García', 23235867, 'Buenos Aires', '1973-06-18', 43, 'Dorrego', 2279, 'PB', 'A', 'Solterx', 'Sarandí', 'Avellaneda', '1870', 1121950758, 1165831607, 'Perito Mercantil', ', ', 1, 'Petróleo', '0800-555-55555', 'OSPE', 'Masculino', 'Tecnicatura', 2016, '8:30 a 17:30hs', 'Buenos Aires', 0, '', 'ghgarciar@gmail.com', '1994', ', ', 'Escuela Comercial N° 10 "Islas Malvinas"', '1', 1, 1, 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2016'),
+	(2, 'DIego Espíndola', 30234123, '', '2000-01-01', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, '', '', 0, '', '', '', 'Femenino', 'FOBA', 2016, '', '', 0, '', '', '2000', ', ', '', '', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(3, 'Gastón Caravallo', 48803376, 'Lanús', '2000-01-01', 21, 'Dorrego', 2279, 'PB', 'B', 'Solterx', '', '', '', 0, 0, '', '', 0, '', '', '', 'Masculino', 'FOBA', 2016, '', 'Lanús', 2, 'No', '', '2000', ', ', '', '', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(4, 'Gastón Caraballo', 35330160, 'Lanús', '2004-02-08', 21, 'Camino', 1234, '1', 'C', 'Solterx', 'Monte Chingolo', 'Lanús', '1871', 1143216518, 1143211565, 'Comercial', '', 0, '', '', '', 'Masculino', 'Profesorado de Artes Visuales', 2016, '', 'Lanús', 0, 'No', 'gaston.caraballo@gmail.com', '2010', ', ', 'Zaraza', '2', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2016'),
+	(5, 'Norma Villalba', 14577551, '', '2000-01-01', 60, '', 0, '', '', 'Solterx', '', '', '', 0, 0, '', '', 0, '', '', '', 'Femenino', 'Tecnicatura', 2016, '', '', 0, '', '', '2000', ', ', '', '', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(6, 'Diego Garcia', 1111111, '', '2000-01-01', 0, '', 0, '', '', 'Solterx', '', '', '', 0, 0, '', '', 0, '', '', '', 'Femenino', 'Tecnicatura', 2016, '', '', 0, '', '', '2000', ', ', '', '', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `alumnos` ENABLE KEYS */;
 
--- Volcando estructura para tabla imca.asignaturas
+-- Dumping structure for table imca.asignaturas
 CREATE TABLE IF NOT EXISTS `asignaturas` (
   `id_asignatura` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
@@ -95,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `asignaturas` (
   PRIMARY KEY (`id_asignatura`)
 ) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla imca.asignaturas: ~56 rows (aproximadamente)
+-- Dumping data for table imca.asignaturas: ~56 rows (approximately)
 /*!40000 ALTER TABLE `asignaturas` DISABLE KEYS */;
 REPLACE INTO `asignaturas` (`id_asignatura`, `nombre`, `carrera`, `correlativas`, `horario`, `vacantes`, `anio`, `cursada_paralela`) VALUES
 	(1, 'DIBUJO', '1', NULL, NULL, NULL, 0, NULL),
@@ -156,28 +153,53 @@ REPLACE INTO `asignaturas` (`id_asignatura`, `nombre`, `carrera`, `correlativas`
 	(56, 'CURSO 1', '4', NULL, NULL, NULL, 99, NULL);
 /*!40000 ALTER TABLE `asignaturas` ENABLE KEYS */;
 
--- Volcando estructura para tabla imca.calificaciones
+-- Dumping structure for table imca.calificaciones
 CREATE TABLE IF NOT EXISTS `calificaciones` (
   `id_calif` int(11) NOT NULL AUTO_INCREMENT,
   `id_asign` int(11) NOT NULL,
-  `cuatri1` int(11) DEFAULT NULL,
-  `cuatri2` int(11) DEFAULT NULL,
-  `recup` int(11) DEFAULT NULL,
-  `final1` int(11) DEFAULT NULL,
-  `final2` int(11) DEFAULT NULL,
-  `final3` int(11) DEFAULT NULL,
-  `final4` int(11) DEFAULT NULL,
-  `nota` int(11) DEFAULT NULL,
+  `cuatri1` float DEFAULT NULL,
+  `cuatri2` float DEFAULT NULL,
+  `recup` float DEFAULT NULL,
+  `final1` float DEFAULT NULL,
+  `final2` float DEFAULT NULL,
+  `final3` float DEFAULT NULL,
+  `final4` float DEFAULT NULL,
+  `nota` float DEFAULT NULL,
   `fecha_final` date DEFAULT NULL,
   `alumno` bigint(20) NOT NULL COMMENT 'Igual a dni_alumnos',
   PRIMARY KEY (`id_calif`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla imca.calificaciones: ~0 rows (aproximadamente)
+-- Dumping data for table imca.calificaciones: ~24 rows (approximately)
 /*!40000 ALTER TABLE `calificaciones` DISABLE KEYS */;
+REPLACE INTO `calificaciones` (`id_calif`, `id_asign`, `cuatri1`, `cuatri2`, `recup`, `final1`, `final2`, `final3`, `final4`, `nota`, `fecha_final`, `alumno`) VALUES
+	(1, 1, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 23235867),
+	(2, 2, 3, 4, NULL, NULL, NULL, NULL, NULL, 6, NULL, 23235867),
+	(3, 3, 4, 4, NULL, NULL, NULL, NULL, NULL, 3, NULL, 23235867),
+	(4, 4, 6, 4, NULL, NULL, NULL, NULL, NULL, 6, NULL, 23235867),
+	(5, 5, 5, 4, NULL, NULL, NULL, NULL, NULL, 8, NULL, 23235867),
+	(6, 6, 4, 4, NULL, NULL, NULL, NULL, NULL, 6, NULL, 23235867),
+	(7, 7, 4, 4, NULL, NULL, NULL, NULL, NULL, 7, NULL, 23235867),
+	(8, 8, 4, 4, NULL, NULL, NULL, NULL, NULL, 6, NULL, 23235867),
+	(9, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(10, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(11, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(12, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(13, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(14, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(15, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(16, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, 35330160),
+	(17, 1, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551),
+	(18, 2, 7.5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551),
+	(19, 3, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551),
+	(20, 4, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551),
+	(21, 5, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551),
+	(22, 6, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551),
+	(23, 7, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551),
+	(24, 8, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14577551);
 /*!40000 ALTER TABLE `calificaciones` ENABLE KEYS */;
 
--- Volcando estructura para tabla imca.carreras
+-- Dumping structure for table imca.carreras
 CREATE TABLE IF NOT EXISTS `carreras` (
   `id_carrera` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
@@ -185,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `carreras` (
   PRIMARY KEY (`id_carrera`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla imca.carreras: ~5 rows (aproximadamente)
+-- Dumping data for table imca.carreras: ~5 rows (approximately)
 /*!40000 ALTER TABLE `carreras` DISABLE KEYS */;
 REPLACE INTO `carreras` (`id_carrera`, `nombre`, `cantidad`) VALUES
 	(1, 'FOBA', 8),
@@ -198,4 +220,3 @@ REPLACE INTO `carreras` (`id_carrera`, `nombre`, `cantidad`) VALUES
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-alumnos

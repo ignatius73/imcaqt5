@@ -132,3 +132,10 @@ class Utilidades():
     def convierte_Fechas(self, fe):
         nueva = datetime.datetime.strptime(fe,"%d/%m/%Y").date().strftime("%Y-%m-%d")
         return nueva
+
+##############################################################################
+
+    def meses(self):
+        '''Devuelve un diccionario con los meses en español'''
+        meses = {1: 'Enero', 2: 'Febrero', 3: 'Marzo', 4: 'Abril', 5: 'Mayo', 6: 'Junio', 7: 'Julio', 8: 'Agosto', 9: 'Septiembre', 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'}
+        return meses

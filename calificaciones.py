@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtSql, uic, QtWidgets, QtPrintSupport
 from conn import *
 from utilidades import *
 from asignaturas import *
+from PyQt5.QtCore import QDate
 
 class Calificaciones(QtWidgets.QWidget):
 
@@ -120,6 +121,7 @@ class Calificaciones(QtWidgets.QWidget):
             q.bindValue(":value", value)
             q.bindValue(":id", ide)
             self.ejecuto(q, 'calificaciones')
+            self.cohorte()
 
 ################################################################
 
@@ -150,3 +152,33 @@ class Calificaciones(QtWidgets.QWidget):
         painter = QtGui.QPainter(prt)
         printLabel.render(painter)
         painter.end()
+
+##############################################################################
+
+    def cohorte(self):
+        print (self.dni)
+        '''Controlo que el DNI no tenga cohorte en la tabla de alumnos'''
+        sql = "SELECT COUNT(*) FROM alumnos WHERE alumnos.DNI = :dni AND alumnos.cohorte IS NULL"
+        q = QtSql.QSqlQuery(self.db.database('calificaciones'))
+        q.prepare(sql)
+        q.bindValue(":dni", self.dni)
+        estado = self.ejecuto(q,'calificaciones')
+        while estado.next():
+            if estado.value(0) == 1:
+                sql = "SELECT COUNT(*) FROM calificaciones " \
+                "INNER JOIN asignaturas on calificaciones.id_asign = "\
+                "asignaturas.id_asignatura WHERE calificaciones.alumno = "\
+                ":dni AND asignaturas.anio = 0 AND calificaciones.nota >= 4"
+                q = QtSql.QSqlQuery(self.db.database('calificaciones'))
+                q.prepare(sql)
+                q.bindValue(":dni", self.dni)
+                estado = self.ejecuto(q, 'calificaciones')
+                anio = QDate.currentDate()
+                while estado.next():
+                    if estado.value(0) == 8:
+                        sql = "UPDATE alumnos SET cohorte = :anio WHERE DNI = :dni"
+                        q = QtSql.QSqlQuery(self.db.database('calificaciones'))
+                        q.prepare(sql)
+                        q.bindValue(":anio", anio.year())
+                        q.bindValue(":dni", self.dni)
+                        estado = self.ejecuto(q,'calificaciones')

@@ -6,12 +6,13 @@ from asignaturas import *
 from conn import *
 from PyQt5.QtCore import QDate, QVariant
 from utilidades import *
+from modificaciones import *
 
 
 
 class Inscripciones(QtWidgets.QWidget):
 #Class Inscripciones - Inscribe a los alumnos.
-    def __init__(self, usr):
+    def __init__(self, usr, dni):
 
         super(Inscripciones, self).__init__()
         '''Cargo el archivo ui'''
@@ -26,11 +27,16 @@ class Inscripciones(QtWidgets.QWidget):
         self.ui.lnMov.setInputMask('9999999999999')
         self.ui.lnMail.setValidator
         print(self.lnDni.text())
+        self.dni = dni
+        self.lnDni.setText(self.dni)
+        self.lnDni.setDisabled(True)
         #  Instancio un objeto conexion
         self.usr = usr
         self.Conecto_a_DB()
         self.BtnOk.clicked.connect(self.IngresaAlumno)
-        #  QtCore.QObject.connect(self.ui.Children(QtGui.QLineEdit), QtCore.SIGNAL("textChanged()"), self.IngresaAlumno)
+#        self.lnDni.editingFinished.connect(self.compruebaAlumno)
+
+##############################################################################
 
     def IngresaAlumno(self):
         util = Utilidades()
@@ -42,7 +48,7 @@ class Inscripciones(QtWidgets.QWidget):
         self.anio = self.lnCiclo.text()
         self.sexo = self.cBSexo.currentText()
         self.edad = self.sBEdad.text()
-        self.dni = self.lnDni.text()
+#        self.dni = self.lnDni.text()
         self.fenac = util.convierte_Fechas(self.dENac.text())
         self.lunac = self.lnLugar.text()
         self.lnNa = self.ui.lnNac.text()
@@ -211,6 +217,12 @@ class Inscripciones(QtWidgets.QWidget):
             self.db = conn.CreateConnection('inscripciones')
             if self.db.database('inscripciones').isOpen():
                 print("Conexión exitosa a Asignaturas")
+
+##############################################################################
+
+
+
+
 
 #Creamos la instancia para inciar app
 #app = QtGui.QApplication(sys.argv)
