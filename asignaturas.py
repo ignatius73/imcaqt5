@@ -6,7 +6,8 @@ from conn import *
 from utilidades import *
 
 class Asignaturas(QtWidgets.QWidget):
-    '''La clase Asignaturas llevara adelante todas las operaciones referidas a inscripcion a Materias, y sus derivados'''
+    '''La clase Asignaturas llevara adelante todas las operaciones ''' \
+    '''referidas a inscripcion a Materias, y sus derivados'''
     def __init__(self, usr):
         super(Asignaturas, self).__init__()
         '''Instancio un objeto a la base de datos'''
@@ -18,7 +19,7 @@ class Asignaturas(QtWidgets.QWidget):
 
         self.lista = []
         self.v = QtWidgets.QVBoxLayout()
-#        self.v = QtWidgets.QGridLayout()
+
 
         '''Obtengo la consulta'''
         self.dni = dni
@@ -28,8 +29,7 @@ class Asignaturas(QtWidgets.QWidget):
             '''Proceso FOBA'''
             ctrl = 1
             layFoba = self.ListoFOBA(ctrl)
-            print(type(layFoba))
-            print("Zaraza " + str(layFoba))
+
             if layFoba is True:
                 layCarrera = self.anotoProfTec()
                 self.lista.append(layCarrera)
@@ -48,16 +48,16 @@ class Asignaturas(QtWidgets.QWidget):
             layCursos = self.ListoCursos()
             self.lista = [layFoba, layCursos]
 
-        txt = QtWidgets.QLabel("Por favor, seleccioná las materias a las que deseas inscribirte")
-#        ly = QtWidgets.QGridLayout()
-        ly = QtWidgets.QVBoxLayout()
-        ly.addWidget(txt)
-#        ly.sizeHint()
-        self.v.addLayout(ly)
+        txt = QtWidgets.QLabel("Por favor, seleccioná las materias "\
+        "a las que deseas inscribirte")
+        self.v.addWidget(txt)
+#        ly = QtWidgets.QVBoxLayout()
+#        ly.addWidget(txt)
+
+#        self.v.addLayout(ly)
         for i in self.lista:
             self.v.addWidget(i)
-        #  self.v.addWidget(layFoba)
-        #  self.v.addWidget(layCursos)
+
         h = QtWidgets.QHBoxLayout()
         BtnOk = QtWidgets.QPushButton("&Anotar")
         BtnCancel = QtWidgets.QPushButton("&Limpiar")
@@ -68,6 +68,8 @@ class Asignaturas(QtWidgets.QWidget):
         self.control = 0
         BtnOk.clicked.connect(self.anotar)
         return self.v
+
+##############################################################################
 
     def ObtengoCalificaciones(self):
         '''Busco en la tabla de Calificaciones las materias no aprobadas aún por el dni'''

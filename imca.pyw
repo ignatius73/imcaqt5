@@ -69,29 +69,31 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def inscribe_a_asignaturas(self):
-        self.cargoDNI()
-        self.hijo = Asignaturas(self.usuario)
-        dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
+        if self.cargoDNI() is True:
+            self.dialog.close()
+            self.hijo = Asignaturas(self.usuario)
+            dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
 
-        if dni_exist is True:
-            lay = self.hijo.inscribir(self.dni)
-            self.hijo.setLayout(lay)
-#            self.hijo.resize(500, 500)
-            self.sb = QtWidgets.QScrollArea()
-            self.setCentralWidget(self.hijo)
+            if dni_exist is True:
+                lay = self.hijo.inscribir(self.dni)
+                self.hijo.setLayout(lay)
+                self.sb = QtWidgets.QScrollArea()
+                self.setCentralWidget(self.hijo)
 
-        else:
-            v= Utilidades()
-            t = "El Alumno no existe en nuestros registros. ¿Desea agregarlo?"
-            fin = v.Confirmar(t)
-            if fin == 1024:
-                print("Entro")
-                self.calcular(1)
+            else:
+                v= Utilidades()
+                t = "El Alumno no existe en nuestros registros. ¿Desea agregarlo?"
+                fin = v.Confirmar(t)
+                if fin == 1024:
+                    print("Entro")
+                    self.calcular(1)
+
 
 ##############################################################################
 
     def cargoDNI(self):
-        etiqueta = QtWidgets.QLabel("Ingrese DNI del Alumno")
+        dialog = QtWidgets.QInputDialog(self, 'DNI', "Ingresá el Dni")
+        '''etiqueta = QtWidgets.QLabel("Ingrese DNI del Alumno")
         self.lnAlumno = QtWidgets.QLineEdit()
         OkBtn = QtWidgets.QPushButton('Acep&tar')
         CancelBtn = QtWidgets.QPushButton('Canc&elar')
@@ -119,7 +121,15 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.dialog.move(50, 50)
         self.dialog.resize(100, 100)
         OkBtn.clicked.connect(self.cargo)
-        self.dialog.exec_()
+        CancelBtn.clicked.connect(self.cancelo)
+        self.dialog.exec_()'''
+
+##############################################################################
+
+    def cancelo(self):
+        print("entro")
+
+        return False
 
 ##############################################################################
 
@@ -129,7 +139,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         if valido.validar_vacios(self.lnAlumno):
             self.dni = self.lnAlumno.text()
             self.dialog.close()
-
+            return True
         else:
             self.dialog.repaint
             return
