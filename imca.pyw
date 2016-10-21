@@ -92,8 +92,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def cargoDNI(self):
-        dialog = QtWidgets.QInputDialog(self, 'DNI', "Ingresá el Dni")
-        '''etiqueta = QtWidgets.QLabel("Ingrese DNI del Alumno")
+        etiqueta = QtWidgets.QLabel("Ingrese DNI del Alumno")
         self.lnAlumno = QtWidgets.QLineEdit()
         OkBtn = QtWidgets.QPushButton('Acep&tar')
         CancelBtn = QtWidgets.QPushButton('Canc&elar')
@@ -122,7 +121,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.dialog.resize(100, 100)
         OkBtn.clicked.connect(self.cargo)
         CancelBtn.clicked.connect(self.cancelo)
-        self.dialog.exec_()'''
+        self.dialog.exec_()
 
 ##############################################################################
 
