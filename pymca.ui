@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Imca - 1.0</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -30,7 +30,7 @@
          <x>0</x>
          <y>0</y>
          <width>768</width>
-         <height>500</height>
+         <height>505</height>
         </rect>
        </property>
       </widget>
@@ -44,7 +44,7 @@
      <x>0</x>
      <y>0</y>
      <width>788</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Alumnos">
@@ -88,9 +88,14 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="action_Nuevo_Alumno"/>
    <addaction name="actionImprimir"/>
   </widget>
   <action name="action_Nuevo_Alumno">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/Contacts-50.png</normaloff>icons/Contacts-50.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Nuevo Alumno</string>
    </property>
@@ -166,8 +171,7 @@
   <action name="actionImprimir">
    <property name="icon">
     <iconset>
-     <normalon>impresora.png</normalon>
-    </iconset>
+     <normaloff>icons/Print-50.png</normaloff>icons/Print-50.png</iconset>
    </property>
    <property name="text">
     <string>Imprimir</string>

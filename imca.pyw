@@ -94,6 +94,8 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
     def cargoDNI(self):
         etiqueta = QtWidgets.QLabel("Ingrese DNI del Alumno")
         self.lnAlumno = QtWidgets.QLineEdit()
+        validator = QtGui.QIntValidator()
+        self.lnAlumno.setValidator(validator)
         OkBtn = QtWidgets.QPushButton('Acep&tar')
         CancelBtn = QtWidgets.QPushButton('Canc&elar')
 
@@ -225,7 +227,7 @@ ventana = VentanaPrincipal()
 #ventana.showMaximized()
 ventana.move(0,0)
 #  ventana.resize(1230,1200)
-ventana.resize(600,600)
+#ventana.resize(600,600)
 ventana.show()
 #Ejecutamos la app
 app.exec_()

@@ -23,9 +23,8 @@ class Inscripciones(QtWidgets.QWidget):
         self.ui.lnCiclo.setDisabled(True)
         validator = QtGui.QIntValidator()
         self.ui.lnDni.setValidator(validator)
-        self.ui.lnNum.setValidator(validator)
-        self.ui.lnTel.setValidator(validator)
-        self.ui.lnMov.setValidator(validator)
+        self.ui.lnTel.setInputMask('99999999999')
+        self.ui.lnMov.setInputMask('9999999999999')
         self.ui.lnMail.setValidator
         print(self.lnDni.text())
         self.dni = dni
@@ -41,6 +40,8 @@ class Inscripciones(QtWidgets.QWidget):
 
     def IngresaAlumno(self):
         util = Utilidades()
+        print(self.lnDni.text())
+        edits = self.ui.findChildren(QtWidgets.QLineEdit)
 
         self.Nombre = self.lnNombre.text()
         self.carrera = self.cBCarrera.currentText()
@@ -55,24 +56,25 @@ class Inscripciones(QtWidgets.QWidget):
         self.hijos = self.cBHijos.currentText()
         self.familia = self.lnFamiliar.text()
         self.calle = self.lnCalle.text()
-        self.numero = self.IntONull(self.lnNum.text())
+        self.numero = self.lnNum.text()
         self.piso = self.lnPiso.text()
         self.depto = self.lnDepto.text()
         self.local = self.lnLocal.text()
         self.partido = self.lnPartido.text()
         self.cp = self.lnCP.text()
-        self.tel = self.IntONull(self.lnTel.text())
-        self.movil = self.IntONull(self.lnMov.text())
-        #self.movil = self.lnMov.text()
+        self.tel = self.lnTel.text()
+        self.movil = self.lnMov.text()
         self.mail = self.lnMail.text()
         self.titulo = self.lntitulo.text()
         self.egreso = self.dEEgr.text()
+        print(self.egreso)
+        print(type(self.egreso))
         self.escuela = self.lnEscuela.text()
         self.distrito = self.lnDistrito.text()
         self.otros = self.lnOtros.text()
         self.insti1 = self.lnInsti1.text()
         self.insti2 = self.lnInsti2.text()
-        if self.rBtnSi.isChecked() is True:
+        if self.rBtnSi.isChecked() == True:
             self.trab = 1
         else:
             self.trab = 0
@@ -105,16 +107,14 @@ class Inscripciones(QtWidgets.QWidget):
         else:
             self.repaint()
 
-##############################################################################
-
     def Insertar(self):
-        #Obtengo listado de campos de la tabla'''
-        campos = "SHOW COLUMNS from alumnos WHERE Field <> 'IdAlumnos' AND "\
-        "Field <> 'Apellido' AND Field <> 'cohorte' AND Field <> "\
-        "'Grupo_Sanguineo' AND Field <> 'Ántitetanica' AND Field <> "\
-        "'Presion_Arterial' AND Field <> 'Enfermedades' AND Field <> "\
-        "'Tratamiento' AND Field <> 'alergias' AND Field <> 'foto'"
-
+        print("entro a insertar")
+        # db = self.db.CreateConnection(self.usr, self.passw)
+        #  Obtengo un cursor de DB abierto
+        print("Nombre de la conexión " + self.db.connectionName())
+        #Obtengo listado de campos de la tabla
+        campos = "SHOW COLUMNS from alumnos WHERE Field <> 'IdAlumnos' AND Field <> 'Apellido' AND Field <> 'cohorte' AND Field <> 'Grupo_Sanguineo' AND Field <> 'Ántitetanica' AND Field <> 'Presion_Arterial' AND Field <> 'Enfermedades' AND Field <> 'Tratamiento' AND Field <> 'alergias' AND Field <> 'foto'"
+        print("Nombre de la conexión " + self.db.connectionName())
         q = QtSql.QSqlQuery(self.db.database('inscripciones'))
         q.prepare(campos)
         q.exec_()
@@ -127,25 +127,13 @@ class Inscripciones(QtWidgets.QWidget):
         print("Cadena " + cadena1)
 
         #Preparo la cadena sql
-        values = ":nombre, :dni, :lunac, :fenac, :edad, :calle, :numero, "\
-        ":piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, "\
-        ":otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :hora, "\
-        ":lugar, :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, "\
-        ":doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert"
+        values = ":nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :hora, :lunac, :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert"
+        #sql = "INSERT INTO alumnos (" + cadena1 + ") VALUES (:nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :lunac, :hijos, :flia, :mail, :egreso, :insti1, :insti2, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert)"
         sql = "INSERT INTO alumnos(" + cadena1 + ") VALUES (" + values + ")"
-
-        '''sql = "INSERT INTO alumnos (Nombre, Carrera, ciclo, sexo, edad, DNI, "\
-        "Fecha_Nacimiento, Lugar_Nacimiento,Nacionalidad, Domicilio, numero,"\
-        "piso, depto, Estado_Civil, Localidad, Partido, CP, Telefono, Celular, "\
-        "Estudios_Cursados, Otros, Trabaja, Ocupacion, emergencias, osocial, "\
-        "hijos, acargo, mail, egreso, insti_otros, escuela, distrito, doc_dni,"\
-        " doc_Tit, doc_reg, doc_fot, doc_cert, horario) "\
-        "Values(:nombre, :carrera, :anio, :sexo, :edad, :dni, :fenac, "\
-        ":lunac ,:lugar, :calle, :numero, :piso, :depto, :civil, :local, "\
-        ":partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os"\
-        ", :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, :doc_dni,"\
-        " :doc_Tit, :doc_reg, :doc_fot, :doc_cert, :hora)"'''
-
+        print(" Este sql " + sql)
+        # sql = "INSERT INTO alumnos(Nombre, DNI, Lugar_Nacimiento, Fecha_Nacimiento, Edad, Domicilio, numero, piso, depto, Estado_Civil, Localidad, Partido, CP, Telefono, Celular, Estudios_Cursados, Otros, Trabaja, Ocupacion, emergencias, osocial, Sexo, Carrera, ciclo, Nacionalidad, hijos, acargo, mail, egreso, insti_otros, escuela, distrito, doc_dni, doc_Tit, doc_Reg, doc_fot, doc_cert) VALUES (:nombre, :dni, :lugar, :fenac, :edad, :calle, :numero, :piso, :depto, :civil, :local, :partido, :cp, :tel, :mov, :ecurs, :otros, :trab, :activ, :emer, :os, :sexo, :carrera, :anio, :lunac, :hijos, :flia, :mail, :egreso, :insti, :escuela, :distri, :doc_dni, :doc_Tit, :doc_reg, :doc_fot, :doc_cert)"  # , Fecha_Nacimiento, Edad, Domicilio, numero, piso, depto, Estado_Civil, Localidad, Partido, CP, Telefono, Celular, Estudios_Cursados, Otros, Trabaja, Ocupacion, emergencias, osocial, Sexo, Carrera, ciclo, Nacionalidad, hijos, acargo, mail, egreso, insti_otros, escuela, distrito, doc_dni, doc_Tit, doc_Reg, doc_fot, doc_cert) VALUES (:nombre,:dni,:lugar,:fenac,:edad,:calle,:numero,:piso,:depto,:civil,:local,:partido,:cp,:tel,:mov,:ecurs,:otros,:trab,:activ,:emer,:os,:sexo,:carrera,:anio,:lunac,:hijos,:flia,:mail,:egreso,:insti,:escuela :distri :doc_dni :doc_Tit :doc_reg :doc_fot)"'''
+        #Creo el objeto para hacer la consulta
+        print("Nombre de la conexión " + self.db.connectionName())
         q = QtSql.QSqlQuery(self.db.database('inscripciones'))
         q.prepare(sql)
         q.bindValue(":nombre", self.Nombre)
@@ -181,7 +169,7 @@ class Inscripciones(QtWidgets.QWidget):
         q.bindValue(":insti", institutos)
         q.bindValue(":escuela", self.escuela)
         q.bindValue(":distri", self.distrito)
-
+        print(self.fotoDni)
         q.bindValue(":doc_dni", self.fotoDni)
         q.bindValue(":doc_Tit", self.fotoTit)
         q.bindValue(":doc_reg", self.numReg)
@@ -201,11 +189,8 @@ class Inscripciones(QtWidgets.QWidget):
         else:
             print("DNI " + str(self.dni))
             print(pipi)
-            util = Utilidades()
-            g = util.Mensaje("Ocurrió un error al insertar el alumno. "\
-            "Vuelve a intentarlo. Si el problema persiste comunicate con el "\
-            "Administrador" + str(self.db.database('inscripciones').lastError()))
-            g.exec_()
+            print((self.db.database('inscripciones').lastError()))
+
 
 
     def validar_vacios(self, i):
@@ -235,12 +220,7 @@ class Inscripciones(QtWidgets.QWidget):
 
 ##############################################################################
 
-    def IntONull(self, ln):
-        if ln == '':
-            n = QVariant()
-        else:
-            n = int(ln)
-        return n
+
 
 
 
