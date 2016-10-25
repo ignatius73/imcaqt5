@@ -28,11 +28,14 @@ class Connection(QtSql.QSqlDatabase):
         db.setUserName(self.usr[0])
         db.setPassword(self.usr[1])
         print(db.connectionName())
-        if db.open:
+        if db.open() is True:
             print("base de datos conectada")
             return db
         else:
+            db.close()
             print(db.lastError())
+            return False
+
 
     def GetConnection(self):
             return self.db

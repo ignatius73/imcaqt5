@@ -1,6 +1,7 @@
 import sys
 from PyQt5 import QtCore, QtGui, uic, QtWidgets
 from utilidades import *
+from conn import *
 
 class Login(QtWidgets.QDialog):
 
@@ -23,6 +24,7 @@ class Login(QtWidgets.QDialog):
         #Instancio una Conexión a la DB
         util = Utilidades()
         if util.validar_vacios(self.ui.lnUsuario):
+
             self.user = self.ui.lnUsuario.text()
             self.passwd = self.ui.lPass.text()
             #Construyo tupla para devolver a la ventana principal
@@ -30,6 +32,10 @@ class Login(QtWidgets.QDialog):
             self.close()
         else:
             self.repaint()
+
+##############################################################################
+
+
 
 
 

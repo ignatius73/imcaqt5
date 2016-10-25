@@ -69,6 +69,7 @@ class Listados(QtWidgets.QWidget):
 
     def Listar(self, txt):
         print("Anio " + str(self.cbo_anio.currentText()))
+        anio = self.cbo_anio.currentText()
         txt = self.cbo.currentIndex()
         util = Utilidades()
         '''Instancio un objeto Connection'''
@@ -83,42 +84,45 @@ class Listados(QtWidgets.QWidget):
             sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
             "WHERE cohorte is NULL"
             col = 8
-            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'numero', 'piso', 'depto', 'Celular']
+            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'Número', 'Piso', 'Depto', 'Celular']
             formato = "portrait"
             txt1 = "Listado de Alumnos FOBA año " + self.cbo_anio.currentText()
             imp.definoEstilos()
             imp.agregoString(txt1)
-            co = 1.5
+            co = None
         elif txt == 2:
             sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
-            "WHERE Carrera = 'Tecnicatura'"
+            "WHERE Carrera = 'Tecnicatura' AND cohorte IS NOT NULL AND cohorte < :anio"
             col = 8
-            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'numero', 'piso', 'depto', 'Celular']
+            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'Número', 'Piso', 'Depto', 'Celular']
             formato = "portrait"
             txt1 = "Listado de Alumnos Tecnicatura año " + self.cbo_anio.currentText()
             imp.definoEstilos()
             imp.agregoString(txt1)
-            co = 1.5
+            co = None
         elif txt == 3:
-            sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
-            "WHERE Carrera = 'Licenciatura de Artes Visuales'"
+            sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, "\
+            "depto, Celular FROM alumnos "\
+            "WHERE Carrera = 'Profesorado de Artes Visuales' AND cohorte"\
+            " IS NOT NULL AND cohorte < :anio"
             col = 8
-            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'numero', 'piso', 'depto', 'Celular']
+            self.labels = ['Nombre', 'Dni', 'Edad', 'Calle', 'Número', 'Piso', 'Depto', 'Celular']
+
             formato = "portrait"
             txt1 = "Listado de Alumnos Licenciatura de Artes Visuales año " + self.cbo_anio.currentText()
             imp.definoEstilos()
             imp.agregoString(txt1)
-            co = 1.5
+            co = None
         elif txt == 4:
             '''Obtengo la asignatura a Listar'''
             self.txtxt = self.cbo2.currentText()
-            sql = "SELECT alumnos.Nombre FROM alumnos INNER JOIN "\
+            sql = "SELECT DISTINCT alumnos.Nombre From alumnos INNER JOIN "\
             "calificaciones on calificaciones.alumno = alumnos.DNI INNER JOIN"\
-            " asignaturas on asignaturas.id_asignatura = "\
-            "calificaciones.id_asign where calificaciones.nota "\
-            "IS NULL OR calificaciones.nota < 4 AND asignaturas.nombre "\
-            "= :asig"
-            self.labels = ['Nombre Alumno', 'Día','Día','Día', 'Día','Día', 'Día', 'Día','Día']
+            " asignaturas on calificaciones.id_asign = "\
+            "asignaturas.id_asignatura WHERE asignaturas.nombre = :asig AND "\
+            "calificaciones.nota IS NULL OR calificaciones.nota < 4"
+
+            self.labels = ['Nombre Alumno', 'Fecha','Fecha','Fecha', 'Fecha','Fecha', 'Fecha', 'Fecha','Fecha']
             formato = "landscape"
             mes = QDate.currentDate()
             meses = util.meses()
@@ -128,7 +132,7 @@ class Listados(QtWidgets.QWidget):
             imp.agregoString(txt1, 'Materia')
             imp.definoEstilos('Listado', 12, "Courier-Bold", 16)
             imp.agregoString(txt2, 'Listado')
-            co = 1
+            co = 1.25*inch
         elif txt == 5:
             sql = "SELECT Nombre, DNI, Edad, Domicilio, numero, piso, depto, Celular FROM alumnos "\
             "WHERE cohorte = :anio"
@@ -138,18 +142,22 @@ class Listados(QtWidgets.QWidget):
             txt1 = "Listado de Alumnos Cohorte " + self.cbo_anio.currentText()
             imp.definoEstilos()
             imp.agregoString(txt1)
-            co = 1.5
+            co = None
         q = QtSql.QSqlQuery(self.db.database('Listados'))
         q.prepare(sql)
         if txt == 4:
             q.bindValue(":asig", self.txtxt)
         elif txt == 5:
             q.bindValue(":anio", self.cbo_anio.currentText())
+        elif txt == 3:
+            q.bindValue(":anio", self.cbo_anio.currentText())
+        elif txt == 2:
+            q.bindValue(":anio", self.cbo_anio.currentText())
         estado = util.ejecuto(q, self.db)
 
         self.lista = util.Convierto_a_tabla(q)
         self.table = util.CreoTabla(q, self.labels)
-        t = self.toPdf(co)
+        t = self.toPdf(self.labels, self.lista, co)
         imp.agregoSpacer()
         imp.agregoTabla(t)
         imp.createPageTemplate(formato, "A4")
@@ -237,14 +245,14 @@ class Listados(QtWidgets.QWidget):
 
 ##############################################################################
 
-    def toPdf(self, col=1.5):
+    def toPdf(self, lbl, li, col=None):
 
-        t = Table([self.labels] + self.lista, colWidths=None, rowHeights=None, style=None, splitByRow=1,
+        t = Table([lbl] + li, colWidths=col, rowHeights=None, style=None, splitByRow=1,
 repeatRows=1, repeatCols=0, rowSplitRange=None, spaceBefore=None,
 spaceAfter=None)
         t.setStyle(TableStyle([
                 #La primera fila(encabezados) va a estar centrada
-                ('ALIGN',(0,0),(3,0),'CENTER'),
+                ('ALIGN',(0,0),(3,0),'LEFT'),
                 #Los bordes de todas las celdas serán de color negro y con un grosor de 1
                 ('GRID', (0, 0), (-1, -1), 1, colors.black),
                 #El tamaño de las letras de cada una de las celdas será de 10

@@ -152,3 +152,5 @@ class Impresion():
 
     def agregoSpacer(self):
         self.story.append(Spacer(1,0.1*inch))
+
+##############################################################################

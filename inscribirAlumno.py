@@ -28,7 +28,7 @@ class Inscripciones(QtWidgets.QWidget):
         self.ui.lnMov.setValidator(validator)
         self.ui.lnMail.setValidator
         print(self.lnDni.text())
-        self.dni = dni
+        self.dni = str(dni)
         self.lnDni.setText(self.dni)
         self.lnDni.setDisabled(True)
         #  Instancio un objeto conexion

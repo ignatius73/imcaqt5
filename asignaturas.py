@@ -2,8 +2,12 @@ import sys
 #..import pymysql
 
 from PyQt5 import QtCore, QtGui, uic, QtSql, QtWidgets
+from PyQt5.QtCore import QVariant
 from conn import *
 from utilidades import *
+from impresiones import *
+from listados import *
+
 
 class Asignaturas(QtWidgets.QWidget):
     '''La clase Asignaturas llevara adelante todas las operaciones ''' \
@@ -13,6 +17,8 @@ class Asignaturas(QtWidgets.QWidget):
         '''Instancio un objeto a la base de datos'''
         self.usr = usr
         self.Conecto_a_DB()
+
+##############################################################################
 
     def inscribir(self, dni):
         '''Creo lista para guardar los GroupBox a recorrer'''
@@ -116,7 +122,7 @@ class Asignaturas(QtWidgets.QWidget):
         '''Crea un GroupBox con todas las cursos disponibles''' \
         '''Devuelve un GroupBox'''
         q = self.CursosExtraprogramaticos()
-        gl = self.CreoGrid(q, "Cursos Extraprogramáticos")
+        gl = self.CreoGridLista(q, "Cursos Extraprogramáticos")
         gl.setObjectName("GCursos")
         return gl
 
@@ -177,13 +183,16 @@ class Asignaturas(QtWidgets.QWidget):
     def anotar(self):
         '''Ejecuta la consulta de inserción de materias para el alumno'''
         self.control = self.control + 1
-
+        mat = []
         self.materias = []
+        self.mat = []
         '''Obtengo largo de la lista'''
         for i in self.lista:
             if isinstance(i, QtWidgets.QGroupBox):
                 for c in i.findChildren(QtWidgets.QCheckBox):
                     if c.isChecked():
+                        mat.append(c.objectName())
+                        self.mat.append(c.objectName())
                         self.materias.append("(")
                         self.materias.append(c.objectName())
                         self.materias.append(", ")
@@ -194,6 +203,50 @@ class Asignaturas(QtWidgets.QWidget):
         l = "".join(self.materias)
         print(l)
         self.anotoMaterias(self.dni, l)
+        self.AgregoFechaInscripcion()
+        '''Obtengo el nombre del Alumno'''
+        sql = "SELECT nombre from alumnos WHERE DNI = :dni"
+        q = QtSql.QSqlQuery(self.db.database('asignaturas'))
+        q.prepare(sql)
+        q.bindValue(":dni", int(self.dni))
+        estado = self.ejecuto(q)
+        formato = "portrait"
+        while estado.next():
+            nombre = q.value(0)
+        '''Obtengo la fecha actual'''
+        fecha = QDate.currentDate()
+        imp = Impresion()
+        imp.creoEstilo()
+        imp.creoStory()
+        imp.definoEstilos()
+        imp.agregoString("Inscripción a Materias")
+        imp.agregoSpacer()
+        imp.definoEstilos('txt', 10, "Helvetica", 12)
+        txt = "Nombre del Alumno: " + nombre
+        imp.agregoString(txt,'txt')
+        txt = "Fecha de Inscripción: " + fecha.toString("dd-MM-yyyy")
+        imp.agregoString(txt, 'txt')
+        nomMat = []
+        for i in mat:
+            print(i)
+            sql = "SELECT id_asignatura, nombre From asignaturas WHERE "\
+            "id_asignatura = :asig"
+            q = QtSql.QSqlQuery(self.db.database('asignaturas'))
+            q.prepare(sql)
+            q.bindValue(":asig", int(i))
+            estado = self.ejecuto(q)
+#            imp.definoEstilos('txt', 10, "Helvetica", 12)
+            while estado.next():
+                imp.agregoSpacer()
+                imp.agregoSpacer()
+                imp.agregoString("Código de Asignatura: " + str(estado.value(0)), 'txt')
+                imp.agregoString("Nombre de Asignatura: " + estado.value(1), 'txt')
+                imp.agregoSpacer()
+
+        imp.createPageTemplate(formato, "A4")
+        imp.cierroStory()
+
+        imp.imprimo()
 
 #############################################################################
 
@@ -333,7 +386,10 @@ class Asignaturas(QtWidgets.QWidget):
     def CursosExtraprogramaticos(self):
         c = 'Cursos Extraprogramáticos'
         datos = self.ObtengoMaterias(c)
-        return datos
+        self.util = Utilidades()
+        mat = self.util.Convierto_a_Lista(datos)
+        materias = self.Limpio_Lista(mat)
+        return materias
 
 ##############################################################################
 
@@ -344,7 +400,7 @@ class Asignaturas(QtWidgets.QWidget):
         print(sql)
         q = QtSql.QSqlQuery(self.db.database('asignaturas'))
         q.prepare(sql)
-        self.close()
+
         try:
             q.exec_()
         except:
@@ -445,3 +501,26 @@ class Asignaturas(QtWidgets.QWidget):
             return v
         else:
             return True
+
+
+##############################################################################
+
+    def ObtengoCursos(self, d):
+        while d.next():
+            print(d.value(1))
+        return d
+
+##############################################################################
+
+    def AgregoFechaInscripcion(self):
+        fecha = QDate()
+
+        for i in self.mat:
+            sql = "UPDATE calificaciones SET fecha_Inscripcion = :fecha "\
+            "WHERE id_asign = :asig AND alumno = :dni"
+            q = QtSql.QSqlQuery(self.db.database('asignaturas'))
+            q.prepare(sql)
+            q.bindValue(":fecha", fecha.currentDate())
+            q.bindValue(":asig", i)
+            q.bindValue(":dni", self.dni)
+            calif = self.ejecuto(q)

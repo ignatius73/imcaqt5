@@ -4,6 +4,7 @@ from conn import *
 from utilidades import *
 from asignaturas import *
 from PyQt5.QtCore import QDate
+from PyQt5.QtCore import Qt
 
 class Calificaciones(QtWidgets.QWidget):
 
@@ -44,6 +45,10 @@ class Calificaciones(QtWidgets.QWidget):
         "on asignaturas.id_asignatura = calificaciones.id_asign " \
         "WHERE alumnos.DNI = :dni"
 
+        self.head = QtWidgets.QHeaderView(Qt.Horizontal)
+        self.head.setSectionResizeMode(1)
+        self.table.setHorizontalHeader(self.head)
+
         self.table.setColumnCount(10)
         self.table.setHorizontalHeaderLabels(['Asignatura', '1er Parcial', '2do Parcial', 'Recuperatorio', 'Final 1', 'Final 2', 'Final 3', 'Final 4', 'Nota Final', 'ID'])
         q= QtSql.QSqlQuery(self.db.database("calificaciones"))
@@ -54,15 +59,16 @@ class Calificaciones(QtWidgets.QWidget):
 
 
         row = 0
-
-
+        print(type(self.dni))
+        print("estoy acá")
         while estado.next():
-            self.nombre.setText(estado.value(12))
+            print(estado.value(13))
+            self.nombre.setText(estado.value(13))
             self.table.insertRow(row)
             ide = QtWidgets.QTableWidgetItem(str(estado.value(0)))
             ide.setFlags(QtCore.Qt.ItemIsEnabled)
 
-            asig = QtWidgets.QTableWidgetItem(str(estado.value(13)))
+            asig = QtWidgets.QTableWidgetItem(str(estado.value(14)))
             asig.setFlags(QtCore.Qt.ItemIsEnabled)
             p1 = QtWidgets.QTableWidgetItem(str(estado.value(2)))
             p2 = QtWidgets.QTableWidgetItem(str(estado.value(3)))

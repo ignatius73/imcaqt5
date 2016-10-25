@@ -30,7 +30,7 @@
          <x>0</x>
          <y>0</y>
          <width>768</width>
-         <height>505</height>
+         <height>500</height>
         </rect>
        </property>
       </widget>
@@ -44,7 +44,7 @@
      <x>0</x>
      <y>0</y>
      <width>788</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Alumnos">
@@ -59,10 +59,11 @@
     <addaction name="actionCalificacio_nes"/>
     <addaction name="action_Salir"/>
    </widget>
-   <widget class="QMenu" name="menuCooperadora">
+   <widget class="QMenu" name="menuAdministracion">
     <property name="title">
-     <string>&amp;Cooperadora</string>
+     <string>A&amp;dministración</string>
     </property>
+    <addaction name="actionCoo_peradora"/>
     <addaction name="actionIngresos"/>
     <addaction name="actionEgresos"/>
     <addaction name="actionLibro_Diario"/>
@@ -74,7 +75,7 @@
     </property>
    </widget>
    <addaction name="menu_Alumnos"/>
-   <addaction name="menuCooperadora"/>
+   <addaction name="menuAdministracion"/>
    <addaction name="menu_Estad_sticas"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -180,6 +181,14 @@
   <action name="action_Salir">
    <property name="text">
     <string>&amp;Salir</string>
+   </property>
+  </action>
+  <action name="actionCoo_peradora">
+   <property name="text">
+    <string>Coo&amp;peradora</string>
+   </property>
+   <property name="toolTip">
+    <string>Cooperadora</string>
    </property>
   </action>
  </widget>
