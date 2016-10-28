@@ -90,6 +90,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="action_Nuevo_Alumno"/>
+   <addaction name="action_Modificar_Alumno"/>
    <addaction name="actionImprimir"/>
   </widget>
   <action name="action_Nuevo_Alumno">
@@ -102,6 +103,10 @@
    </property>
   </action>
   <action name="action_Modificar_Alumno">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/Contacts-2png..png</normaloff>icons/Contacts-2png..png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Modificar Alumno</string>
    </property>
