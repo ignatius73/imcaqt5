@@ -10,6 +10,8 @@ from calificaciones import *
 from listados import *
 from modificaciones import *
 from administracion import *
+from registro import *
+
 
 global c
 
@@ -36,6 +38,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             #self.mdi = Mdi()
             #self.setCentralWidget(self.mdi)
             self.dni = None
+            self.registro()
             self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
             self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
             self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
@@ -252,6 +255,12 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.hijo = Administracion(self.usuario)
         self.hijo.formularioCoop()
         self.setCentralWidget(self.hijo)
+
+##############################################################################
+
+    def registro(self):
+        registro = Registro(self.usuario)
+        registro.registra()
 
 
 #    def showEvent(self):

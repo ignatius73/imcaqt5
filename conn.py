@@ -89,3 +89,22 @@ class Connection(QtSql.QSqlDatabase):
         if self.dba.database(base).isOpen():
             print("Conexión exitosa a " + base)
         return self.dba
+
+##############################################################################
+
+    def ejecuto(self, q, db):
+            estado = q.exec_()
+            pipi = q.executedQuery()
+            if estado is True:
+                print("estado true")
+                if q.isActive() is False:
+                    print("La consulta no está activa")
+                else:
+                    return q
+            else:
+                util = Utilidades()
+                g = util.Mensaje("Ocurrió un error al insertar el alumno. "\
+                "Vuelve a intentarlo. Si el problema persiste comunicate con "\
+                "el Administrador" + str(self.dba.database(db).lastError()))
+                g.exec_()
+                return False
