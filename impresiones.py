@@ -136,7 +136,13 @@ class Impresion():
 
     def imprimo(self):
         try:
-            os.system('evince phello.pdf')
+            sitemap = os.name
+            if sitemap == 'posix':
+                print('linux')
+                os.system('evince phello.pdf')
+            else:
+                print('win')
+                os.system("start AcroRD32 phello.pdf &")
         except:
             print("No está instalado el evince")
 
