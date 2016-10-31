@@ -64,7 +64,10 @@ class Registro():
     def costea(self):
         '''Agrega costos por cooperadora y cursos'''
         #  Busca el listado de alumnos inscriptos
-
+        util = Utilidades()
+        mes = util.devuelvePeriodo()
+        coop = None
+        dniAnt = None
         sql = "SELECT calificaciones.id_asign, calificaciones.alumno, "\
         "calificaciones.fecha_inscripcion, asignaturas.nombre, "\
         "asignaturas.duracion, asignaturas.valor from calificaciones "\
@@ -75,41 +78,43 @@ class Registro():
         ej = self.conn.ejecuto(q, 'registros')
         print(q.executedQuery())
         print(q.size())
+        sql = "INSERT INTO cuentas (periodo, asignatura, "\
+        "importe, detalle, dni) VALUES (:per, :asig, :imp, "\
+        ":det, :dni)"
+        qu = QtSql.QSqlQuery(self.db.database('registros'))
+        qu.prepare(sql)
         if q.size() > 0:
             while q.next():
-                print("Entro al while")
-                print(q.value(0))
+
+                print("DNI " + str(q.value(1)))
+                qu.bindValue(":per", mes)
+                qu.bindValue(":asig", q.value(0))
+                qu.bindValue(":imp", q.value(5))
+                qu.bindValue(":dni", q.value(1))
+
                 if q.value(0) > 55:
                     '''Controlo cantidad de cuotas pagas de la asignatura'''
                     cant = self.cantCuotas(q.value(0), q.value(1))
-                    print("esta es la cant en cuentas " + str(cant))
-                    print("La materia es superior a 55")
                     '''Busco en cuentas cuantas cuotas se pagaron de la'''
                     ''' asignatura'''
+                    if cant < q.value(4):
+                        qu.bindValue(":det", q.value(3))
+                        self.conn.ejecuto(qu,'registros')
+                        print(qu.executedQuery())
+                else:
+                    if coop == None:
+                        dniAnt = q.value(1)
+                        coop = True
+                        qu.bindValue(":det", "Cooperadora")
+                        qu.bindValue(":imp", 150)
+                        self.conn.ejecuto(qu,'registros')
+                    elif dniAnt != q.value(1):
+                        dniAnt = q.value(1)
+                        qu.bindValue(":det", "Cooperadora")
+                        qu.bindValue(":imp", 150)
+                        self.conn.ejecuto(qu,'registros')
 
-                    sql = "INSERT INTO cuentas (periodo, asignatura, importe, detalle, dni) VALUES"\
-                    " (:per, :asig, :imp, :det, :dni)"
-                    qu = QtSql.QSqlQuery(self.db.database('registros'))
-                    qu.prepare(sql)
-                    periodo = QDate().currentDate()
-                    mes = periodo.month()
-                    anio = periodo.year()
-                    util = Utilidades()
-                    meses = util.meses()
-                    mes = meses[mes]
-                    mes = mes + " " + str(anio)
-                    print(q.value(0))
-                    print(q.value(3))
-                    print(q.value(2))
-                    print(q.value(5))
-                    qu.bindValue(":per", mes)
-                    qu.bindValue(":asig", q.value(0))
-                    qu.bindValue(":imp", q.value(5))
-                    qu.bindValue(":det", q.value(3))
-                    qu.bindValue(":dni", q.value(1))
 
-                    self.conn.ejecuto(qu,'registros')
-                    print(qu.executedQuery())
 ##############################################################################
 
     def cantCuotas(self, mat, dni):

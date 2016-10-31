@@ -1,6 +1,8 @@
 import sys, re, datetime
 from PyQt5 import QtCore, QtGui, QtSql, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QWidget
+from PyQt5.QtCore import QDate, QTime
+from PyQt5.QtCore import Qt
 
 
 
@@ -142,4 +144,13 @@ class Utilidades():
 
 ##############################################################################
 
+    def devuelvePeriodo(self):
+        periodo = QDate().currentDate()
+        mes = periodo.month()
+        anio = periodo.year()
+        util = Utilidades()
+        meses = util.meses()
+        mes = meses[mes]
+        mes = mes + " " + str(anio)
+        return mes
 
