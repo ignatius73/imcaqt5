@@ -1,7 +1,7 @@
 {
   "mainFile": "imca.pyw", 
   "use-tabs": false, 
-  "venv": "C:\\imcaqt4venv\\Scripts\\python.exe", 
+  "venv": "D:\\imcaqt4venv\\Scripts\\python.exe", 
   "relatedProjects": [], 
   "name": "imca", 
   "license": "GNU General Public License v3", 

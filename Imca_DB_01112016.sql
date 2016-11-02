@@ -1,22 +1,21 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.1.16-MariaDB - MariaDB Server
--- Server OS:                    Linux
--- HeidiSQL Version:             9.3.0.5112
+-- Versión del servidor:         10.1.16-MariaDB - mariadb.org binary distribution
+-- SO del servidor:              Win64
+-- HeidiSQL Versión:             9.3.0.4984
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Dumping database structure for imca
+-- Volcando estructura de base de datos para imca
 CREATE DATABASE IF NOT EXISTS `imca` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `imca`;
 
--- Dumping structure for table imca.alumnos
+
+-- Volcando estructura para tabla imca.alumnos
 CREATE TABLE IF NOT EXISTS `alumnos` (
   `idAlumnos` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(255) DEFAULT NULL,
@@ -68,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   PRIMARY KEY (`idAlumnos`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.alumnos: ~19 rows (approximately)
+-- Volcando datos para la tabla imca.alumnos: ~19 rows (aproximadamente)
 /*!40000 ALTER TABLE `alumnos` DISABLE KEYS */;
 REPLACE INTO `alumnos` (`idAlumnos`, `Nombre`, `DNI`, `Lugar_Nacimiento`, `Fecha_Nacimiento`, `Edad`, `Domicilio`, `numero`, `piso`, `depto`, `Estado_Civil`, `Localidad`, `Partido`, `CP`, `Telefono`, `Celular`, `Estudios_Cursados`, `Otros`, `Trabaja`, `Ocupacion`, `emergencias`, `osocial`, `Sexo`, `Carrera`, `ciclo`, `horario`, `Nacionalidad`, `hijos`, `acargo`, `mail`, `egreso`, `insti_otros`, `escuela`, `distrito`, `doc_dni`, `doc_Tit`, `doc_Reg`, `doc_fot`, `doc_cert`, `Grupo_Sanguineo`, `Antitetanica`, `Presion_Arterial`, `Enfermedades`, `Tratamiento`, `alergias`, `foto`, `cohorte`) VALUES
 	(1, 'Gabriel García', 23235867, 'Buenos Aires', '1973-06-18', 48, 'Dorrego', 2279, 'PB', 'A', 'Solterx', 'Sarandí', 'Avellaneda', '1870', 1121950758, 1165831607, 'Perito Mercantil', ', ', 1, 'Petróleo', '0800-555-55555', 'OSPE', 'Masculino', 'Tecnicatura', 2016, '8:30 a 17:30hs', 'Buenos Aires', 0, '', 'ghgarciar@gmail.com', '1994', ', ', 'Escuela Comercial N° 10 "Islas Malvinas"', '1', 1, 1, 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015'),
@@ -92,7 +91,8 @@ REPLACE INTO `alumnos` (`idAlumnos`, `Nombre`, `DNI`, `Lugar_Nacimiento`, `Fecha
 	(19, 'Okito', 48803377, '', '2000-01-01', 8, '', NULL, '', '', 'Solterx', '', '', '', NULL, NULL, '', '', 0, '', '', '', 'Masculino', 'Tecnicatura', 2016, '', '', 0, '', '', '2000', ', ', '', '', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `alumnos` ENABLE KEYS */;
 
--- Dumping structure for table imca.asignaturas
+
+-- Volcando estructura para tabla imca.asignaturas
 CREATE TABLE IF NOT EXISTS `asignaturas` (
   `id_asignatura` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `asignaturas` (
   PRIMARY KEY (`id_asignatura`)
 ) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.asignaturas: ~65 rows (approximately)
+-- Volcando datos para la tabla imca.asignaturas: ~65 rows (aproximadamente)
 /*!40000 ALTER TABLE `asignaturas` DISABLE KEYS */;
 REPLACE INTO `asignaturas` (`id_asignatura`, `nombre`, `carrera`, `correlativas`, `horario`, `vacantes`, `anio`, `cursada_paralela`, `duracion`, `valor`) VALUES
 	(1, 'DIBUJO', '1', NULL, NULL, NULL, 0, NULL, NULL, NULL),
@@ -177,21 +177,44 @@ REPLACE INTO `asignaturas` (`id_asignatura`, `nombre`, `carrera`, `correlativas`
 	(65, 'JOYERÍA', '4', NULL, NULL, NULL, 99, NULL, 4, 150);
 /*!40000 ALTER TABLE `asignaturas` ENABLE KEYS */;
 
--- Dumping structure for table imca.caja
+
+-- Volcando estructura para tabla imca.caja
 CREATE TABLE IF NOT EXISTS `caja` (
   `idMovimiento` int(11) NOT NULL AUTO_INCREMENT,
   `Importe` int(11) NOT NULL DEFAULT '0',
   `Saldo` int(11) NOT NULL DEFAULT '0',
-  `Detalle` varchar(255) NOT NULL DEFAULT '0',
+  `Detalle` text NOT NULL,
   `recibo` int(11) DEFAULT '0',
   PRIMARY KEY (`idMovimiento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.caja: ~0 rows (approximately)
+-- Volcando datos para la tabla imca.caja: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `caja` DISABLE KEYS */;
+REPLACE INTO `caja` (`idMovimiento`, `Importe`, `Saldo`, `Detalle`, `recibo`) VALUES
+	(1, 275, 275, 'CURSO II período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 17),
+	(2, 950, 1225, 'CURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 18),
+	(3, 525, 1750, 'CURSO III período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 20),
+	(4, 425, 2175, 'CURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\n', 21),
+	(5, 425, 2600, 'CURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\n', 22),
+	(6, 150, 2750, 'Cooperadora período Octubre 2016.\n', 23),
+	(7, 450, 3200, 'Cooperadora período Octubre 2016.\nCooperadora período Octubre 2016.\nCooperadora período Octubre 2016.\n', 24),
+	(8, 150, 3350, 'Cooperadora período Octubre 2016.\n', 25),
+	(9, 150, 3500, 'Cooperadora período Octubre 2016.\n', 26),
+	(10, 300, 3800, 'Cooperadora período Octubre 2016.\nCooperadora período Octubre 2016.\n', 27),
+	(11, 150, 3950, 'CURSO IV período Octubre 2016.\n', 28),
+	(12, 150, 4100, 'Cooperadora período Octubre 2016.\n', 29),
+	(13, 150, 4250, 'Cooperadora período Noviembre 2016.\n', 30),
+	(14, 150, 4400, 'Cooperadora período Noviembre 2016.\n', 31),
+	(15, 150, 4550, 'Cooperadora período Octubre 2016.\n', 32),
+	(16, 150, 4700, 'Cooperadora período Octubre 2016.\n', 33),
+	(17, 150, 4850, 'Cooperadora período Octubre 2016.\n', 34),
+	(18, 150, 5000, 'Cooperadora período Octubre 2016.\n', 35),
+	(19, 150, 5150, 'Cooperadora período Octubre 2016.\n', 36),
+	(20, 550, 5700, 'CURSO V período Octubre 2016.\nCURSO III período Octubre 2016.\n', 37);
 /*!40000 ALTER TABLE `caja` ENABLE KEYS */;
 
--- Dumping structure for table imca.calificaciones
+
+-- Volcando estructura para tabla imca.calificaciones
 CREATE TABLE IF NOT EXISTS `calificaciones` (
   `id_calif` int(11) NOT NULL AUTO_INCREMENT,
   `id_asign` int(11) NOT NULL,
@@ -209,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `calificaciones` (
   PRIMARY KEY (`id_calif`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.calificaciones: ~12 rows (approximately)
+-- Volcando datos para la tabla imca.calificaciones: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `calificaciones` DISABLE KEYS */;
 REPLACE INTO `calificaciones` (`id_calif`, `id_asign`, `cuatri1`, `cuatri2`, `recup`, `final1`, `final2`, `final3`, `final4`, `nota`, `fecha_final`, `alumno`, `fecha_inscripcion`) VALUES
 	(1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, 23235867, '2016-10-25'),
@@ -226,7 +249,8 @@ REPLACE INTO `calificaciones` (`id_calif`, `id_asign`, `cuatri1`, `cuatri2`, `re
 	(12, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 48803377, '2016-11-01');
 /*!40000 ALTER TABLE `calificaciones` ENABLE KEYS */;
 
--- Dumping structure for table imca.carreras
+
+-- Volcando estructura para tabla imca.carreras
 CREATE TABLE IF NOT EXISTS `carreras` (
   `id_carrera` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
@@ -234,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `carreras` (
   PRIMARY KEY (`id_carrera`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.carreras: ~5 rows (approximately)
+-- Volcando datos para la tabla imca.carreras: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `carreras` DISABLE KEYS */;
 REPLACE INTO `carreras` (`id_carrera`, `nombre`, `cantidad`) VALUES
 	(1, 'FOBA', 8),
@@ -244,7 +268,8 @@ REPLACE INTO `carreras` (`id_carrera`, `nombre`, `cantidad`) VALUES
 	(5, 'AMBAS', 10);
 /*!40000 ALTER TABLE `carreras` ENABLE KEYS */;
 
--- Dumping structure for table imca.cooperadora
+
+-- Volcando estructura para tabla imca.cooperadora
 CREATE TABLE IF NOT EXISTS `cooperadora` (
   `idMov` int(11) NOT NULL,
   `dni` int(11) NOT NULL COMMENT '= al DNi del Alumno',
@@ -253,13 +278,14 @@ CREATE TABLE IF NOT EXISTS `cooperadora` (
   PRIMARY KEY (`idMov`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.cooperadora: ~0 rows (approximately)
+-- Volcando datos para la tabla imca.cooperadora: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `cooperadora` DISABLE KEYS */;
 REPLACE INTO `cooperadora` (`idMov`, `dni`, `importe`, `Detalle`) VALUES
 	(0, 23235867, 45, 'Zaraza');
 /*!40000 ALTER TABLE `cooperadora` ENABLE KEYS */;
 
--- Dumping structure for table imca.cuentas
+
+-- Volcando estructura para tabla imca.cuentas
 CREATE TABLE IF NOT EXISTS `cuentas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `periodo` varchar(50) DEFAULT NULL,
@@ -271,50 +297,51 @@ CREATE TABLE IF NOT EXISTS `cuentas` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.cuentas: ~38 rows (approximately)
+-- Volcando datos para la tabla imca.cuentas: ~38 rows (aproximadamente)
 /*!40000 ALTER TABLE `cuentas` DISABLE KEYS */;
 REPLACE INTO `cuentas` (`id`, `periodo`, `asignatura`, `importe`, `detalle`, `dni`, `estado`) VALUES
-	(1, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(2, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pendiente'),
-	(3, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pendiente'),
-	(4, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pendiente'),
-	(5, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pendiente'),
-	(6, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pendiente'),
-	(7, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(8, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pendiente'),
-	(9, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pendiente'),
-	(10, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pendiente'),
-	(11, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pendiente'),
-	(12, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pendiente'),
-	(13, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(14, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pendiente'),
-	(15, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pendiente'),
-	(16, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pendiente'),
+	(1, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(2, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pagado'),
+	(3, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pagado'),
+	(4, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pagado'),
+	(5, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pagado'),
+	(6, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pagado'),
+	(7, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(8, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pagado'),
+	(9, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pagado'),
+	(10, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pagado'),
+	(11, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pagado'),
+	(12, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pagado'),
+	(13, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(14, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pagado'),
+	(15, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pagado'),
+	(16, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pagado'),
 	(17, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pendiente'),
 	(18, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pendiente'),
 	(19, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
 	(20, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pendiente'),
 	(21, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pendiente'),
-	(22, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pendiente'),
-	(23, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pendiente'),
-	(24, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pendiente'),
-	(25, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(26, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(27, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(28, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(29, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(30, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(31, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(32, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(33, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(34, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(35, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(36, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(37, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(38, 'Noviembre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente');
+	(22, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pagado'),
+	(23, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pagado'),
+	(24, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pagado'),
+	(25, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(26, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(27, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(28, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(29, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(30, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pagado'),
+	(31, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(32, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pagado'),
+	(33, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(34, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pagado'),
+	(35, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(36, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pagado'),
+	(37, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
+	(38, 'Noviembre 2016', 1, 150, 'Cooperadora', 35330160, 'Pagado');
 /*!40000 ALTER TABLE `cuentas` ENABLE KEYS */;
 
--- Dumping structure for table imca.cursos
+
+-- Volcando estructura para tabla imca.cursos
 CREATE TABLE IF NOT EXISTS `cursos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dni` bigint(20) DEFAULT NULL,
@@ -325,24 +352,65 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.cursos: ~0 rows (approximately)
+-- Volcando datos para la tabla imca.cursos: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `cursos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cursos` ENABLE KEYS */;
 
--- Dumping structure for table imca.recibos
+
+-- Volcando estructura para tabla imca.recibos
 CREATE TABLE IF NOT EXISTS `recibos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(255) DEFAULT NULL,
-  `Detalle` varchar(255) DEFAULT NULL,
+  `Detalle` text,
   `Importe` double DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.recibos: ~0 rows (approximately)
+-- Volcando datos para la tabla imca.recibos: ~19 rows (aproximadamente)
 /*!40000 ALTER TABLE `recibos` DISABLE KEYS */;
+REPLACE INTO `recibos` (`id`, `Nombre`, `Detalle`, `Importe`, `fecha`) VALUES
+	(1, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO III período Octubre 2016.\n', 950, '2016-11-01'),
+	(2, 'Gabriel García', 'CURSO IV período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO IV período Octubre 2016.\nCooperadora período Octubre 2016.\n', 550, '2016-11-01'),
+	(3, 'Gabriel García', 'CURSO V período Octubre 2016.\nCURSO III período Octubre 2016.\nCooperadora período Octubre 2016.\n', 700, '2016-11-01'),
+	(4, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 525, '2016-11-01'),
+	(5, 'Gabriel García', 'CURSO V período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO V período Octubre 2016.\nCURSO IV período Octubre 2016.\n', 475, '2016-11-01'),
+	(6, 'Gabriel García', 'Cooperadora período Octubre 2016.\nCURSO V período Octubre 2016.\nCURSO III período Octubre 2016.\n', 700, '2016-11-01'),
+	(7, 'Gabriel García', 'CURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\n', 825, '2016-11-01'),
+	(8, 'Gabriel García', 'CURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\n', 525, '2016-11-01'),
+	(9, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO V período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO III período Octubre 2016.\n', 1050, '2016-11-01'),
+	(10, 'Gabriel García', 'CURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\nCooperadora período Octubre 2016.\n', 575, '2016-11-01'),
+	(11, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO II período Octubre 2016.\n', 725, '2016-11-01'),
+	(12, 'Gabriel García', 'CURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\n', 425, '2016-11-01'),
+	(13, 'Gabriel García', 'CURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\n', 425, '2016-11-01'),
+	(14, 'Gabriel García', 'CURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\n', 675, '2016-11-01'),
+	(15, 'Gabriel García', 'Cooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\n', 675, '2016-11-01'),
+	(16, 'Gabriel García', 'CURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO V período Octubre 2016.\n', 725, '2016-11-01'),
+	(17, 'Gabriel García', 'CURSO II período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 275, '2016-11-01'),
+	(18, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 950, '2016-11-01'),
+	(19, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO V período Octubre 2016.\n', 1675, '2016-11-01'),
+	(20, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO II período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 525, '2016-11-01'),
+	(21, 'Gabriel García', 'CURSO V período Octubre 2016.\nCooperadora período Octubre 2016.\nCURSO 1 período Octubre 2016.\nCURSO II período Octubre 2016.\n', 425, '2016-11-01'),
+	(22, 'Gabriel García', 'CURSO II período Octubre 2016.\nCURSO III período Octubre 2016.\n', 425, '2016-11-01'),
+	(23, 'Gabriel García', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(24, 'Gabriel García', 'Cooperadora período Octubre 2016.\nCooperadora período Octubre 2016.\nCooperadora período Octubre 2016.\n', 450, '2016-11-01'),
+	(25, 'Gastón Caraballo', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(26, 'Gabriel García', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(27, 'Gabriel García', 'Cooperadora período Octubre 2016.\nCooperadora período Octubre 2016.\n', 300, '2016-11-01'),
+	(28, 'Gabriel García', 'CURSO IV período Octubre 2016.\n', 150, '2016-11-01'),
+	(29, 'Gabriel García', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(30, 'Gabriel García', 'Cooperadora período Noviembre 2016.\n', 150, '2016-11-01'),
+	(31, 'Gastón Caraballo', 'Cooperadora período Noviembre 2016.\n', 150, '2016-11-01'),
+	(32, 'Gastón Caraballo', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(33, 'Gabriel García', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(34, 'Gabriel García', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(35, 'Gabriel García', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(36, 'Gabriel García', 'Cooperadora período Octubre 2016.\n', 150, '2016-11-01'),
+	(37, 'Gabriel García', 'CURSO V período Octubre 2016.\nCURSO III período Octubre 2016.\n', 550, '2016-11-01');
 /*!40000 ALTER TABLE `recibos` ENABLE KEYS */;
 
--- Dumping structure for table imca.registros
+
+-- Volcando estructura para tabla imca.registros
 CREATE TABLE IF NOT EXISTS `registros` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date DEFAULT NULL,
@@ -351,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `registros` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.registros: ~39 rows (approximately)
+-- Volcando datos para la tabla imca.registros: ~39 rows (aproximadamente)
 /*!40000 ALTER TABLE `registros` DISABLE KEYS */;
 REPLACE INTO `registros` (`id`, `fecha`, `hora`, `user`) VALUES
 	(1, '2016-09-30', '17:52:54', 'root'),
@@ -395,7 +463,8 @@ REPLACE INTO `registros` (`id`, `fecha`, `hora`, `user`) VALUES
 	(39, '2016-11-01', '08:39:01', 'root');
 /*!40000 ALTER TABLE `registros` ENABLE KEYS */;
 
--- Dumping structure for table imca.valores
+
+-- Volcando estructura para tabla imca.valores
 CREATE TABLE IF NOT EXISTS `valores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(255) NOT NULL,
@@ -403,14 +472,13 @@ CREATE TABLE IF NOT EXISTS `valores` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.valores: ~3 rows (approximately)
+-- Volcando datos para la tabla imca.valores: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `valores` DISABLE KEYS */;
 REPLACE INTO `valores` (`id`, `descripcion`, `valor`) VALUES
 	(1, 'Cooperadora', 150),
 	(2, 'Matricula', 300),
 	(3, 'Cursos', 150);
 /*!40000 ALTER TABLE `valores` ENABLE KEYS */;
-
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

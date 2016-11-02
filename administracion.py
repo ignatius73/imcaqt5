@@ -127,18 +127,20 @@ class Administracion(QtWidgets.QWidget):
 
         print(a.value(0))
         if self.chequeo(a) is False:
-            columns = a.count()
-            print(columns)
-            row = self.t.rowCount()
-            print(row)
-            self.t.insertRow(row)
-            self.t.setItem(row, 0, QtWidgets.QTableWidgetItem(str(a.value(0))))
-            self.t.setItem(row, 1, QtWidgets.QTableWidgetItem(a.value(1)))
-            self.t.setItem(row, 2, QtWidgets.QTableWidgetItem(str(a.value(3))))
-            self.t.setItem(row, 3, QtWidgets.QTableWidgetItem(a.value(4)))
-            self.t.setItem(row, 4, QtWidgets.QTableWidgetItem(str(a.value(5))))
-            self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(5)))
-            self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(6)))
+            if a.value(6) != 'Pagado':
+                columns = a.count()
+                print(columns)
+                row = self.t.rowCount()
+                print(row)
+                self.t.insertRow(row)
+                self.t.setItem(row, 0, QtWidgets.QTableWidgetItem(str(a.value(0))))
+                self.t.setItem(row, 1, QtWidgets.QTableWidgetItem(a.value(1)))
+                self.t.setItem(row, 2, QtWidgets.QTableWidgetItem(str(a.value(3))))
+                self.t.setItem(row, 3, QtWidgets.QTableWidgetItem(a.value(4)))
+                self.t.setItem(row, 4, QtWidgets.QTableWidgetItem(str(a.value(5))))
+                self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(5)))
+                self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(6)))
+            print(a.value(6))
 
 ##############################################################################
 
@@ -150,12 +152,19 @@ class Administracion(QtWidgets.QWidget):
     def cobra(self):
         if self.t.rowCount() > 0:
             self.recibos()
-            sql = "INSERT INTO caja (Importe, Detalle) VALUES (:imp, :det)"
+            util = Utilidades()
+            sql = "UPDATE cuentas SET estado = 'Pagado' WHERE id = :ide"
+            q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
+            q.prepare(sql)
+            print("vuelvo por acà")
             rows = self.t.rowCount()
             for i in range(0, rows):
-                id = int(self.t.item(i, 0).text())
+                ide = int(self.t.item(i, 0).text())
 
-
+                q.bindValue(":ide", ide)
+                ej = util.ejecuto(q, 'Cooperadora')
+            self.model.select()
+            self.t.setRowCount(0)
 ##############################################################################
 
     def recibos(self):
@@ -171,20 +180,70 @@ class Administracion(QtWidgets.QWidget):
         ej = util.ejecuto(q,'cooperadora')
         while ej.next():
             nombre = ej.value(0)
-        print (dni)
-        print(nombre)
+
         for i in range(0, rows):
-            pass
+            detalle = detalle + self.t.item(i, 3).text() + " período "\
+            + self.t.item(i, 1).text() + ".\n"
+            valor = self.t.item(i, 2).text()
+            valor = float(valor)
+            importe = importe + valor
+        print(importe)
+        print(detalle)
+        print(nombre)
+        '''Creo el recibo'''
+        sql = "INSERT INTO recibos (Nombre, Detalle, Importe, fecha) VALUES "\
+        "(:nom, :det, :imp, CURDATE())"
+        q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
+        q.prepare(sql)
+        q.bindValue(":nom", nombre)
+        q.bindValue(":det", detalle)
+        q.bindValue(":imp", importe)
+        ej = util.ejecuto(q, 'Cooperadora')
+        print("eje recibo es true")
+        '''Obtengo el nùmero de recibo'''
+        sql = "SELECT id from recibos WHERE Nombre = :nom AND Importe "\
+        "= :imp ORDER by id DESC LIMIT 1"
+        q.prepare(sql)
+        q.bindValue(":nom", nombre)
+        q.bindValue(":imp", importe)
+        ej = util.ejecuto(q, 'Cooperadora')
+        if ej.size() > 0:
+            while ej.next():
+                self.nroRecibo = ej.value(0)
+            '''Obtengo el saldo de caja'''
+            sql = "SELECT saldo FROM caja ORDER BY idMovimiento DESC LIMIT 1"
+            q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
+            q.prepare(sql)
+            ej = util.ejecuto(q, 'Cooperadora')
+            saldo = 0
+            if ej.size() > 0:
+                while ej.next():
+                    saldo = ej.value(0)
+            saldo = saldo + importe
+            '''Agrego el importe pagado a la caja'''
+            sql = "INSERT INTO caja (Importe, Saldo, Detalle, recibo) VALUES "\
+            "(:imp, :saldo, :det, :recibo)"
+            q.prepare(sql)
+            q.bindValue(":saldo", saldo)
+            q.bindValue(":det", detalle)
+            q.bindValue(":imp", importe)
+            q.bindValue(":recibo", self.nroRecibo)
+            ej = util.ejecuto(q, 'Cooperadora')
+
+
+
 
 ##############################################################################
 
     def chequeo(self, a):
-
+        print("value de a 0" + str(a.value(0)))
         rows = self.t.rowCount()
+        print(rows)
         existe = False
-        for i in range(0, rows):
-            print("valor 0 de a" + str(a.value(0)))
-            print(self.t.item(i, 0).text())
-            if str(a.value(0)) == self.t.item(i,0).text():
-                existe = True
+        if rows > 0 :
+            for i in range(0, rows-1):
+#                print("valor 0 de a" + str(a.value(0)))
+#                print(self.t.item(i, 0).text())
+                if str(a.value(0)) == self.t.item(i,0).text():
+                    existe = True
         return existe
