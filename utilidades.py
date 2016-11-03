@@ -154,3 +154,17 @@ class Utilidades():
         mes = mes + " " + str(anio)
         return mes
 
+##############################################################################
+
+    def limpia(self, t):
+        '''Recibe un QLineEdit, los limpia'''
+        t.setText('')
+
+##############################################################################
+
+    def MensajeOkNo(self, msg):
+        ventana = QtWidgets.QMessageBox()
+        ventana.setText(msg)
+        ventana.setIcon(QMessageBox.Information)
+        ventana.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        return ventana

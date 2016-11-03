@@ -11,17 +11,12 @@ from listados import *
 from modificaciones import *
 from administracion import *
 from registro import *
+from caja import *
 
 
 global c
 
 c = 3
-'''class SubVentana(QtWidgets.QWidget):
-
-    def __init__(self):
-        super(SubVentana, self).__init__()
-        self.ui = uic.loadUi("inscrip.ui")
-        self.setMinimumSize(500, 500)'''
 
 #Clase ventana principal
 class VentanaPrincipal(QtWidgets.QMainWindow):
@@ -31,12 +26,8 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         #Obtengo usuario y contraseña
         #Creo tupla para usuario y contraseña
         if self.login() is True:
-            #Creo la conexión a la base de datos
             #Creo un layout para el contenedor mainwindow
             self.ui = uic.loadUi("pymca.ui", self)
-            #Agrego un mdi area
-            #self.mdi = Mdi()
-            #self.setCentralWidget(self.mdi)
             self.dni = None
             self.registro()
             self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
@@ -47,6 +38,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.ui.action_Listados.triggered.connect(self.modulo_Listados)
             self.ui.action_Salir.triggered.connect(self.salir)
             self.ui.actionCoo_peradora.triggered.connect(self.cooperadora)
+            self.ui.actionCaja.triggered.connect(self.caja)
         else:
             global c
             c = c - 1
@@ -74,7 +66,6 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
                     t = "El alumno ya se encuentra inscripto. ¿Querés modificarlo?"
                     fin = v.Confirmar(t)
                     if fin == 1024:
-                        print("Entro")
                         self.modifico_alumno(1)
 
         else:
@@ -105,7 +96,6 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
                 t = "El Alumno no existe en nuestros registros. ¿Desea agregarlo?"
                 fin = v.Confirmar(t)
                 if fin == 1024:
-                    print("Entro")
                     self.calcular(1)
 
 
@@ -157,7 +147,6 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
     def cancelo(self):
         self.dialog.close()
-
         return False
 
 ##############################################################################
@@ -225,11 +214,11 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
                     self.setCentralWidget(self.hijo)
                 else:
                     v= Utilidades()
-                    t = "El Alumno no existe en nuestros registros. ¿Desea agregarlo?"
+                    t = "El Alumno no existe en nuestros registros. "\
+                    "¿Desea agregarlo?"
                     fin = v.Confirmar(t)
                     if fin == 1024:
-                        print("Entro")
-                        self.calcular(1)
+                       self.calcular(1)
         else:
             self.hijo = Modificaciones(self.usuario)
             self.hijo.Cargo_Datos_Alumno(self.dni)
@@ -239,7 +228,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def modulo_Listados(self):
-        print("entro")
+        '''Cargo módulo de listados'''
         self.hijo = Listados(self.usuario)
         self.hijo.Seleccion_Listado()
         self.setCentralWidget(self.hijo)
@@ -252,6 +241,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def cooperadora(self):
+        '''Cargo formulario cooperadora'''
         self.hijo = Administracion(self.usuario)
         self.hijo.formularioCoop()
         self.setCentralWidget(self.hijo)
@@ -259,24 +249,26 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def registro(self):
+        '''Costeo los cargos mensuales a los alumnos'''
         registro = Registro(self.usuario)
         registro.registra()
 
+##############################################################################
 
-#    def showEvent(self):
-#        self.ui.resize(1000, 600)
+    def caja(self):
+        '''Cargo formulario de Caja'''
+        self.hijo = Caja(self.usuario)
+        self.hijo.formularioCaja()
+        self.setCentralWidget(self.hijo)
+
+##############################################################################
 
 #Creamos la instancia para inciar app
 app = QtWidgets.QApplication(sys.argv)
 #nstanciamos una VentanaPrincipal
 ventana = VentanaPrincipal()
-#screenShape = QtGui.QDesktopWidget().screenGeometry()
-#ventana.resize(screenShape.width(), screenShape.height())
-#muestro la ventana
-#ventana.showMaximized()
 ventana.move(0,0)
-#  ventana.resize(1230,1200)
-#ventana.resize(600,600)
+#muestro la ventana
 ventana.show()
 #Ejecutamos la app
 app.exec_()

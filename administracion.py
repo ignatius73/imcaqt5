@@ -8,6 +8,7 @@ from PyQt5.QtCore import QDate, QVariant
 from utilidades import *
 from modificaciones import *
 from PyQt5.QtCore import Qt, QSortFilterProxyModel
+from recibo import *
 
 class Administracion(QtWidgets.QWidget):
 
@@ -208,8 +209,15 @@ class Administracion(QtWidgets.QWidget):
         q.bindValue(":imp", importe)
         ej = util.ejecuto(q, 'Cooperadora')
         if ej.size() > 0:
+            print("es mayor a 0")
             while ej.next():
                 self.nroRecibo = ej.value(0)
+                '''Imprimo o no el recibo'''
+                re = util.MensajeOkNo("¿Deseas imprimir el recibo?")
+                ok = re.exec_()
+                print(ok)
+                if ok == 1024:
+                    self.imprimo()
             '''Obtengo el saldo de caja'''
             sql = "SELECT saldo FROM caja ORDER BY idMovimiento DESC LIMIT 1"
             q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
@@ -247,3 +255,21 @@ class Administracion(QtWidgets.QWidget):
                 if str(a.value(0)) == self.t.item(i,0).text():
                     existe = True
         return existe
+
+##############################################################################
+
+    def imprimo(self):
+        datos = []
+        util = Utilidades()
+        '''Obtengo los datos del recibo y los envío a imprimir'''
+        sql = "SELECT * from recibos WHERE id = :recibo"
+        q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
+        q.prepare(sql)
+        q.bindValue(":recibo", self.nroRecibo)
+        ej = util.ejecuto(q,'Cooperadora')
+        if ej.size() > 0:
+            while ej.next():
+                for i in range(ej.record().count()):
+                    datos.append(ej.value(i))
+        recibo = Recibo()
+        recibo.creaRecibo(datos)
