@@ -5,6 +5,7 @@ from reportlab.lib.pagesizes import letter, A4, landscape
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageTemplate, BaseDocTemplate, Frame
 from reportlab.lib import colors
+from reportlab.lib.colors import HexColor
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -76,13 +77,27 @@ class Recibo():
         '''Cuerpo'''
         c.saveState()
         c.setDash(4,2)
+
         c.drawString(20, 7.0*inch, 'Nombre:')
         c.line(60,7.0*inch,410, 7*inch)
+
+        c.drawString(20, 6.4*inch, 'Domicilio:')
+        c.line(60,6.4*inch,410, 6.4*inch)
+
         c.drawString(440, 7.0*inch, 'Nombre:')
+        c.line(830,7*inch,480, 7*inch)
+
+
+        c.drawString(440, 6.4*inch, 'Domicilio:')
+        c.line(830,6.4*inch,480, 6.4*inch)
+
         c.setFont('Times-Roman',10)
+
         c.drawString(80, 7.03*inch, self.datos[1])
         c.drawString(500, 7.02*inch, self.datos[1])
-        c.line(475,7.0*inch,830, 7*inch)
+        c.drawString(80, 6.43*inch, self.datos[5])
+        c.drawString(500, 6.43*inch, self.datos[5])
+#        c.line(475,7.0*inch,830, 7*inch)
 
         c.restoreState()
 
@@ -103,12 +118,32 @@ class Recibo():
         c.saveState()
         c.setDash(4,2)
         c.drawString(20, 5.7*inch, 'Recibí(mos) la suma de pesos:')
-        c.line(140,5.7*inch,410, 5.7*inch)
+#        c.line(140,5.7*inch,410, 5.7*inch)
         c.drawString(440, 5.7*inch, 'Recibí(mos) la suma de pesos:')
+#        c.line(140,5.7*inch,410, 5.7*inch)
         c.setFont('Times-Roman',10)
-        c.drawString(150, 5.72*inch, pete)
-        c.drawString(560, 5.72*inch, pete)
-        c.line(555,5.7*inch,830, 5.7*inch)
+        style = getSampleStyleSheet()
+        p = Paragraph(pete, style['Normal'])
+        p.wrapOn(c, 260, 300)
+        p.drawOn(c, 1.99*inch, 5.65*inch)
+        p.wrapOn(c,260, 300)
+        p.drawOn(c, 7.99*inch, 5.65*inch)
+
+        c.drawString(20, 4.7*inch, 'En concepto de pago de:')
+#        c.line(140,5.7*inch,410, 5.7*inch)
+        c.drawString(440, 4.7*inch, 'En concepto de pago de:')
+        story = []
+        story2 =[]
+        pe = Paragraph(self.datos[2], style['Normal'])
+
+        story.append(pe)
+        story2.append(pe)
+
+        f = Frame(130, 155, 270, 200, showBoundary=0)
+        fe = Frame(550, 155, 270, 200, showBoundary=0)
+        f.addFromList(story, c)
+        fe.addFromList(story2,c)
+
         c.restoreState()
 
         c.setFont('Times-Roman', 9)
@@ -136,9 +171,28 @@ class Recibo():
         c.line(height/2, 0, height/2, height)
         self.pie(c, enc1)
         self.pie(c, enc3)
+
+
+        c.saveState()
+        c.setFont('Times-Bold', 10)
+        c.drawString(240, 130, 'TOTAL:')
+        c.drawString(660, 130, 'TOTAL:')
+        c.setFillColor(HexColor("#9C9C9C"))
+        c.rect(310, 130, width=90, height=15.1, stroke=1, fill=1)
+        c.rect(730, 130, width=90, height=15.1, stroke=1, fill=1)
+        c.restoreState()
+        c.setFont('Times-Bold', 12)
+        c.drawString(340, 133, str(self.datos[3]))
+        c.drawString(760, 133, str(self.datos[3]))
+
+        c.saveState()
+        c.setFont('Times-Bold', 7)
+        c.drawString(20, 60, 'Firma y Sello:')
+        c.drawString(440, 60, 'Firma y Sello:')
         c.showPage()
         c.save()
         self.imprimo()
+
 ##############################################################################
 
     def imprimo(self):
@@ -180,7 +234,7 @@ class Recibo():
     def pie(self, canvas, m):
         canvas.saveState()
         canvas.setFont('Times-Roman',7.7)
-        canvas.drawString(m[0], 0.25 * inch, "Av. Mitre 2724, Avellaneda "\
+        canvas.drawString(m[0], 0.35 * inch, "Av. Mitre 2724, Avellaneda "\
         "(B1872GFF) Provincia de Buenos Aires. Telefax. 0054-11-4204-8223"\
         "/6378 D I P R E G E P 7 5 7 8")
         canvas.restoreState()

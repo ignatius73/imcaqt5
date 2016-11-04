@@ -24,6 +24,7 @@ class Administracion(QtWidgets.QWidget):
         '''Cargo el archivo ui'''
         self.ui = uic.loadUi("cooperadora.ui", self)
         self.model = QtSql.QSqlTableModel(None, self.db)
+        self.cuenta = 0
         self.layIzq = QtWidgets.QVBoxLayout()
         self.layIzq.setSpacing(5)
         self.layDer = QtWidgets.QHBoxLayout()
@@ -36,6 +37,7 @@ class Administracion(QtWidgets.QWidget):
         self.periodo = QtWidgets.QLineEdit()
         self.estado = QtWidgets.QLineEdit()
         self.t = QtWidgets.QTableWidget()
+        self.total = QtWidgets.QLineEdit()
         head = QtWidgets.QHeaderView(Qt.Horizontal)
         head.setSectionResizeMode(1)
         self.t.setHorizontalHeader(head)
@@ -74,6 +76,7 @@ class Administracion(QtWidgets.QWidget):
         self.lbl2 = QtWidgets.QLabel("Detalle")
         self.lbl3 = QtWidgets.QLabel("Período")
         self.lbl4 = QtWidgets.QLabel("Estado")
+        self.lbl5 = QtWidgets.QLabel("Total")
         self.layIzq.addWidget(self.lbl)
         self.layIzq.addWidget(self.dni)
         self.layIzq.addWidget(self.lbl2)
@@ -85,6 +88,8 @@ class Administracion(QtWidgets.QWidget):
 
         self.layIzq.addItem(self.botonera)
         self.layIzq.addWidget(self.t)
+        self.layIzq.addWidget(self.lbl5)
+        self.layIzq.addWidget(self.total)
 #        self.layIzq.addStretch(2)
 
         self.layout.addItem(self.layIzq, 0, 0)
@@ -141,11 +146,16 @@ class Administracion(QtWidgets.QWidget):
                 self.t.setItem(row, 4, QtWidgets.QTableWidgetItem(str(a.value(5))))
                 self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(5)))
                 self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(6)))
-            print(a.value(6))
+                self.cuenta = self.cuenta + a.value(3)
+                self.total.setText(str(self.cuenta))
 
 ##############################################################################
 
     def quita(self, x):
+
+        valor = self.t.item(x.row(),2).text()
+        self.cuenta = self.cuenta - float(valor)
+        self.total.setText(str(self.cuenta))
         self.t.removeRow(x.row())
 
 ##############################################################################
@@ -173,7 +183,7 @@ class Administracion(QtWidgets.QWidget):
         importe = 0
         detalle = ''
         dni = int(self.t.item(0,4).text())
-        sql = "SELECT Nombre from alumnos WHERE DNI = :dni"
+        sql = "SELECT Nombre, Domicilio, numero, piso, depto, Localidad from alumnos WHERE DNI = :dni"
         q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
         q.prepare(sql)
         q.bindValue(":dni", dni)
@@ -181,6 +191,8 @@ class Administracion(QtWidgets.QWidget):
         ej = util.ejecuto(q,'cooperadora')
         while ej.next():
             nombre = ej.value(0)
+            direccion = ej.value(1) + " " + str(ej.value(2)) + " " + ej.value(3) + " " + ej.value(4) + " - " + ej.value(5)
+
 
         for i in range(0, rows):
             detalle = detalle + self.t.item(i, 3).text() + " período "\
@@ -192,13 +204,15 @@ class Administracion(QtWidgets.QWidget):
         print(detalle)
         print(nombre)
         '''Creo el recibo'''
-        sql = "INSERT INTO recibos (Nombre, Detalle, Importe, fecha) VALUES "\
-        "(:nom, :det, :imp, CURDATE())"
+        sql = "INSERT INTO recibos (Nombre, Detalle, Importe, fecha, Domicilio, DNI) VALUES "\
+        "(:nom, :det, :imp, CURDATE(), :dom, :dni)"
         q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
         q.prepare(sql)
         q.bindValue(":nom", nombre)
         q.bindValue(":det", detalle)
         q.bindValue(":imp", importe)
+        q.bindValue(":dom", direccion)
+        q.bindValue(":dni", dni)
         ej = util.ejecuto(q, 'Cooperadora')
         print("eje recibo es true")
         '''Obtengo el nùmero de recibo'''
@@ -249,7 +263,7 @@ class Administracion(QtWidgets.QWidget):
         print(rows)
         existe = False
         if rows > 0 :
-            for i in range(0, rows-1):
+            for i in range(0, rows):
 #                print("valor 0 de a" + str(a.value(0)))
 #                print(self.t.item(i, 0).text())
                 if str(a.value(0)) == self.t.item(i,0).text():

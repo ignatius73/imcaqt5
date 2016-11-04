@@ -19,7 +19,13 @@ class Inscripciones(QtWidgets.QWidget):
         self.ui = uic.loadUi("inscripcion4.ui", self)
         self.frm = QtWidgets.QFrame()
         self.sb = QtWidgets.QScrollArea()
-        self.ui.lnCiclo.setText("2016")
+        '''Si es noviembre o diciembre, pongo año actual'''
+        hoy = QDate().currentDate()
+        print(hoy.month())
+        if hoy.month() == 11 or hoy.month() == 12:
+            self.ui.lnCiclo.setText(str(hoy.year()+ 1))
+        else:
+            self.ui.lnCiclo.setText(str(hoy.year()))
         self.ui.lnCiclo.setDisabled(True)
         validator = QtGui.QIntValidator()
         self.ui.lnDni.setValidator(validator)
