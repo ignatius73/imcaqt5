@@ -200,9 +200,7 @@ class Administracion(QtWidgets.QWidget):
             valor = self.t.item(i, 2).text()
             valor = float(valor)
             importe = importe + valor
-        print(importe)
-        print(detalle)
-        print(nombre)
+
         '''Creo el recibo'''
         sql = "INSERT INTO recibos (Nombre, Detalle, Importe, fecha, Domicilio, DNI) VALUES "\
         "(:nom, :det, :imp, CURDATE(), :dom, :dni)"
@@ -232,25 +230,35 @@ class Administracion(QtWidgets.QWidget):
                 print(ok)
                 if ok == 1024:
                     self.imprimo()
-            '''Obtengo el saldo de caja'''
-            sql = "SELECT saldo FROM caja ORDER BY idMovimiento DESC LIMIT 1"
-            q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
-            q.prepare(sql)
-            ej = util.ejecuto(q, 'Cooperadora')
-            saldo = 0
-            if ej.size() > 0:
-                while ej.next():
-                    saldo = ej.value(0)
-            saldo = saldo + importe
-            '''Agrego el importe pagado a la caja'''
-            sql = "INSERT INTO caja (Importe, Saldo, Detalle, recibo) VALUES "\
-            "(:imp, :saldo, :det, :recibo)"
-            q.prepare(sql)
-            q.bindValue(":saldo", saldo)
-            q.bindValue(":det", detalle)
-            q.bindValue(":imp", importe)
-            q.bindValue(":recibo", self.nroRecibo)
-            ej = util.ejecuto(q, 'Cooperadora')
+            '''Obtengo el saldo de caja e ingreso los movimientos a la'''\
+            ''' caja discriminando movimiento'''
+            for i in range(0, rows):
+                sql = "SELECT saldo FROM caja ORDER BY idMovimiento DESC LIMIT 1"
+                q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
+                q.prepare(sql)
+                ej = util.ejecuto(q, 'Cooperadora')
+                saldo = 0
+                detalle = self.t.item(i, 3).text()
+                importe = self.t.item(i, 2).text()
+                importe = float(importe)
+
+                if ej.size() > 0:
+                    while ej.next():
+                        saldo = ej.value(0)
+                print(importe)
+                print(detalle)
+                print(nombre)
+                saldo = saldo + importe
+                '''Agrego el importe pagado a la caja'''
+                sql = "INSERT INTO caja (Importe, Saldo, Detalle, recibo, fecha) "\
+                "VALUES (:imp, :saldo, :det, :recibo, CURDATE())"
+                q.prepare(sql)
+                q.bindValue(":saldo", saldo)
+                q.bindValue(":det", detalle)
+                q.bindValue(":imp", importe)
+                q.bindValue(":recibo", self.nroRecibo)
+
+                ej = util.ejecuto(q, 'Cooperadora')
 
 
 

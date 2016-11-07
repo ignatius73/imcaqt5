@@ -64,10 +64,8 @@
      <string>A&amp;dministración</string>
     </property>
     <addaction name="actionCoo_peradora"/>
-    <addaction name="actionIngresos"/>
-    <addaction name="actionEgresos"/>
-    <addaction name="actionLibro_Diario"/>
     <addaction name="actionCaja"/>
+    <addaction name="actionMovimientos"/>
    </widget>
    <widget class="QMenu" name="menu_Estad_sticas">
     <property name="title">
@@ -194,6 +192,11 @@
    </property>
    <property name="toolTip">
     <string>Cooperadora</string>
+   </property>
+  </action>
+  <action name="actionMovimientos">
+   <property name="text">
+    <string>Movimientos</string>
    </property>
   </action>
  </widget>

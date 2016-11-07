@@ -168,3 +168,22 @@ class Utilidades():
         ventana.setIcon(QMessageBox.Information)
         ventana.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         return ventana
+
+##############################################################################
+
+    def dicciolista(self, diccio):
+
+        list = []
+        valores = diccio.values()
+        for i in valores:
+
+            list.append(i)
+
+        return list
+
+##############################################################################
+
+    def invDict(self, diccio):
+
+        inv_diccio = {v: k for k, v in diccio.items()}
+        return inv_diccio

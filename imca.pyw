@@ -12,6 +12,7 @@ from modificaciones import *
 from administracion import *
 from registro import *
 from caja import *
+from movimientos import *
 
 
 global c
@@ -39,6 +40,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.ui.action_Salir.triggered.connect(self.salir)
             self.ui.actionCoo_peradora.triggered.connect(self.cooperadora)
             self.ui.actionCaja.triggered.connect(self.caja)
+            self.ui.actionMovimientos.triggered.connect(self.movimientos)
         else:
             global c
             c = c - 1
@@ -262,6 +264,13 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.setCentralWidget(self.hijo)
 
 ##############################################################################
+
+    def movimientos(self):
+        '''Cargo formulario de Caja'''
+        self.hijo = Movimientos(self.usuario)
+        self.hijo.formularioCaja()
+        self.setCentralWidget(self.hijo)
+
 
 #Creamos la instancia para inciar app
 app = QtWidgets.QApplication(sys.argv)
