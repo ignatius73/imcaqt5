@@ -12,10 +12,10 @@ from PyQt5.QtGui import QPixmap
 from recibo import *
 
 
-class Movimientos(QtWidgets.QWidget):
+class Alumnos(QtWidgets.QWidget):
 
     def __init__(self, usr):
-        super(Movimientos, self).__init__()
+        super(Alumnos, self).__init__()
         self.usr = usr
         self.conn = Connection()
         self.db = self.conn.conecto_a_DB(self.usr, 'Cooperadora')
@@ -33,27 +33,14 @@ class Movimientos(QtWidgets.QWidget):
 
         self.util = Utilidades()
 
-        '''Combo Mes'''
-        self.month = self.util.meses()
-        self.meses = self.util.dicciolista(self.month)
-        self.mes = QtWidgets.QComboBox()
-        self.mes.addItems(self.meses)
+        '''QLineEdit Filtrar'''
+        self.lnFiltrar = QtWidgets.QLineEdit()
 
-        '''QDateEdit Año'''
-        self.anio = QtWidgets.QDateEdit()
-        anio = QtCore.QDate().currentDate()
-        self.anio.setDisplayFormat('yyyy')
-        self.anio.setDate(anio)
-
-        '''Combo Tipo Listado'''
-        tipos = ["Tipo A", "Tipo B"]
+        '''Combo Actividades'''
+        tipos = ["Modificar Alumno", "Agregar Calificaciones", "Borrar Alumno", "Inscribir Asignaturas"]
         self.tipo = QtWidgets.QComboBox()
         self.tipo.addItems(tipos)
 
-        '''Combo Tipo de Movimiento'''
-        mov = ["Ingresos", "Egresos"]
-        self.mov = QtWidgets.QComboBox()
-        self.mov.addItems(mov)
 
         self.layout = QtWidgets.QGridLayout()
         self.botonera = QtWidgets.QHBoxLayout()
@@ -84,7 +71,7 @@ class Movimientos(QtWidgets.QWidget):
         self.botonera.addWidget(self.CleanBtn)
 #        self.x = QtWidgets.QLineEdit()
 
-        self.model.setTable('caja')
+        self.model.setTable('alumnos')
         self.model.setSort(0, 1)
         self.model.select()
         self.head = QtWidgets.QHeaderView(Qt.Horizontal)
@@ -94,26 +81,23 @@ class Movimientos(QtWidgets.QWidget):
         self.caja.setHorizontalHeader(self.head)
         self.caja.setSelectionMode(3)
         self.caja.hideColumn(0)
+        for i in range(3,47):
+            self.caja.hideColumn(i)
         self.util.estiloTablas(self.model, self.caja)
         self.caja.show()
 
         '''Labels'''
-        self.lbl = QtWidgets.QLabel("Mes")
-        self.lbl2 = QtWidgets.QLabel("Año")
-        self.lbl3 = QtWidgets.QLabel("Tipo de Listado")
-        self.lbl4 = QtWidgets.QLabel("Tipo de Movimiento")
+        self.lbl = QtWidgets.QLabel("Nombre del Alumno")
+        self.lbl3 = QtWidgets.QLabel("Tipo de Actividad")
 
-        '''Combos'''
+
 
 #        self.top.addStretch()
         self.top.addWidget(self.lbl)
-        self.top.addWidget(self.mes)
-        self.top.addWidget(self.lbl2)
-        self.top.addWidget(self.anio)
+        self.top.addWidget(self.lnFiltrar)
         self.top.addWidget(self.lbl3)
         self.top.addWidget(self.tipo)
-        self.top.addWidget(self.lbl4)
-        self.top.addWidget(self.mov)
+
         self.top.addItem(self.botonera)
         self.top.setSpacing(8)
         self.top.addWidget(self.caja)
@@ -130,6 +114,8 @@ class Movimientos(QtWidgets.QWidget):
 #        self.caja.clicked.connect(self.agrega)
         self.CleanBtn.clicked.connect(self.limpia)
         self.recibo.clicked.connect(self.doRecibo)
+        self.lnFiltrar.textChanged.connect(self.autocomp)
+        self.caja.clicked.connect(self.filtrar)
 
 
 
@@ -150,8 +136,7 @@ class Movimientos(QtWidgets.QWidget):
         q.bindValue(':saldo', saldo)
         util = Utilidades()
         util.ejecuto(q, 'Cooperadora')
-        print(importe)
-        print(concepto)
+
 #        self.model.setSort(2, 1)
         self.model.select()
 
@@ -192,31 +177,41 @@ class Movimientos(QtWidgets.QWidget):
 
 ##############################################################################
 
-    def filtrar(self):
+    def filtrar(self, x):
+        r = x.row()
+        a = self.model.record(r)
+
+        talumno = [a.value(1), a.value(2),self.tipo.currentText()]
+
+        pa = self.parentWidget()
+        pa.control(talumno)
+
+##############################################################################
+
+    def autocomp(self):
         txt = ''
-        mes = self.mes.currentText()
-        mesnro = self.util.invDict(self.month)
-        mesnum =  mesnro.get(mes)
-        print(mesnum)
-        txt = txt + 'MONTH(fecha) = ' + str(mesnum)
-        print(txt)
-        '''    dni = self.dni.text()
-            txt = txt + 'dni = ' + dni
-        if self.concepto.text() != '':
-            if txt != '':
-                txt = txt + ' AND '
-            txt = txt + 'detalle LIKE "' + self.concepto.text() + '"'
-        if self.periodo.text() != '':
-            if txt != '':
-                txt = txt + ' AND '
-            txt = txt + 'periodo LIKE "' + self.periodo.text() + '"'
-        if self.estado.text() != '':
-            if txt != '':
-                txt = txt + ' AND '
-            txt = txt + 'estado LIKE "' + self.estado.text() + '"'
-        '''
+        txt = txt + 'Nombre LIKE "%' + self.lnFiltrar.text() + '%"'
         self.model.setFilter(txt)
         self.model.select()
 
-
 ##############################################################################
+
+    def borrar_Alumno(self, dni):
+
+        util = Utilidades()
+
+        oka = util.MensajeOkNo("¿Estás segurx de borrar al alumno? Esta operación no puede deshacerse")
+
+        res = oka.exec_()
+
+        if res == 1024:
+
+            sql = "DELETE FROM alumnos WHERE DNI = :dni"
+
+            q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
+
+            q.prepare(sql)
+
+            q.bindValue(":dni", dni)
+
+            ej = util.ejecuto(q, 'Cooperadora')

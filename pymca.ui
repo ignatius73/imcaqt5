@@ -51,12 +51,10 @@
     <property name="title">
      <string>&amp;Alumnos</string>
     </property>
+    <addaction name="action_Inicio"/>
     <addaction name="action_Nuevo_Alumno"/>
-    <addaction name="action_Modificar_Alumno"/>
     <addaction name="action_Listados"/>
     <addaction name="action_Borrar_Alumno"/>
-    <addaction name="actionInscri_pciones"/>
-    <addaction name="actionCalificacio_nes"/>
     <addaction name="action_Salir"/>
    </widget>
    <widget class="QMenu" name="menuAdministracion">
@@ -197,6 +195,11 @@
   <action name="actionMovimientos">
    <property name="text">
     <string>Movimientos</string>
+   </property>
+  </action>
+  <action name="action_Inicio">
+   <property name="text">
+    <string>C&amp;entral de Alumnos</string>
    </property>
   </action>
  </widget>

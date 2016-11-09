@@ -13,6 +13,7 @@ from administracion import *
 from registro import *
 from caja import *
 from movimientos import *
+from alumnos import *
 
 
 global c
@@ -32,19 +33,21 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.dni = None
             self.registro()
             self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
-            self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
-            self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
-            self.ui.actionImprimir.triggered.connect(self.imprimo)
-            self.ui.action_Modificar_Alumno.triggered.connect(self.modifico_alumno)
+#            self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
+#            self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
+#            self.ui.actionImprimir.triggered.connect(self.imprimo)
+#            self.ui.action_Modificar_Alumno.triggered.connect(self.modifico_alumno)
             self.ui.action_Listados.triggered.connect(self.modulo_Listados)
             self.ui.action_Salir.triggered.connect(self.salir)
             self.ui.actionCoo_peradora.triggered.connect(self.cooperadora)
             self.ui.actionCaja.triggered.connect(self.caja)
             self.ui.actionMovimientos.triggered.connect(self.movimientos)
+            self.ui.action_Inicio.triggered.connect(self.alumnos)
+            self.alumnos()
         else:
             global c
             c = c - 1
-            print (c)
+
             if c != 0:
                 self.__init__()
             else:
@@ -53,7 +56,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def calcular(self, m=0):
-        print(m)
+
         if m == 0:
             self.cargoDNI2()
             if self.tudni[0] != 0:
@@ -80,9 +83,9 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def inscribe_a_asignaturas(self):
-        self.cargoDNI2()
-        if self.tudni[0] != 0:
-            self.dni = str(self.tudni[0])
+
+        if self.tudni != 0:
+            self.dni = str(self.tudni)
 
             self.hijo = Asignaturas(self.usuario)
             dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
@@ -182,10 +185,10 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 ##############################################################################
 
     def Cargo_Notas(self):
-        self.cargoDNI2()
-        if self.tudni[0] != 0:
+
+        if self.tudni != 0:
             self.hijo = Calificaciones(self.usuario)
-            self.hijo.Listado(self.tudni[0])
+            self.hijo.Listado(self.tudni)
             self.setCentralWidget(self.hijo)
 
 ##############################################################################
@@ -206,9 +209,9 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
     def modifico_alumno(self, m=0):
 
         if m==0:
-            self.cargoDNI2()
-            if self.tudni[0] != 0:
-                self.dni = str(self.tudni[0])
+#            self.cargoDNI2()
+            if self.tudni != 0:
+                self.dni = str(self.tudni)
                 dni_exist = self.conn.ConsultoDNI(self.dni, self.db)
                 if dni_exist is True:
                     self.hijo = Modificaciones(self.usuario)
@@ -271,6 +274,35 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.hijo.formularioCaja()
         self.setCentralWidget(self.hijo)
 
+##############################################################################
+
+    def alumnos(self):
+        '''Cargo formulario de Caja'''
+        self.hijo = Alumnos(self.usuario)
+        self.hijo.formularioCaja()
+        self.setCentralWidget(self.hijo)
+
+##############################################################################
+
+    def control(self, talumno):
+        self.tudni = []
+        self.tudni = int(talumno[1])
+        if talumno[2] == "Modificar Alumno":
+            self.modifico_alumno(0)
+        elif talumno[2] == 'Agregar Calificaciones':
+            self.Cargo_Notas()
+        elif talumno[2] == 'Borrar Alumno':
+            self.borrar_Alumno()
+        else:
+            self.inscribe_a_asignaturas()
+
+##############################################################################
+
+    def borrar_Alumno(self):
+        if self.tudni != 0:
+            self.hijo = Alumnos(self.usuario)
+            self.hijo.borrar_Alumno(self.tudni)
+            self.alumnos()
 
 #Creamos la instancia para inciar app
 app = QtWidgets.QApplication(sys.argv)

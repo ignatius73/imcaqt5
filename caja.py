@@ -105,8 +105,7 @@ class Caja(QtWidgets.QWidget):
         q.bindValue(':saldo', saldo)
         util = Utilidades()
         util.ejecuto(q, 'Cooperadora')
-        print(importe)
-        print(concepto)
+
 #        self.model.setSort(2, 1)
         self.model.select()
 

@@ -1,5 +1,4 @@
-import sys
-#..import pymysql
+import sys, logging
 from PyQt5 import QtSql
 from utilidades import *
 from login import *
@@ -10,11 +9,13 @@ class Connection(QtSql.QSqlDatabase):
     def __init__(self):
         super(Connection, self).__init__()
         #Seteo los datos de conexión
+        logging.basicConfig(filename='logs/debug.log',level=logging.DEBUG)
+        logging.warning("Atención")
 
 
     def SetUsuario(self, usr):
         self.usr = usr
-        print("User " + self.usr[0] + " Pass " + self.usr[1])
+
 
 
     def GetUsuario(self):
@@ -27,13 +28,13 @@ class Connection(QtSql.QSqlDatabase):
         db.setDatabaseName('imca')
         db.setUserName(self.usr[0])
         db.setPassword(self.usr[1])
-        print(db.connectionName())
+
         if db.open() is True:
             print("base de datos conectada")
             return db
         else:
             db.close()
-            print(db.lastError())
+            logging.warning(db.lastError())
             return False
 
 
@@ -44,29 +45,29 @@ class Connection(QtSql.QSqlDatabase):
         '''Consulta a la DB si el alumno ya está inscripto'''
 
         sql = "SELECT * from alumnos WHERE DNI = :dni"
-        print(sql)
+
         if db.database('principal').isOpen() is True:
-            print("dos " + sql)
+
             q = QtSql.QSqlQuery(db)
             q.prepare(sql)
             q.bindValue(":dni", int(dni))
             estado = q.exec_()
             pipi = q.executedQuery()
-            print(pipi)
+
             if estado:
                 if q.isActive() is False:
-                    print("La consulta no está activa")
+                    pass
                 else:
                     if q.size() > 0:
-                        print("El dni ya existe")
+
                         return True
                     else:
                         return False
 
             else:
-                print(dni)
-                print(pipi)
-                print((db.lastError()))
+
+
+                logging.warning((db.lastError()))
         else:
             return False
 
@@ -75,7 +76,7 @@ class Connection(QtSql.QSqlDatabase):
         try:
             self.usr
         except:
-            print("No están disponibles los datos de usuario")
+
             self.SetUsuario(self)
             try:
                 self.db
@@ -87,7 +88,7 @@ class Connection(QtSql.QSqlDatabase):
         self.SetUsuario(usr)
         self.dba = self.CreateConnection(base)
         if self.dba.database(base).isOpen():
-            print("Conexión exitosa a " + base)
+            logging.warning("Conexión exitosa a " + base)
         return self.dba
 
 ##############################################################################
@@ -96,7 +97,7 @@ class Connection(QtSql.QSqlDatabase):
             estado = q.exec_()
             pipi = q.executedQuery()
             if estado is True:
-                print("estado true")
+
                 if q.isActive() is False:
                     print("La consulta no está activa")
                 else:

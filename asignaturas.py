@@ -43,7 +43,6 @@ class Asignaturas(QtWidgets.QWidget):
                 print("No tienes materias disponibles para la inscripción")
             else:
                 self.lista.append(layFoba)
-                print("layFoba no es True ni False")
             layCursos = self.ListoCursos()
             self.lista.append(layCursos)
 
@@ -81,14 +80,14 @@ class Asignaturas(QtWidgets.QWidget):
         '''Busco en la tabla de Calificaciones las materias no aprobadas aún por el dni'''
         sql = "SELECT * from calificaciones WHERE alumno = :dni"
         if self.db.database('asignaturas').isOpen() is True:
-            print("entre")
+
             q = QtSql.QSqlQuery(self.db.database('asignaturas'))
             q.prepare(sql)
             q.bindValue(":dni", self.dni)
             estado = self.ejecuto(q)
             return estado
         else:
-            print("la base de datos no está abierta")
+
             print(self.db.database('asignaturas').lastError())
 
     def ListoMaterias(self, ctrl, c):
@@ -99,21 +98,21 @@ class Asignaturas(QtWidgets.QWidget):
     def ListoFOBA(self, control=0):
         '''Lista todas las posibilidades de presentación de materias FOBA''' \
         '''Devuelve un QGroupBox'''
-        print(control)
+
         q = self.MateriasFoba(control)
-        print(type(q))
+
         if q is True:
-            print("FOBA TERMINADO")
+
             return True
         elif isinstance(q, str):
-            print(q)
+
             return False
         if isinstance(q, list):
             gl = self.CreoGridLista(q, "Materias FOBA")
         elif isinstance(q, QtSql.QSqlQuery):
             gl = self.CreoGrid(q, "Materias FOBA")
             gl.setObjectName("GFoba")
-            print("paso por aca")
+
         return gl
 
 ##############################################################################
@@ -201,7 +200,7 @@ class Asignaturas(QtWidgets.QWidget):
                         self.materias.append(", ")
         self.materias.pop()
         l = "".join(self.materias)
-        print(l)
+
         self.anotoMaterias(self.dni, l)
         self.AgregoFechaInscripcion()
         '''Obtengo el nombre del Alumno'''
@@ -228,7 +227,7 @@ class Asignaturas(QtWidgets.QWidget):
         imp.agregoString(txt, 'txt')
         nomMat = []
         for i in mat:
-            print(i)
+
             sql = "SELECT id_asignatura, nombre From asignaturas WHERE "\
             "id_asignatura = :asig"
             q = QtSql.QSqlQuery(self.db.database('asignaturas'))
@@ -247,6 +246,8 @@ class Asignaturas(QtWidgets.QWidget):
         imp.cierroStory()
 
         imp.imprimo()
+        c = self.parentWidget()
+        c.alumnos()
 
 #############################################################################
 
@@ -281,7 +282,7 @@ class Asignaturas(QtWidgets.QWidget):
             total_aprobadas = 0
 
             while estado.next():
-                print(estado.value(1))
+
                 for i in l:
                     if i.value(0) == estado.value(1):
                         if self.ControloNotas(estado.record()) is True:
@@ -301,24 +302,13 @@ class Asignaturas(QtWidgets.QWidget):
         n2 = 0
         n3 = 0
         n4 = 0
-        print(type(e.value(2)))
-#        if e.value(2).isNull():  #  isinstance(e.value(2), QtCore.QPyNullVariant):
-#            print("es nulo")
-#            n1 = 0
-#        else:
+
         n1 = e.value(2)
-#        if isinstance(e.value(3), QtCore.QPyNullVariant):
 
-#            n2 = 0
         n2 = e.value(3)
-#        if isinstance(e.value(4), QtCore.QPyNullVariant):
 
-#            n3 = 0
-#        else:
         n3 = e.value(4)
-#        if isinstance(e.value(9), QtCore.QPyNullVariant):
-#            n4 = 0
-#        else:
+
         n4 = e.value(9)
         if n4 >= 4:
 
@@ -346,7 +336,7 @@ class Asignaturas(QtWidgets.QWidget):
         q.prepare(sql)
         q.bindValue(":carrera", c)
         if d != 0:
-            print("No es distinto de 0")
+
             q.bindValue(":carrera2", d)
         else:
             q.bindValue(":carrera2", c)
@@ -358,10 +348,10 @@ class Asignaturas(QtWidgets.QWidget):
     def MateriasFoba(self, control):
         c = 'FOBA'
         if control == 0:
-            print("Control es None")
+
             datos = self.ObtengoMaterias(c)
         else:
-            print("Control no es None")
+
             datos = self.FOBA()
 
         return datos
@@ -372,13 +362,13 @@ class Asignaturas(QtWidgets.QWidget):
             estado = q.exec_()
             pipi = q.executedQuery()
             if estado is True:
-                print("estado true")
+
                 if q.isActive() is False:
-                    print("La consulta no está activa")
+                    pass
                 else:
                     return q
             else:
-                print(pipi)
+
                 print((self.db.database('asignaturas').lastError()))
 
 ##############################################################################
@@ -397,12 +387,13 @@ class Asignaturas(QtWidgets.QWidget):
         '''Preparo la sentencia para inscribir al alumno'''
         sql = "INSERT INTO calificaciones (id_asign, alumno) " \
         "VALUES " + materias
-        print(sql)
+
         q = QtSql.QSqlQuery(self.db.database('asignaturas'))
         q.prepare(sql)
 
         try:
             q.exec_()
+
         except:
             print(self.db.database('asignaturas').lastError())
 
@@ -410,9 +401,6 @@ class Asignaturas(QtWidgets.QWidget):
 
     def anotoProfTec(self):
         '''Obtengo las materias disponibles para inscribir al alumno'''
-
-        print("entro a AnotoProfTec")
-
         '''Obtengo carrera del alumno'''
 
         sql = "SELECT carreras.nombre from carreras " \
@@ -444,7 +432,7 @@ class Asignaturas(QtWidgets.QWidget):
             conn.SetUsuario(self.usr)
             self.db = conn.CreateConnection('asignaturas')
             if self.db.database('asignaturas').isOpen():
-                print("Conexión exitosa a Asignaturas")
+                pass
 
 ##############################################################################
 
@@ -464,14 +452,14 @@ class Asignaturas(QtWidgets.QWidget):
 
         if isinstance(l, list):
             for c in calif:
-                print("Calificaciones " + str(c.value(1)))
+
                 for i in l:
-                    print ("Asignatura " + str(i.value(0)) + " " + str(i.value(1)))
+
                     if i.value(0) == c.value(1):
                             l.remove(i)
                     else:
                         corre = self.Correlativas(i.value(3), calif)
-                        print(corre)
+
                         if corre is False:
                             l.remove(i)
 
@@ -502,13 +490,6 @@ class Asignaturas(QtWidgets.QWidget):
         else:
             return True
 
-
-##############################################################################
-
-    def ObtengoCursos(self, d):
-        while d.next():
-            print(d.value(1))
-        return d
 
 ##############################################################################
 

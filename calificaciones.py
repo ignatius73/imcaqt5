@@ -59,10 +59,10 @@ class Calificaciones(QtWidgets.QWidget):
 
 
         row = 0
-        print(type(self.dni))
-        print("estoy acá")
+
+
         while estado.next():
-            print(estado.value(13))
+
             self.nombre.setText(estado.value(13))
             self.table.insertRow(row)
             ide = QtWidgets.QTableWidgetItem(str(estado.value(0)))
@@ -135,7 +135,7 @@ class Calificaciones(QtWidgets.QWidget):
         estado = q.exec_()
         pipi = q.executedQuery()
         if estado is True:
-            print("estado true")
+
             if q.isActive() is False:
                 print("La consulta no está activa")
             else:
@@ -162,7 +162,7 @@ class Calificaciones(QtWidgets.QWidget):
 ##############################################################################
 
     def cohorte(self):
-        print (self.dni)
+
         '''Controlo que el DNI no tenga cohorte en la tabla de alumnos'''
         sql = "SELECT COUNT(*) FROM alumnos WHERE alumnos.DNI = :dni AND alumnos.cohorte IS NULL"
         q = QtSql.QSqlQuery(self.db.database('calificaciones'))

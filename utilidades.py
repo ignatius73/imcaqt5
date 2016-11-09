@@ -187,3 +187,31 @@ class Utilidades():
 
         inv_diccio = {v: k for k, v in diccio.items()}
         return inv_diccio
+
+##############################################################################
+
+    def estiloTablas(self,t, r):
+
+        appStyle="""
+                QTableView
+                {
+                    background-color: grey;
+                    gridline-color:white;
+                    color: black;
+                }
+                QTableView::item
+                {
+                    color: white;
+                }
+                QTableView::item:hover
+                {
+                    color: black;
+                    background: #ffaa00;
+                }
+                QTableView::item:focus
+                {
+                    color: black;
+                    background: #0063cd;
+                }
+                """
+        r.setStyleSheet(appStyle)
