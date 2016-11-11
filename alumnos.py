@@ -43,33 +43,11 @@ class Alumnos(QtWidgets.QWidget):
 
 
         self.layout = QtWidgets.QGridLayout()
-        self.botonera = QtWidgets.QHBoxLayout()
+#        self.botonera = QtWidgets.QHBoxLayout()
 #        entero = QtGui.QDoubleValidator()
-        '''        self.importe = QtWidgets.QLineEdit()
-        self.importe.setValidator(entero)
-        self.concepto = QtWidgets.QLineEdit()
-        self.t = QtWidgets.QTableWidget()
-        p = QtGui.QPixmap()
-        p.load('imagenes/cacharros.jpg')
-        img = QtWidgets.QLabel()
-        img.setPixmap(p)
-        img.setScaledContents(True)
-        h = img.height()
-        w = img.width()
-        img.setPixmap(p.scaled(w, h, 1))
-        img.setScaledContents(True)
-        head = QtWidgets.QHeaderView(Qt.Horizontal)
-        head.setSectionResizeMode(1)
-        self.t.setHorizontalHeader(head)
-        self.t.setColumnCount(5)
-        self.t.setHorizontalHeaderLabels(['Importe', 'Saldo', 'Detalle', 'Recibo'])'''
         self.filtra = QtWidgets.QPushButton("Filtrar")
         self.CleanBtn = QtWidgets.QPushButton("Limpiar")
         self.recibo = QtWidgets.QPushButton("Recibo")
-        self.botonera.addWidget(self.filtra)
-        self.botonera.addWidget(self.recibo)
-        self.botonera.addWidget(self.CleanBtn)
-#        self.x = QtWidgets.QLineEdit()
 
         self.model.setTable('alumnos')
         self.model.setSort(0, 1)
@@ -82,7 +60,9 @@ class Alumnos(QtWidgets.QWidget):
         self.caja.setSelectionMode(3)
         self.caja.hideColumn(0)
         for i in range(3,47):
-            self.caja.hideColumn(i)
+            if i != 15 and i != 29:
+                self.caja.hideColumn(i)
+
         self.util.estiloTablas(self.model, self.caja)
         self.caja.show()
 
@@ -98,7 +78,7 @@ class Alumnos(QtWidgets.QWidget):
         self.top.addWidget(self.lbl3)
         self.top.addWidget(self.tipo)
 
-        self.top.addItem(self.botonera)
+#        self.top.addItem(self.botonera)
         self.top.setSpacing(8)
         self.top.addWidget(self.caja)
 

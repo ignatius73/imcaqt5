@@ -28,12 +28,16 @@ class Inscripciones(QtWidgets.QWidget):
             self.ui.lnCiclo.setText(str(hoy.year()))
         self.ui.lnCiclo.setDisabled(True)
         validator = QtGui.QIntValidator()
+        reg = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}"
+        r = QtCore.QRegExp()
+        r.setPattern(reg)
+        mailvalid = QtGui.QRegExpValidator(r, self)
         self.ui.lnDni.setValidator(validator)
         self.ui.lnNum.setValidator(validator)
         self.ui.lnTel.setValidator(validator)
         self.ui.lnMov.setValidator(validator)
-        self.ui.lnMail.setValidator
-        print(self.lnDni.text())
+        self.ui.lnMail.setValidator(mailvalid)
+
         self.dni = str(dni)
         self.lnDni.setText(self.dni)
         self.lnDni.setDisabled(True)
@@ -70,6 +74,7 @@ class Inscripciones(QtWidgets.QWidget):
         self.tel = self.IntONull(self.lnTel.text())
         self.movil = self.IntONull(self.lnMov.text())
         #self.movil = self.lnMov.text()
+
         self.mail = self.lnMail.text()
         self.titulo = self.lntitulo.text()
         self.egreso = self.dEEgr.text()
@@ -130,7 +135,7 @@ class Inscripciones(QtWidgets.QWidget):
             cadena = cadena + q.value(0) + ", "
         total = len(cadena.rstrip())
         cadena1 = cadena[0:total -1]
-        print("Cadena " + cadena1)
+
 
         #Preparo la cadena sql
         values = ":nombre, :dni, :lunac, :fenac, :edad, :calle, :numero, "\
@@ -202,11 +207,8 @@ class Inscripciones(QtWidgets.QWidget):
         estado = q.exec_()
         pipi = q.executedQuery()
         if estado is True:
-            print("tudobom")
             self.close()
         else:
-            print("DNI " + str(self.dni))
-            print(pipi)
             util = Utilidades()
             g = util.Mensaje("Ocurrió un error al insertar el alumno. "\
             "Vuelve a intentarlo. Si el problema persiste comunicate con el "\

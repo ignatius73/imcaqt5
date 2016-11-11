@@ -13,6 +13,7 @@ class Calificaciones(QtWidgets.QWidget):
         self.usr = usr
         self.Conecto_a_DB()
 
+
 ##############################################################################
 
     def Listado(self, dni):
@@ -28,7 +29,7 @@ class Calificaciones(QtWidgets.QWidget):
         self.et = QtWidgets.QLabel()
         self.et.setText("Nombre del Alumno")
         self.nombre = QtWidgets.QLineEdit()
-        self.print = QtWidgets.QPushButton("Imprimir")
+        self.print = QtWidgets.QPushButton("Guardar")
 
         self.table = QtWidgets.QTableWidget()
         self.sb.setWidget(self.frm)
@@ -92,6 +93,7 @@ class Calificaciones(QtWidgets.QWidget):
 
         self.table.itemChanged.connect(self.Actualizar_Nota)
         self.print.clicked.connect(self.Imprimir)
+#        self.nombre.textChanged.connect(self.autocomp)  #future
 ##############################################################################
 
     def Conecto_a_DB(self):
@@ -147,17 +149,8 @@ class Calificaciones(QtWidgets.QWidget):
 ##############################################################################
 
     def Imprimir(self):
-        '''Imprime el objeto en table'''
-
-        prt = QtPrintSupport.QPrinter()
-        dialog = QtPrintSupport.QPrintDialog(prt, self)
-        if(dialog.exec_() != QtWidgets.QDialog.Accepted):
-            return
-        printLabel = self.table
-
-        painter = QtGui.QPainter(prt)
-        printLabel.render(painter)
-        painter.end()
+        x = self.parentWidget()
+        x.alumnos()
 
 ##############################################################################
 

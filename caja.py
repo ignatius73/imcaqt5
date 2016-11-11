@@ -24,6 +24,7 @@ class Caja(QtWidgets.QWidget):
 
     def formularioCaja(self):
         '''Cargo el archivo ui'''
+        util = Utilidades()
         self.ui = uic.loadUi("cooperadora.ui", self)
         self.model = QtSql.QSqlTableModel(None, self.db)
         self.layIzq = QtWidgets.QVBoxLayout()
@@ -67,6 +68,7 @@ class Caja(QtWidgets.QWidget):
         self.caja.setHorizontalHeader(self.head)
         self.caja.setSelectionMode(3)
         self.caja.hideColumn(0)
+        util.estiloTablas(self.model, self.caja)
         self.caja.show()
         self.lbl = QtWidgets.QLabel("Importe")
         self.lbl2 = QtWidgets.QLabel("Detalle")

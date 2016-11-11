@@ -7,7 +7,7 @@ from conn import *
 from utilidades import *
 from impresiones import *
 from listados import *
-
+from reportlab.lib.pagesizes import letter, A4, landscape, LEGAL
 
 class Asignaturas(QtWidgets.QWidget):
     '''La clase Asignaturas llevara adelante todas las operaciones ''' \
@@ -241,8 +241,8 @@ class Asignaturas(QtWidgets.QWidget):
                 imp.agregoString("Código de Asignatura: " + str(estado.value(0)), 'txt')
                 imp.agregoString("Nombre de Asignatura: " + estado.value(1), 'txt')
                 imp.agregoSpacer()
-
-        imp.createPageTemplate(formato, "A4")
+        size = A4
+        imp.createPageTemplate(formato, size)
         imp.cierroStory()
 
         imp.imprimo()

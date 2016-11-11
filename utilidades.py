@@ -1,8 +1,9 @@
 import sys, re, datetime
 from PyQt5 import QtCore, QtGui, QtSql, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QWidget
-from PyQt5.QtCore import QDate, QTime
+from PyQt5.QtCore import QDate, QTime, QRegExp
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QRegExpValidator
 
 
 
@@ -56,7 +57,12 @@ class Utilidades():
             for i in l:
                 b = []
                 for r in range(i.count()):
-                    b.append(i.value(r))
+                    print(i.value(r))
+                    if isinstance(i.value(r), QtCore.QDate):
+                        nac = i.value(r).toString("dd/MM/yyyy")
+                        b.append(nac)
+                    else:
+                        b.append(i.value(r))
                 a.append(b)
                 b = None
 
@@ -215,3 +221,5 @@ class Utilidades():
                 }
                 """
         r.setStyleSheet(appStyle)
+
+##############################################################################

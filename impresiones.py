@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import QGraphicsScene, QGraphicsTextItem
 from PyQt5.QtPrintSupport import QPrinter
 
 from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter, A4, landscape
+from reportlab.lib.pagesizes import letter, A4, landscape, LEGAL
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageTemplate, BaseDocTemplate, Frame
 from reportlab.lib import colors
@@ -28,7 +28,7 @@ class Impresion():
 ##############################################################################
 
     def encabezadoLandscape(self, canvas, doc):
-        ancho, alto = A4
+        ancho, alto = self.tam
         canvas.saveState()
         fonts = canvas.getAvailableFonts()
         for i in fonts:
@@ -48,7 +48,7 @@ class Impresion():
 ##############################################################################
 
     def encabezado(self, canvas, doc):
-        ancho, alto = A4
+        ancho, alto = self.tam
         canvas.saveState()
         fonts = canvas.getAvailableFonts()
         for i in fonts:
@@ -80,17 +80,22 @@ class Impresion():
     def createPageTemplate(self, orientacion, size):
 
         self.doc = SimpleDocTemplate("phello.pdf")
-        ancho, alto = A4
+        if size == A4:
+            self.tam = A4
+            ancho, alto = A4
+        else:
+            self.tam = LEGAL
+            ancho, alto = LEGAL
 
         if orientacion == "landscape":
             frameT = Frame(0, 0, alto, ancho, showBoundary=1)
-            self.doc.pagesize = landscape(A4)
+            self.doc.pagesize = landscape(self.tam)
             PTUnaColumna = PageTemplate(id='UnaColumna', frames=[frameT], onPage=self.encabezadoLandscape, onPageEnd=self.pie)
 
 
         else:
             frameT = Frame(0, 0, ancho, alto, showBoundary=1)
-            self.doc.pagesize = A4
+            self.doc.pagesize = self.tam
             PTUnaColumna = PageTemplate(id='UnaColumna', frames=[frameT], onPage=self.encabezado, onPageEnd=self.pie)
         PTUnaColumna.pageBreakBefore=0
         PTUnaColumna.keepWithNext=0
