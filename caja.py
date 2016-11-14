@@ -36,6 +36,11 @@ class Caja(QtWidgets.QWidget):
         self.importe = QtWidgets.QLineEdit()
         self.importe.setValidator(entero)
         self.concepto = QtWidgets.QLineEdit()
+
+        tipos = ["Tipo A", "Tipo B"]
+        self.tipo = QtWidgets.QComboBox()
+        self.tipo.addItems(tipos)
+
         self.t = QtWidgets.QTableWidget()
         p = QtGui.QPixmap()
         p.load('imagenes/cacharros.jpg')
@@ -72,10 +77,13 @@ class Caja(QtWidgets.QWidget):
         self.caja.show()
         self.lbl = QtWidgets.QLabel("Importe")
         self.lbl2 = QtWidgets.QLabel("Detalle")
+        self.lbl3 = QtWidgets.QLabel("Tipo de Movimiento")
         self.layIzq.addWidget(self.lbl)
         self.layIzq.addWidget(self.importe)
         self.layIzq.addWidget(self.lbl2)
         self.layIzq.addWidget(self.concepto)
+        self.layIzq.addWidget(self.lbl3)
+        self.layIzq.addWidget(self.tipo)
         self.layIzq.addItem(self.botonera)
         self.layIzq.addWidget(self.caja)
 #        self.layDer.addStretch()
@@ -96,15 +104,17 @@ class Caja(QtWidgets.QWidget):
         '''Agrega importe'''
         importe = float(self.importe.text())
         concepto = self.concepto.text()
+        tipo = self.tipo.currentIndex()
         saldo = self.saldo()
         saldo = saldo + importe
-        sql = "INSERT INTO caja (Importe, detalle, Saldo) VALUES (:imp, :det,"\
-        " :saldo)"
+        sql = "INSERT INTO caja (Importe, detalle, Saldo, tipo, fecha) VALUES (:imp, :det,"\
+        " :saldo, :tipo, CURDATE())"
         q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
         q.prepare(sql)
         q.bindValue(":imp", importe)
         q.bindValue(":det", concepto)
         q.bindValue(':saldo', saldo)
+        q.bindValue(":tipo", tipo)
         util = Utilidades()
         util.ejecuto(q, 'Cooperadora')
 

@@ -10,6 +10,8 @@ from modificaciones import *
 from PyQt5.QtCore import Qt, QSortFilterProxyModel
 from PyQt5.QtGui import QPixmap
 from recibo import *
+from impresiones import *
+from listados import *
 
 
 class Movimientos(QtWidgets.QWidget):
@@ -37,6 +39,7 @@ class Movimientos(QtWidgets.QWidget):
         self.month = self.util.meses()
         self.meses = self.util.dicciolista(self.month)
         self.mes = QtWidgets.QComboBox()
+        self.mes.addItem('')
         self.mes.addItems(self.meses)
 
         '''QDateEdit Año'''
@@ -57,32 +60,14 @@ class Movimientos(QtWidgets.QWidget):
 
         self.layout = QtWidgets.QGridLayout()
         self.botonera = QtWidgets.QHBoxLayout()
-#        entero = QtGui.QDoubleValidator()
-        '''        self.importe = QtWidgets.QLineEdit()
-        self.importe.setValidator(entero)
-        self.concepto = QtWidgets.QLineEdit()
-        self.t = QtWidgets.QTableWidget()
-        p = QtGui.QPixmap()
-        p.load('imagenes/cacharros.jpg')
-        img = QtWidgets.QLabel()
-        img.setPixmap(p)
-        img.setScaledContents(True)
-        h = img.height()
-        w = img.width()
-        img.setPixmap(p.scaled(w, h, 1))
-        img.setScaledContents(True)
-        head = QtWidgets.QHeaderView(Qt.Horizontal)
-        head.setSectionResizeMode(1)
-        self.t.setHorizontalHeader(head)
-        self.t.setColumnCount(5)
-        self.t.setHorizontalHeaderLabels(['Importe', 'Saldo', 'Detalle', 'Recibo'])'''
+
         self.filtra = QtWidgets.QPushButton("Filtrar")
         self.CleanBtn = QtWidgets.QPushButton("Limpiar")
-        self.recibo = QtWidgets.QPushButton("Recibo")
+        self.recibo = QtWidgets.QPushButton("Imprimir")
         self.botonera.addWidget(self.filtra)
         self.botonera.addWidget(self.recibo)
         self.botonera.addWidget(self.CleanBtn)
-#        self.x = QtWidgets.QLineEdit()
+
 
         self.model.setTable('caja')
         self.model.setSort(0, 1)
@@ -118,16 +103,9 @@ class Movimientos(QtWidgets.QWidget):
         self.top.setSpacing(8)
         self.top.addWidget(self.caja)
 
-#        self.layIzq.addItem(self.botonera)
-#        self.layIzq.addWidget(self.caja)
-#        self.layDer.addStretch()
-#        self.layDer.addWidget(img)
-#        self.layout.addItem(self.layIzq, 0, 0)
-#        self.layout.addItem(self.layDer, 0, 1)
         self.layout.addItem(self.top, 0, 0)
         self.ui.setLayout(self.layout)
         self.filtra.clicked.connect(self.filtrar)
-#        self.caja.clicked.connect(self.agrega)
         self.CleanBtn.clicked.connect(self.limpia)
         self.recibo.clicked.connect(self.doRecibo)
 
@@ -178,45 +156,117 @@ class Movimientos(QtWidgets.QWidget):
 ##############################################################################
 
     def limpia(self):
-        util = Utilidades()
-
-        for i in self.findChildren(QtWidgets.QLineEdit):
-            util.limpia(i)
+        x = self.parentWidget()
+        x.movimientos()
 
 ##############################################################################
 
     def doRecibo(self):
-        recibo = Recibo()
-        datos = ['Gabriel García', 1]
-        recibo.creaRecibo(datos)
+        imp = Impresion()
+        tbl = self.Convierto_a_tabla(self.model.query())
+        print(self.model.selectStatement())
+        print(type(self.model.query()))
+        for i in tbl:
+            print(i)
+        lbl = []
+        for i in range(1, self.model.columnCount()):
+            lbl.append(self.model.headerData(i, Qt.Horizontal, Qt.DisplayRole))
+
+        formato = "portrait"
+        size = A4
+
+        t = self.toPdf(lbl, tbl)
+        imp.creoEstilo()
+        imp.creoStory()
+        imp.agregoSpacer()
+        imp.agregoTabla(t)
+        imp.createPageTemplate(formato, size)
+        imp.cierroStory()
+        imp.imprimo()
 
 ##############################################################################
 
     def filtrar(self):
         txt = ''
-        mes = self.mes.currentText()
-        mesnro = self.util.invDict(self.month)
-        mesnum =  mesnro.get(mes)
-        print(mesnum)
-        txt = txt + 'MONTH(fecha) = ' + str(mesnum)
-        print(txt)
-        '''    dni = self.dni.text()
-            txt = txt + 'dni = ' + dni
-        if self.concepto.text() != '':
-            if txt != '':
-                txt = txt + ' AND '
-            txt = txt + 'detalle LIKE "' + self.concepto.text() + '"'
-        if self.periodo.text() != '':
-            if txt != '':
-                txt = txt + ' AND '
-            txt = txt + 'periodo LIKE "' + self.periodo.text() + '"'
-        if self.estado.text() != '':
-            if txt != '':
-                txt = txt + ' AND '
-            txt = txt + 'estado LIKE "' + self.estado.text() + '"'
-        '''
+        anio = self.anio.text()
+        tipo = self.tipo.currentIndex()
+        mov = self.mov.currentText()
+
+
+        if self.mes.currentText() != '':
+            mes = self.mes.currentText()
+            mesnro = self.util.invDict(self.month)
+            mesnum =  mesnro.get(mes)
+            txt = txt + 'MONTH(fecha) = ' + str(mesnum)
+
+        if txt == '':
+            txt = txt + 'YEAR(fecha) = ' + str(anio)
+        else:
+            txt = txt + ' AND YEAR(fecha) = ' + str(anio)
+
+        if txt == '':
+            txt = txt + 'tipo = ' + str(tipo)
+        else:
+            txt = txt + ' AND tipo = ' + str(tipo)
+
+        if mov == "Ingresos":
+            if txt == '':
+                txt = txt + 'Importe >= 0'
+            else:
+                txt = txt + ' AND Importe >= 0'
+        else:
+            if txt == '':
+                txt = txt + 'Importe < 0'
+            else:
+                txt = txt + ' AND Importe < 0'
+
         self.model.setFilter(txt)
         self.model.select()
 
 
 ##############################################################################
+
+    def toPdf(self, lbl, li, col=None):
+
+        t = Table([lbl] + li, colWidths=col, rowHeights=None, style=None, splitByRow=1,
+repeatRows=1, repeatCols=0, rowSplitRange=None, spaceBefore=None,
+spaceAfter=None)
+        t.setStyle(TableStyle([
+                #La primera fila(encabezados) va a estar centrada
+                ('ALIGN',(0,0),(3,0),'LEFT'),
+                #Los bordes de todas las celdas serán de color negro y con un grosor de 1
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                #El tamaño de las letras de cada una de las celdas será de 10
+                ('FONTSIZE', (0, 0), (-1, -1), 10),
+            ]
+        ))
+        return t
+
+##############################################################################
+
+    def Convierto_a_tabla(self, obj):
+        '''Recibe un QtSqlQuery y devuelve una Lista de listas'''
+        if isinstance(obj, QtSql.QSqlQuery):
+            obj.seek(-1)
+            l = []
+            a = []
+
+            while obj.next():
+
+                l.append(obj.record())
+            for i in l:
+
+                b = []
+                for r in range(i.count()):
+                    if r != 0:
+                        if isinstance(i.value(r), QtCore.QDate):
+                            nac = i.value(r).toString("dd/MM/yyyy")
+                            b.append(nac)
+                        else:
+                            b.append(i.value(r))
+                a.append(b)
+                b = None
+
+            return a
+        else:
+            return "No me diste un Query"

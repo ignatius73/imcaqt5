@@ -242,19 +242,26 @@ class Administracion(QtWidgets.QWidget):
                 importe = self.t.item(i, 2).text()
                 importe = float(importe)
 
+                '''Busco el codigo de la asignatura y si es mayor a 55'''\
+                ''' le doy tipo b al movimiento'''
+                tipo = self.tipoGasto(detalle)
+                print (tipo)
                 if ej.size() > 0:
                     while ej.next():
                         saldo = ej.value(0)
 
                 saldo = saldo + importe
+
                 '''Agrego el importe pagado a la caja'''
-                sql = "INSERT INTO caja (Importe, Saldo, Detalle, recibo, fecha) "\
-                "VALUES (:imp, :saldo, :det, :recibo, CURDATE())"
+                sql = "INSERT INTO caja (Importe, Saldo, Detalle, recibo, "\
+                "fecha, tipo) "\
+                "VALUES (:imp, :saldo, :det, :recibo, CURDATE(), :tipo)"
                 q.prepare(sql)
                 q.bindValue(":saldo", saldo)
                 q.bindValue(":det", detalle)
                 q.bindValue(":imp", importe)
                 q.bindValue(":recibo", self.nroRecibo)
+                q.bindValue(":tipo", tipo)
 
                 ej = util.ejecuto(q, 'Cooperadora')
 
@@ -292,3 +299,30 @@ class Administracion(QtWidgets.QWidget):
                     datos.append(ej.value(i))
         recibo = Recibo()
         recibo.creaRecibo(datos)
+
+##############################################################################
+
+    def tipoGasto(self, n):
+        print("Imprimo nombre " + n)
+
+        util = Utilidades()
+        '''Obtengo los datos del recibo y los envío a imprimir'''
+        sql = "SELECT id_asignatura from asignaturas WHERE Nombre = :tipo"
+        q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
+        q.prepare(sql)
+        q.bindValue(":tipo", n)
+        pipi = q.executedQuery()
+        print(pipi)
+        tipo = 0
+        ej = util.ejecuto(q,'Cooperadora')
+        if ej.size() > 0:
+            print("q es mayor a 0")
+            while ej.next():
+                print("entro al while")
+                print(type(ej.value(0)))
+                if ej.value(0) > 55:
+
+                    tipo = 1
+                else:
+                    tipo = 0
+        return tipo
