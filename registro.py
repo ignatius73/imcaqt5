@@ -70,16 +70,17 @@ class Registro():
         dniAnt = None
         sql = "SELECT calificaciones.id_asign, calificaciones.alumno, "\
         "calificaciones.fecha_inscripcion, asignaturas.nombre, "\
-        "asignaturas.duracion, asignaturas.valor from calificaciones "\
+        "asignaturas.duracion, asignaturas.valor, alumnos.Nombre as Nombre_Alumno from calificaciones "\
         "INNER JOIN asignaturas ON calificaciones.id_asign = "\
-        "asignaturas.id_asignatura"
+        "asignaturas.id_asignatura INNER JOIN alumnos ON calificaciones.alumno"\
+        " = alumnos.DNI"
         q = QtSql.QSqlQuery(self.db.database('registros'))
         q.prepare(sql)
         ej = self.conn.ejecuto(q, 'registros')
         print(q.executedQuery())
         print(q.size())
-        sql = "INSERT INTO cuentas (periodo, asignatura, "\
-        "importe, detalle, dni) VALUES (:per, :asig, :imp, "\
+        sql = "INSERT INTO cuentas (Alumno, periodo, asignatura, "\
+        "importe, detalle, dni) VALUES (:alumno, :per, :asig, :imp, "\
         ":det, :dni)"
         qu = QtSql.QSqlQuery(self.db.database('registros'))
         qu.prepare(sql)
@@ -91,7 +92,7 @@ class Registro():
                 qu.bindValue(":asig", q.value(0))
                 qu.bindValue(":imp", q.value(5))
                 qu.bindValue(":dni", q.value(1))
-
+                qu.bindValue(":alumno", q.value(6))
                 if q.value(0) > 55:
                     '''Controlo cantidad de cuotas pagas de la asignatura'''
                     cant = self.cantCuotas(q.value(0), q.value(1))

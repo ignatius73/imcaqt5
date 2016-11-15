@@ -24,6 +24,7 @@ class Administracion(QtWidgets.QWidget):
         '''Cargo el archivo ui'''
         self.ui = uic.loadUi("cooperadora.ui", self)
         self.model = QtSql.QSqlTableModel(None, self.db)
+#        self.model = QtSql.QSqlQueryModel()
         self.cuenta = 0
         self.layIzq = QtWidgets.QVBoxLayout()
         self.layIzq.setSpacing(5)
@@ -36,13 +37,14 @@ class Administracion(QtWidgets.QWidget):
         self.concepto = QtWidgets.QLineEdit()
         self.periodo = QtWidgets.QLineEdit()
         self.estado = QtWidgets.QLineEdit()
+        self.nombre = QtWidgets.QLineEdit()
         self.t = QtWidgets.QTableWidget()
         self.total = QtWidgets.QLineEdit()
         head = QtWidgets.QHeaderView(Qt.Horizontal)
         head.setSectionResizeMode(1)
         self.t.setHorizontalHeader(head)
-        self.t.setColumnCount(5)
-        self.t.setHorizontalHeaderLabels(['ID','Período', 'Importe', 'Detalle', 'DNI'])
+        self.t.setColumnCount(6)
+        self.t.setHorizontalHeaderLabels(['ID','Alumno', 'Período', 'Importe', 'Detalle', 'DNI'])
         self.filtrar = QtWidgets.QPushButton("Filtrar")
         self.OkBtn = QtWidgets.QPushButton("Cobrar")
         self.CleanBtn = QtWidgets.QPushButton("Limpiar")
@@ -56,7 +58,9 @@ class Administracion(QtWidgets.QWidget):
 #        self.importe.setValidator(double)
         self.x = QtWidgets.QLineEdit()
         self.model.setTable('cuentas')
+
         self.model.select()
+
         self.head = QtWidgets.QHeaderView(Qt.Horizontal)
         self.head.setSectionResizeMode(1)
         '''self.model.setHeaderData(3, Qt.Horizontal, '')
@@ -77,6 +81,9 @@ class Administracion(QtWidgets.QWidget):
         self.lbl3 = QtWidgets.QLabel("Período")
         self.lbl4 = QtWidgets.QLabel("Estado")
         self.lbl5 = QtWidgets.QLabel("Total")
+        self.lbl6 = QtWidgets.QLabel("Nombre del Alumno")
+        self.layIzq.addWidget(self.lbl6)
+        self.layIzq.addWidget(self.nombre)
         self.layIzq.addWidget(self.lbl)
         self.layIzq.addWidget(self.dni)
         self.layIzq.addWidget(self.lbl2)
@@ -105,6 +112,15 @@ class Administracion(QtWidgets.QWidget):
 
     def filtro(self):
         txt = ''
+        if self.nombre.text() != '':
+            print(self.nombre.text())
+            if txt != '':
+                txt = txt + ' AND '
+            txt = txt + 'Alumno LIKE "%' + self.nombre.text() + '%"'
+        if self.concepto.text() != '':
+            if txt != '':
+                txt = txt + ' AND '
+            txt = txt + 'detalle LIKE "' + self.concepto.text() + '"'
         if self.dni.text() != '':
             dni = self.dni.text()
             txt = txt + 'dni = ' + dni
@@ -120,6 +136,7 @@ class Administracion(QtWidgets.QWidget):
             if txt != '':
                 txt = txt + ' AND '
             txt = txt + 'estado LIKE "' + self.estado.text() + '"'
+        print(txt)
         self.model.setFilter(txt)
         self.model.select()
 
@@ -131,22 +148,24 @@ class Administracion(QtWidgets.QWidget):
 
         a = self.model.record(row)
 
+        for i in range(0, a.count()):
 
+            print(a.value(i))
         if self.chequeo(a) is False:
-            if a.value(6) != 'Pagado':
+            if a.value(7) != 'Pagado':
                 columns = a.count()
 
                 row = self.t.rowCount()
 
                 self.t.insertRow(row)
                 self.t.setItem(row, 0, QtWidgets.QTableWidgetItem(str(a.value(0))))
-                self.t.setItem(row, 1, QtWidgets.QTableWidgetItem(a.value(1)))
+                self.t.setItem(row, 1, QtWidgets.QTableWidgetItem(str(a.value(1))))
                 self.t.setItem(row, 2, QtWidgets.QTableWidgetItem(str(a.value(3))))
-                self.t.setItem(row, 3, QtWidgets.QTableWidgetItem(a.value(4)))
-                self.t.setItem(row, 4, QtWidgets.QTableWidgetItem(str(a.value(5))))
-                self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(5)))
-                self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(6)))
-                self.cuenta = self.cuenta + a.value(3)
+                self.t.setItem(row, 3, QtWidgets.QTableWidgetItem(str(a.value(5))))
+                self.t.setItem(row, 4, QtWidgets.QTableWidgetItem(str(a.value(6))))
+                self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(str(a.value(2))))
+#                self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(6)))
+                self.cuenta = self.cuenta + a.value(5)
                 self.total.setText(str(self.cuenta))
 
 ##############################################################################
@@ -182,7 +201,7 @@ class Administracion(QtWidgets.QWidget):
         rows = self.t.rowCount()
         importe = 0
         detalle = ''
-        dni = int(self.t.item(0,4).text())
+        dni = int(self.t.item(0,5).text())
         sql = "SELECT Nombre, Domicilio, numero, piso, depto, Localidad from alumnos WHERE DNI = :dni"
         q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
         q.prepare(sql)
@@ -195,9 +214,9 @@ class Administracion(QtWidgets.QWidget):
 
 
         for i in range(0, rows):
-            detalle = detalle + self.t.item(i, 3).text() + " período "\
-            + self.t.item(i, 1).text() + ".\n"
-            valor = self.t.item(i, 2).text()
+            detalle = detalle + self.t.item(i, 4).text() + " período "\
+            + self.t.item(i, 2).text() + ".\n"
+            valor = self.t.item(i, 3).text()
             valor = float(valor)
             importe = importe + valor
 
@@ -238,8 +257,8 @@ class Administracion(QtWidgets.QWidget):
                 q.prepare(sql)
                 ej = util.ejecuto(q, 'Cooperadora')
                 saldo = 0
-                detalle = self.t.item(i, 3).text()
-                importe = self.t.item(i, 2).text()
+                detalle = self.t.item(i, 4).text()
+                importe = self.t.item(i, 3).text()
                 importe = float(importe)
 
                 '''Busco el codigo de la asignatura y si es mayor a 55'''\

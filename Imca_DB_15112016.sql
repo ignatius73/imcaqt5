@@ -181,9 +181,9 @@ CREATE TABLE IF NOT EXISTS `caja` (
   `fecha` date DEFAULT NULL,
   `tipo` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`idMovimiento`)
-) ENGINE=InnoDB AUTO_INCREMENT=317 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=318 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.caja: ~300 rows (approximately)
+-- Dumping data for table imca.caja: ~316 rows (approximately)
 /*!40000 ALTER TABLE `caja` DISABLE KEYS */;
 REPLACE INTO `caja` (`idMovimiento`, `Importe`, `Saldo`, `Detalle`, `recibo`, `fecha`, `tipo`) VALUES
 	(1, 275, 275, 'CURSO II período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO 1 período Octubre 2016.\n', 17, NULL, 0),
@@ -501,7 +501,8 @@ REPLACE INTO `caja` (`idMovimiento`, `Importe`, `Saldo`, `Detalle`, `recibo`, `f
 	(313, 150, 89334, 'VITROFUSIÓN', 389, '2016-11-14', 1),
 	(314, 150, 89484, 'Cooperadora', 390, '2016-11-14', 0),
 	(315, -151, 89333, 'Pruebo caja', 0, NULL, 1),
-	(316, -1550, 87783, 'Otra prueba', 0, '2016-11-14', 1);
+	(316, -1550, 87783, 'Otra prueba', 0, '2016-11-14', 1),
+	(317, 150, 87933, 'Cooperadora', 393, '2016-11-15', 0);
 /*!40000 ALTER TABLE `caja` ENABLE KEYS */;
 
 -- Dumping structure for table imca.calificaciones
@@ -605,79 +606,88 @@ REPLACE INTO `cooperadora` (`idMov`, `dni`, `importe`, `Detalle`) VALUES
 -- Dumping structure for table imca.cuentas
 CREATE TABLE IF NOT EXISTS `cuentas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Alumno` varchar(255) NOT NULL,
+  `dni` int(11) NOT NULL DEFAULT '0',
   `periodo` varchar(50) DEFAULT NULL,
   `asignatura` int(11) NOT NULL DEFAULT '0' COMMENT 'igua ¡l a id de asignatura',
   `importe` double DEFAULT '0',
   `detalle` varchar(255) DEFAULT NULL,
-  `dni` int(11) NOT NULL DEFAULT '0',
   `estado` varchar(50) NOT NULL DEFAULT 'Pendiente',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.cuentas: ~44 rows (approximately)
+-- Dumping data for table imca.cuentas: ~61 rows (approximately)
 /*!40000 ALTER TABLE `cuentas` DISABLE KEYS */;
-REPLACE INTO `cuentas` (`id`, `periodo`, `asignatura`, `importe`, `detalle`, `dni`, `estado`) VALUES
-	(1, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(2, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pendiente'),
-	(3, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pagado'),
-	(4, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pagado'),
-	(5, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pagado'),
-	(6, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pendiente'),
-	(7, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
-	(8, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pendiente'),
-	(9, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pendiente'),
-	(10, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pagado'),
-	(11, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pendiente'),
-	(12, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pendiente'),
-	(13, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
-	(14, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pagado'),
-	(15, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pendiente'),
-	(16, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pendiente'),
-	(17, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pendiente'),
-	(18, 'Octubre 2016', 60, 150.5, 'CURSO V', 23235867, 'Pendiente'),
-	(19, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(20, 'Octubre 2016', 56, 100, 'CURSO 1', 23235867, 'Pendiente'),
-	(21, 'Octubre 2016', 57, 25, 'CURSO II', 23235867, 'Pendiente'),
-	(22, 'Octubre 2016', 58, 400, 'CURSO III', 23235867, 'Pendiente'),
-	(23, 'Octubre 2016', 59, 150, 'CURSO IV', 23235867, 'Pendiente'),
-	(24, 'Octubre 2016', 60, 150, 'CURSO V', 23235867, 'Pendiente'),
-	(25, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(26, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(27, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(28, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(29, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(30, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(31, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(32, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(33, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(34, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(35, 'Octubre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(36, 'Octubre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(37, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(38, 'Noviembre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(39, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(40, 'Noviembre 2016', 1, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(41, 'Noviembre 2016', 1, 150, 'Cooperadora', 48803377, 'Pendiente'),
-	(42, 'Noviembre 2016', 1, 150, 'Cooperadora', 1111111, 'Pendiente'),
-	(43, 'Noviembre 2016', 1, 150, 'Cooperadora', 14577551, 'Pendiente'),
-	(44, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235866, 'Pendiente'),
-	(45, 'Noviembre 2016', 2, 150, 'Cooperadora', 35330160, 'Pendiente'),
-	(46, 'Noviembre 2016', 58, 400, 'SERIGRAFÍA', 1111111, 'Pagado'),
-	(47, 'Noviembre 2016', 59, 150, 'VITROFUSIÓN', 1111111, 'Pagado'),
-	(48, 'Noviembre 2016', 62, 200, 'MOLDERÍA', 1111111, 'Pendiente'),
-	(49, 'Noviembre 2016', 63, 150, 'MODELADO Y MOLDERÍA DIGITAL', 1111111, 'Pendiente'),
-	(50, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235867, 'Pagado'),
-	(51, 'Noviembre 2016', 1, 150, 'Cooperadora', 30234123, 'Pagado'),
-	(52, 'Noviembre 2016', 1, 150, 'Cooperadora', 48803377, 'Pendiente'),
-	(53, 'Noviembre 2016', 1, 150, 'Cooperadora', 132465978, 'Pendiente'),
-	(54, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(55, 'Noviembre 2016', 1, 150, 'Cooperadora', 30234123, 'Pendiente'),
-	(56, 'Noviembre 2016', 1, 150, 'Cooperadora', 48803377, 'Pendiente'),
-	(57, 'Noviembre 2016', 1, 150, 'Cooperadora', 132465978, 'Pendiente'),
-	(58, 'Noviembre 2016', 1, 150, 'Cooperadora', 23235867, 'Pendiente'),
-	(59, 'Noviembre 2016', 1, 150, 'Cooperadora', 30234123, 'Pendiente'),
-	(60, 'Noviembre 2016', 1, 150, 'Cooperadora', 48803377, 'Pendiente'),
-	(61, 'Noviembre 2016', 1, 150, 'Cooperadora', 132465978, 'Pendiente');
+REPLACE INTO `cuentas` (`id`, `Alumno`, `dni`, `periodo`, `asignatura`, `importe`, `detalle`, `estado`) VALUES
+	(1, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(2, '', 23235867, 'Octubre 2016', 56, 100, 'CURSO 1', 'Pendiente'),
+	(3, '', 23235867, 'Octubre 2016', 57, 25, 'CURSO II', 'Pagado'),
+	(4, '', 23235867, 'Octubre 2016', 58, 400, 'CURSO III', 'Pagado'),
+	(5, '', 23235867, 'Octubre 2016', 59, 150, 'CURSO IV', 'Pagado'),
+	(6, '', 23235867, 'Octubre 2016', 60, 150, 'CURSO V', 'Pendiente'),
+	(7, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pagado'),
+	(8, '', 23235867, 'Octubre 2016', 56, 100, 'CURSO 1', 'Pendiente'),
+	(9, '', 23235867, 'Octubre 2016', 57, 25, 'CURSO II', 'Pendiente'),
+	(10, '', 23235867, 'Octubre 2016', 58, 400, 'CURSO III', 'Pagado'),
+	(11, '', 23235867, 'Octubre 2016', 59, 150, 'CURSO IV', 'Pendiente'),
+	(12, '', 23235867, 'Octubre 2016', 60, 150, 'CURSO V', 'Pendiente'),
+	(13, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pagado'),
+	(14, '', 23235867, 'Octubre 2016', 56, 100, 'CURSO 1', 'Pagado'),
+	(15, '', 23235867, 'Octubre 2016', 57, 25, 'CURSO II', 'Pendiente'),
+	(16, '', 23235867, 'Octubre 2016', 58, 400, 'CURSO III', 'Pendiente'),
+	(17, '', 23235867, 'Octubre 2016', 59, 150, 'CURSO IV', 'Pendiente'),
+	(18, '', 23235867, 'Octubre 2016', 60, 150.5, 'CURSO V', 'Pendiente'),
+	(19, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(20, '', 23235867, 'Octubre 2016', 56, 100, 'CURSO 1', 'Pendiente'),
+	(21, '', 23235867, 'Octubre 2016', 57, 25, 'CURSO II', 'Pendiente'),
+	(22, '', 23235867, 'Octubre 2016', 58, 400, 'CURSO III', 'Pendiente'),
+	(23, '', 23235867, 'Octubre 2016', 59, 150, 'CURSO IV', 'Pendiente'),
+	(24, '', 23235867, 'Octubre 2016', 60, 150, 'CURSO V', 'Pendiente'),
+	(25, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(26, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(27, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(28, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(29, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(30, '', 35330160, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(31, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(32, '', 35330160, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(33, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(34, '', 35330160, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(35, '', 23235867, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(36, '', 35330160, 'Octubre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(37, '', 23235867, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(38, '', 35330160, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(39, '', 23235867, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(40, '', 35330160, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(41, '', 48803377, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(42, '', 1111111, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(43, '', 14577551, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(44, '', 23235866, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(45, '', 35330160, 'Noviembre 2016', 2, 150, 'Cooperadora', 'Pendiente'),
+	(46, '', 1111111, 'Noviembre 2016', 58, 400, 'SERIGRAFÍA', 'Pagado'),
+	(47, '', 1111111, 'Noviembre 2016', 59, 150, 'VITROFUSIÓN', 'Pagado'),
+	(48, '', 1111111, 'Noviembre 2016', 62, 200, 'MOLDERÍA', 'Pendiente'),
+	(49, '', 1111111, 'Noviembre 2016', 63, 150, 'MODELADO Y MOLDERÍA DIGITAL', 'Pendiente'),
+	(50, '', 23235867, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pagado'),
+	(51, '', 30234123, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pagado'),
+	(52, '', 48803377, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(53, '', 132465978, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(54, '', 23235867, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(55, '', 30234123, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(56, '', 48803377, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(57, '', 132465978, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(58, '', 23235867, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(59, '', 30234123, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(60, '', 48803377, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(61, '', 132465978, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(62, '', 23235867, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(63, '', 30234123, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(64, '', 48803377, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(65, '', 132465978, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(66, 'Gabriel García', 23235867, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pagado'),
+	(67, 'DIego Espíndola', 30234123, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(68, 'Okito', 48803377, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente'),
+	(69, 'Purito', 132465978, 'Noviembre 2016', 1, 150, 'Cooperadora', 'Pendiente');
 /*!40000 ALTER TABLE `cuentas` ENABLE KEYS */;
 
 -- Dumping structure for table imca.cursos
@@ -705,9 +715,9 @@ CREATE TABLE IF NOT EXISTS `recibos` (
   `Domicilio` varchar(255) DEFAULT NULL,
   `DNI` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=391 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=394 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.recibos: ~359 rows (approximately)
+-- Dumping data for table imca.recibos: ~373 rows (approximately)
 /*!40000 ALTER TABLE `recibos` DISABLE KEYS */;
 REPLACE INTO `recibos` (`id`, `Nombre`, `Detalle`, `Importe`, `fecha`, `Domicilio`, `DNI`) VALUES
 	(1, 'Gabriel García', 'CURSO III período Octubre 2016.\nCURSO IV período Octubre 2016.\nCURSO III período Octubre 2016.\n', 950, '2016-11-01', NULL, NULL),
@@ -1099,7 +1109,10 @@ REPLACE INTO `recibos` (`id`, `Nombre`, `Detalle`, `Importe`, `fecha`, `Domicili
 	(387, 'Diego Garcia', 'MODELADO Y MOLDERÍA DIGITAL período Noviembre 2016.\n', 150, '2016-11-14', ' 0   - ', 1111111),
 	(388, 'Diego Garcia', 'SERIGRAFÍA período Noviembre 2016.\n', 400, '2016-11-14', ' 0   - ', 1111111),
 	(389, 'Diego Garcia', 'VITROFUSIÓN período Noviembre 2016.\n', 150, '2016-11-14', ' 0   - ', 1111111),
-	(390, 'Gabriel García', 'Cooperadora período Noviembre 2016.\n', 150, '2016-11-14', 'Dorrego 2279 PB A - Sarandí', 23235867);
+	(390, 'Gabriel García', 'Cooperadora período Noviembre 2016.\n', 150, '2016-11-14', 'Dorrego 2279 PB A - Sarandí', 23235867),
+	(391, 'Gabriel García', 'Noviembre 2016 período Gabriel García.\n', 150, '2016-11-15', 'Dorrego 2279 PB A - Sarandí', 23235867),
+	(392, 'Gabriel García', 'Cooperadora período Noviembre 2016.\n', 150, '2016-11-15', 'Dorrego 2279 PB A - Sarandí', 23235867),
+	(393, 'Gabriel García', 'Cooperadora período Noviembre 2016.\n', 150, '2016-11-15', 'Dorrego 2279 PB A - Sarandí', 23235867);
 /*!40000 ALTER TABLE `recibos` ENABLE KEYS */;
 
 -- Dumping structure for table imca.registros
@@ -1109,9 +1122,9 @@ CREATE TABLE IF NOT EXISTS `registros` (
   `hora` time DEFAULT NULL,
   `user` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
--- Dumping data for table imca.registros: ~39 rows (approximately)
+-- Dumping data for table imca.registros: ~44 rows (approximately)
 /*!40000 ALTER TABLE `registros` DISABLE KEYS */;
 REPLACE INTO `registros` (`id`, `fecha`, `hora`, `user`) VALUES
 	(1, '2016-09-30', '17:52:54', 'root'),
@@ -1156,7 +1169,9 @@ REPLACE INTO `registros` (`id`, `fecha`, `hora`, `user`) VALUES
 	(40, '2016-10-09', '14:53:29', 'root'),
 	(41, '2016-10-14', '09:34:12', 'root'),
 	(42, '2016-10-14', '09:35:37', 'root'),
-	(43, '2016-11-14', '09:36:35', 'root');
+	(43, '2016-10-14', '09:36:35', 'root'),
+	(44, '2016-10-15', '10:10:23', 'root'),
+	(45, '2016-11-15', '10:15:26', 'root');
 /*!40000 ALTER TABLE `registros` ENABLE KEYS */;
 
 -- Dumping structure for table imca.valores
