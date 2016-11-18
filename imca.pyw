@@ -102,6 +102,8 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
                 fin = v.Confirmar(t)
                 if fin == 1024:
                     self.calcular(1)
+        else:
+            print(self.tudni)
 
 
 ##############################################################################

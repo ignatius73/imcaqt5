@@ -207,12 +207,24 @@ class Inscripciones(QtWidgets.QWidget):
         estado = q.exec_()
         pipi = q.executedQuery()
         if estado is True:
-            self.close()
+            util = Utilidades()
+            g = util.MensajeOkNo("El alumno " + self.Nombre + " fue "\
+            "cargado correctamente. ¿Querés inscribirlo a las materias que "\
+            "vaya a cursar?")
+            res = g.exec_()
+
+            if res == 1024:
+                x = self.parentWidget()
+                x.tudni = self.dni
+                x.inscribe_a_asignaturas()
+
         else:
             util = Utilidades()
             g = util.Mensaje("Ocurrió un error al insertar el alumno. "\
             "Vuelve a intentarlo. Si el problema persiste comunicate con el "\
             "Administrador" + str(self.db.database('inscripciones').lastError()))
+
+
             g.exec_()
 
 
