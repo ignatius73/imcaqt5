@@ -1,7 +1,8 @@
-import sys, logging
+import sys, logging, base64
 from PyQt5 import QtSql
 from utilidades import *
 from login import *
+
 
 
 class Connection(QtSql.QSqlDatabase):
@@ -27,7 +28,8 @@ class Connection(QtSql.QSqlDatabase):
         db.setHostName('127.0.0.1')
         db.setDatabaseName('imca')
         db.setUserName(self.usr[0])
-        db.setPassword(self.usr[1])
+
+        db.setPassword(base64.b64decode(self.usr[1]).decode("utf-8", "ignore"))
 
         if db.open() is True:
             print("base de datos conectada")

@@ -64,8 +64,15 @@
     <addaction name="actionCaja"/>
     <addaction name="actionMovimientos"/>
    </widget>
+   <widget class="QMenu" name="menuAdmin">
+    <property name="title">
+     <string>Admin</string>
+    </property>
+    <addaction name="actionCrear_Usuario"/>
+   </widget>
    <addaction name="menu_Alumnos"/>
    <addaction name="menuAdministracion"/>
+   <addaction name="menuAdmin"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -221,6 +228,11 @@
    </property>
    <property name="text">
     <string>C&amp;entral de Alumnos</string>
+   </property>
+  </action>
+  <action name="actionCrear_Usuario">
+   <property name="text">
+    <string>Crear Usuario</string>
    </property>
   </action>
  </widget>

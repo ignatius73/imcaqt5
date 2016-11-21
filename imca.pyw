@@ -14,6 +14,7 @@ from registro import *
 from caja import *
 from movimientos import *
 from alumnos import *
+from superadmin import *
 
 
 global c
@@ -33,16 +34,13 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.dni = None
             self.registro()
             self.ui.action_Nuevo_Alumno.triggered.connect(self.calcular)
-#            self.ui.actionInscri_pciones.triggered.connect(self.inscribe_a_asignaturas)
-#            self.ui.actionCalificacio_nes.triggered.connect(self.Cargo_Notas)
-#            self.ui.actionImprimir.triggered.connect(self.imprimo)
-#            self.ui.action_Modificar_Alumno.triggered.connect(self.modifico_alumno)
             self.ui.action_Listados.triggered.connect(self.modulo_Listados)
             self.ui.action_Salir.triggered.connect(self.salir)
             self.ui.actionCoo_peradora.triggered.connect(self.cooperadora)
             self.ui.actionCaja.triggered.connect(self.caja)
             self.ui.actionMovimientos.triggered.connect(self.movimientos)
             self.ui.action_Inicio.triggered.connect(self.alumnos)
+            self.ui.actionCrear_Usuario.triggered.connect(self.crearUsuario)
             self.alumnos()
         else:
             global c
@@ -264,10 +262,15 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
     def caja(self):
         '''Cargo formulario de Caja'''
-        self.hijo = Caja(self.usuario)
-        self.hijo.formularioCaja()
-        self.setCentralWidget(self.hijo)
-
+        if self.usuario[0] == 'root' or self.usuario[0] == "jana":
+            self.hijo = Caja(self.usuario)
+            self.hijo.formularioCaja()
+            self.setCentralWidget(self.hijo)
+        else:
+            util = Utilidades()
+            x = util.Mensaje("Usted no tiene permisos para ingresar"\
+            " al módulo de caja")
+            x.exec_()
 ##############################################################################
 
     def movimientos(self):
@@ -305,6 +308,14 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.hijo = Alumnos(self.usuario)
             self.hijo.borrar_Alumno(self.tudni)
             self.alumnos()
+
+##############################################################################
+
+    def crearUsuario(self):
+        self.hijo = Admin()
+        self.hijo.CrearUsuario(self.usuario)
+        self.setCentralWidget(self.hijo)
+
 
 #Creamos la instancia para inciar app
 app = QtWidgets.QApplication(sys.argv)
