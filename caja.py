@@ -36,7 +36,8 @@ class Caja(QtWidgets.QWidget):
         self.importe = QtWidgets.QLineEdit()
         self.importe.setValidator(entero)
         self.concepto = QtWidgets.QLineEdit()
-
+        self.saldo1 = QtWidgets.QLineEdit()
+        self.saldo1.setValidator(entero)
         tipos = ["Tipo A", "Tipo B"]
         self.tipo = QtWidgets.QComboBox()
         self.tipo.addItems(tipos)
@@ -78,6 +79,7 @@ class Caja(QtWidgets.QWidget):
         self.lbl = QtWidgets.QLabel("Importe")
         self.lbl2 = QtWidgets.QLabel("Detalle")
         self.lbl3 = QtWidgets.QLabel("Tipo de Movimiento")
+        self.lbl4 = QtWidgets.QLabel("Saldo de Caja")
         self.layIzq.addWidget(self.lbl)
         self.layIzq.addWidget(self.importe)
         self.layIzq.addWidget(self.lbl2)
@@ -86,13 +88,17 @@ class Caja(QtWidgets.QWidget):
         self.layIzq.addWidget(self.tipo)
         self.layIzq.addItem(self.botonera)
         self.layIzq.addWidget(self.caja)
+        self.layIzq.addWidget(self.lbl4)
+        self.layIzq.addWidget(self.saldo1)
 #        self.layDer.addStretch()
         self.layDer.addWidget(img)
         self.layout.addItem(self.layIzq, 0, 0)
         self.layout.addItem(self.layDer, 0, 1)
+        s = self.saldo()
+        self.saldo1.setText(str(s))
         self.ui.setLayout(self.layout)
         self.agregar.clicked.connect(self.agrega)
-#        self.caja.clicked.connect(self.agrega)
+        self.caja.doubleClicked.connect(self.quita)
         self.CleanBtn.clicked.connect(self.limpia)
         self.recibo.clicked.connect(self.doRecibo)
 
@@ -105,40 +111,50 @@ class Caja(QtWidgets.QWidget):
         importe = float(self.importe.text())
         concepto = self.concepto.text()
         tipo = self.tipo.currentIndex()
-        saldo = self.saldo()
-        saldo = saldo + importe
-        sql = "INSERT INTO caja (Importe, detalle, Saldo, tipo, fecha) VALUES (:imp, :det,"\
-        " :saldo, :tipo, CURDATE())"
+        sql = "INSERT INTO caja (Importe, detalle, tipo, fecha) VALUES (:imp, :det,"\
+        ":tipo, CURDATE())"
         q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
         q.prepare(sql)
         q.bindValue(":imp", importe)
         q.bindValue(":det", concepto)
-        q.bindValue(':saldo', saldo)
         q.bindValue(":tipo", tipo)
         util = Utilidades()
         util.ejecuto(q, 'Cooperadora')
 
 #        self.model.setSort(2, 1)
         self.model.select()
+        r = self.saldo()
+        self.saldo1.setText(str(r))
 
 ##############################################################################
 
     def quita(self, x):
-        self.t.removeRow(x.row())
+        v = Utilidades()
+        r = v.MensajeOkNo("¿Estás segurx? Esta acción no puede deshacerse")
+        t = r.exec_()
+        if t == 1024:
+
+            self.model.removeRow(x.row())
+            self.model.submitAll()
+            self.model.select()
+            r = self.saldo()
+            self.saldo1.setText(str(r))
+
 
 ##############################################################################
 
     def saldo(self):
         '''Devuelve el saldo de caja'''
         util = Utilidades()
-        sql = "SELECT saldo FROM caja ORDER BY idMovimiento DESC LIMIT 1"
+        sql = "SELECT SUM(Importe) FROM caja"
         q = QtSql.QSqlQuery(self.db.database('Cooperadora'))
         q.prepare(sql)
         ej = util.ejecuto(q, 'Cooperadora')
         saldo = 0
         if ej.size() > 0:
-            while ej.next():
-                saldo = ej.value(0)
+            ej.first()
+            saldo = ej.value(0)
+        print(saldo)
         return saldo
 
 ##############################################################################

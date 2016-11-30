@@ -298,8 +298,9 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.Cargo_Notas()
         elif talumno[2] == 'Borrar Alumno':
             self.borrar_Alumno()
-        else:
+        elif talumno[2] == 'Inscribir Asignaturas':
             self.inscribe_a_asignaturas()
+
 
 ##############################################################################
 

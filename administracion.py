@@ -43,7 +43,8 @@ class Administracion(QtWidgets.QWidget):
         head = QtWidgets.QHeaderView(Qt.Horizontal)
         head.setSectionResizeMode(1)
         self.t.setHorizontalHeader(head)
-        self.t.setColumnCount(6)
+        self.t.setColumnCount(7)
+        self.t.hideColumn(6)
         self.t.setHorizontalHeaderLabels(['ID','Alumno', 'Período', 'Importe', 'Detalle', 'DNI'])
         self.filtrar = QtWidgets.QPushButton("Filtrar")
         self.OkBtn = QtWidgets.QPushButton("Cobrar")
@@ -74,6 +75,7 @@ class Administracion(QtWidgets.QWidget):
         self.caja.hideColumn(0)
         self.caja.hideColumn(2)
         self.caja.hideColumn(2)
+        self.caja.hideColumn(8)
         self.caja.show()
         self.layDer.addWidget(self.caja)
         self.lbl = QtWidgets.QLabel("Ingresa Dni del Alumno")
@@ -147,9 +149,10 @@ class Administracion(QtWidgets.QWidget):
         row = x.row()
 
         a = self.model.record(row)
-
+        col = 0
         for i in range(0, a.count()):
-
+            print(col)
+            col = col + 1
             print(a.value(i))
         if self.chequeo(a) is False:
             if a.value(7) != 'Pagado':
@@ -164,6 +167,8 @@ class Administracion(QtWidgets.QWidget):
                 self.t.setItem(row, 3, QtWidgets.QTableWidgetItem(str(a.value(5))))
                 self.t.setItem(row, 4, QtWidgets.QTableWidgetItem(str(a.value(6))))
                 self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(str(a.value(2))))
+                print("Imprimo docente " + str(a.value(8)))
+                self.t.setItem(row, 6, QtWidgets.QTableWidgetItem(str(a.value(8))))
 #                self.t.setItem(row, 5, QtWidgets.QTableWidgetItem(a.value(6)))
                 self.cuenta = self.cuenta + a.value(5)
                 self.total.setText(str(self.cuenta))
@@ -172,7 +177,7 @@ class Administracion(QtWidgets.QWidget):
 
     def quita(self, x):
 
-        valor = self.t.item(x.row(),2).text()
+        valor = self.t.item(x.row(),3).text()
         self.cuenta = self.cuenta - float(valor)
         self.total.setText(str(self.cuenta))
         self.t.removeRow(x.row())
@@ -220,6 +225,8 @@ class Administracion(QtWidgets.QWidget):
             valor = float(valor)
             importe = importe + valor
 
+
+
         '''Creo el recibo'''
         sql = "INSERT INTO recibos (Nombre, Detalle, Importe, fecha, Domicilio, DNI) VALUES "\
         "(:nom, :det, :imp, CURDATE(), :dom, :dni)"
@@ -260,6 +267,9 @@ class Administracion(QtWidgets.QWidget):
                 detalle = self.t.item(i, 4).text()
                 importe = self.t.item(i, 3).text()
                 importe = float(importe)
+                print(self.t.item(i, 5).text())
+                doc = int(self.t.item(i, 6).text())
+
 
                 '''Busco el codigo de la asignatura y si es mayor a 55'''\
                 ''' le doy tipo b al movimiento'''
@@ -273,14 +283,15 @@ class Administracion(QtWidgets.QWidget):
 
                 '''Agrego el importe pagado a la caja'''
                 sql = "INSERT INTO caja (Importe, Saldo, Detalle, recibo, "\
-                "fecha, tipo) "\
-                "VALUES (:imp, :saldo, :det, :recibo, CURDATE(), :tipo)"
+                "fecha, tipo, doc) "\
+                "VALUES (:imp, :saldo, :det, :recibo, CURDATE(), :tipo, :doc)"
                 q.prepare(sql)
                 q.bindValue(":saldo", saldo)
                 q.bindValue(":det", detalle)
                 q.bindValue(":imp", importe)
                 q.bindValue(":recibo", self.nroRecibo)
                 q.bindValue(":tipo", tipo)
+                q.bindValue(":doc", doc)
 
                 ej = util.ejecuto(q, 'Cooperadora')
 

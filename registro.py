@@ -80,8 +80,8 @@ class Registro():
         print(q.executedQuery())
         print(q.size())
         sql = "INSERT INTO cuentas (Alumno, periodo, asignatura, "\
-        "importe, detalle, dni) VALUES (:alumno, :per, :asig, :imp, "\
-        ":det, :dni)"
+        "importe, detalle, dni, docente) VALUES (:alumno, :per, :asig, :imp, "\
+        ":det, :dni, :doc)"
         qu = QtSql.QSqlQuery(self.db.database('registros'))
         qu.prepare(sql)
         if q.size() > 0:
@@ -94,6 +94,7 @@ class Registro():
                 qu.bindValue(":dni", q.value(1))
                 qu.bindValue(":alumno", q.value(6))
                 if q.value(0) > 55:
+                    qu.bindValue(":doc", 1)
                     '''Controlo cantidad de cuotas pagas de la asignatura'''
                     cant = self.cantCuotas(q.value(0), q.value(1))
                     '''Busco en cuentas cuantas cuotas se pagaron de la'''
@@ -103,6 +104,8 @@ class Registro():
                         self.conn.ejecuto(qu,'registros')
                         print(qu.executedQuery())
                 else:
+                    qu.bindValue(":doc", 0)
+                    qu.bindValue(":asig", 0)
                     if coop == None:
                         dniAnt = q.value(1)
                         coop = True

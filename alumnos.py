@@ -37,7 +37,7 @@ class Alumnos(QtWidgets.QWidget):
         self.lnFiltrar = QtWidgets.QLineEdit()
 
         '''Combo Actividades'''
-        tipos = ["Modificar Alumno", "Agregar Calificaciones", "Borrar Alumno", "Inscribir Asignaturas"]
+        tipos = ["", "Modificar Alumno", "Agregar Calificaciones", "Borrar Alumno", "Inscribir Asignaturas"]
         self.tipo = QtWidgets.QComboBox()
         self.tipo.addItems(tipos)
 
@@ -78,20 +78,14 @@ class Alumnos(QtWidgets.QWidget):
         self.top.addWidget(self.lbl3)
         self.top.addWidget(self.tipo)
 
-#        self.top.addItem(self.botonera)
+
         self.top.setSpacing(8)
         self.top.addWidget(self.caja)
 
-#        self.layIzq.addItem(self.botonera)
-#        self.layIzq.addWidget(self.caja)
-#        self.layDer.addStretch()
-#        self.layDer.addWidget(img)
-#        self.layout.addItem(self.layIzq, 0, 0)
-#        self.layout.addItem(self.layDer, 0, 1)
+
         self.layout.addItem(self.top, 0, 0)
         self.ui.setLayout(self.layout)
         self.filtra.clicked.connect(self.filtrar)
-#        self.caja.clicked.connect(self.agrega)
         self.CleanBtn.clicked.connect(self.limpia)
         self.recibo.clicked.connect(self.doRecibo)
         self.lnFiltrar.textChanged.connect(self.autocomp)

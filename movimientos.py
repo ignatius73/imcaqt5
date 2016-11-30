@@ -49,7 +49,7 @@ class Movimientos(QtWidgets.QWidget):
         self.anio.setDate(anio)
 
         '''Combo Tipo Listado'''
-        tipos = ["Tipo A", "Tipo B"]
+        tipos = ["Tipo A", "Tipo B", "Docente"]
         self.tipo = QtWidgets.QComboBox()
         self.tipo.addItems(tipos)
 
@@ -191,6 +191,7 @@ class Movimientos(QtWidgets.QWidget):
         anio = self.anio.text()
         tipo = self.tipo.currentIndex()
         mov = self.mov.currentText()
+        print(tipo)
 
 
         if self.mes.currentText() != '':
@@ -203,17 +204,23 @@ class Movimientos(QtWidgets.QWidget):
             txt = txt + 'YEAR(fecha) = ' + str(anio)
         else:
             txt = txt + ' AND YEAR(fecha) = ' + str(anio)
-
-        if txt == '':
-            txt = txt + 'tipo = ' + str(tipo)
+        if tipo == 2:
+            if txt == '':
+                txt = txt + 'doc = 1'
+            else:
+                txt = txt + ' AND doc = 1'
         else:
-            txt = txt + ' AND tipo = ' + str(tipo)
+            if txt == '':
+                txt = txt + 'tipo = ' + str(tipo)
+            else:
+                txt = txt + ' AND tipo = ' + str(tipo)
 
         if mov == "Ingresos":
             if txt == '':
                 txt = txt + 'Importe >= 0'
             else:
                 txt = txt + ' AND Importe >= 0'
+
         else:
             if txt == '':
                 txt = txt + 'Importe < 0'

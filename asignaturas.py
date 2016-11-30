@@ -246,6 +246,51 @@ class Asignaturas(QtWidgets.QWidget):
         imp.cierroStory()
 
         imp.imprimo()
+        for i in mat:
+            print(i)
+            '''Chequeo que al menos una de las materias sea de las carreras'''
+            if int(i) < 55:
+                '''Chequeo que no haya pagado la matrícula'''
+                util = Utilidades()
+                year = util.devuelveCiclo()
+
+                '''Si es así, agrego el coste de matrícula al alumno'''
+                '''Obtengo el valor de matricula'''
+                sql = "SELECT valor, descripcion FROM valores WHERE descripcion = 'Matricula'"
+                q = self.querys(sql)
+                estado = self.ejecuto(q)
+                while estado.next():
+                    valor = q.value(0)
+                    descrip = q.value(1)
+                sql = "SELECT * from cuentas WHERE periodo = :per AND dni "\
+                "= :dni AND detalle = :det"
+                '''sql = "INSERT INTO cuentas (Alumno, periodo, asignatura, "\
+                "importe, detalle, dni) VALUES (:alumno, :per, :asig, :imp, "\
+                ":det, :dni)"'''
+
+                q = self.querys(sql)
+                q.bindValue(":det", descrip)
+                q.bindValue(":dni", int(self.dni))
+                q.bindValue(":per", year)
+                estado = self.ejecuto(q)
+
+                if estado.size() == 0:
+                    c = util.MensajeOkNo("¿Cobrar cooperadora anual?")
+                    coop = c.exec_()
+                    if coop == 1024:
+
+                    sql = "INSERT INTO cuentas (Alumno, periodo, asignatura, "\
+                    "importe, detalle, dni) VALUES (:alumno, :per, :asig, :imp, "\
+                    ":det, :dni)"
+                    q = self.querys(sql)
+                    q.bindValue(":alumno", nombre)
+                    q.bindValue(":per", year)
+                    q.bindValue(":asig", i)
+                    q.bindValue(":imp", valor)
+                    q.bindValue(":det", descrip)
+                    q.bindValue(":dni", int(self.dni))
+                    estado = self.ejecuto(q)
+            pass
         c = self.parentWidget()
         c.alumnos()
 
@@ -505,3 +550,10 @@ class Asignaturas(QtWidgets.QWidget):
             q.bindValue(":asig", i)
             q.bindValue(":dni", self.dni)
             calif = self.ejecuto(q)
+
+##############################################################################
+
+    def querys(self, sql):
+        q = QtSql.QSqlQuery(self.db.database('asignaturas'))
+        q.prepare(sql)
+        return q

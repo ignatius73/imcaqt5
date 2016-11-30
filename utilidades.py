@@ -227,4 +227,11 @@ class Utilidades():
 
 ##############################################################################
 
-
+    def devuelveCiclo(self):
+        hoy = QDate().currentDate()
+        y = QDate()
+        if hoy.month() == 11 or hoy.month() == 12:
+            y = hoy.year()+ 1
+        else:
+            y = hoy.year()
+        return y
