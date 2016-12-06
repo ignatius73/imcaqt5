@@ -41,7 +41,7 @@ class Registro():
                     self.month = hoy.month()
                     ej = self.conn.ejecuto(q, 'registros')
                     meses = {1:'a',2:'a',3:'b',4:'b',5:'b',6:'b', 7:'b',
-                             8:'b',9:'b',10:'b',11:'b',12:'a'}
+                             8:'b',9:'b',10:'b',11:'b',12:'b'}
                     if meses[hoy.month()] == 'a':
                         '''No hace nada ya que no tiene cargo'''
                         print("No paga cooperadora")
@@ -104,19 +104,26 @@ class Registro():
                         self.conn.ejecuto(qu,'registros')
                         print(qu.executedQuery())
                 else:
-                    qu.bindValue(":doc", 0)
-                    qu.bindValue(":asig", 0)
-                    if coop == None:
-                        dniAnt = q.value(1)
-                        coop = True
-                        qu.bindValue(":det", "Cooperadora")
-                        qu.bindValue(":imp", 150)
-                        self.conn.ejecuto(qu,'registros')
-                    elif dniAnt != q.value(1):
-                        dniAnt = q.value(1)
-                        qu.bindValue(":det", "Cooperadora")
-                        qu.bindValue(":imp", 150)
-                        self.conn.ejecuto(qu,'registros')
+                    dni = q.value(1)
+                    print(type(dni))
+                    anual = self.coopAnual(dni)
+                    print(type(anual))
+                    print(anual)
+                    if anual != True:
+                        self.valores("Cooperadora")
+                        qu.bindValue(":doc", 0)
+                        qu.bindValue(":asig", 0)
+                        if coop == None:
+                            dniAnt = q.value(1)
+                            coop = True
+                            qu.bindValue(":det", "Cooperadora")
+                            qu.bindValue(":imp", self.valor)
+                            self.conn.ejecuto(qu,'registros')
+                        elif dniAnt != q.value(1):
+                            dniAnt = q.value(1)
+                            qu.bindValue(":det", "Cooperadora")
+                            qu.bindValue(":imp", self.valor)
+                            self.conn.ejecuto(qu,'registros')
 
 
 ##############################################################################
@@ -143,3 +150,51 @@ class Registro():
         else:
             cant = 0
             return cant
+
+##############################################################################
+
+    def valores(self, mov):
+        print("entro a valores")
+        '''Obtengo los valores y la descripción del tipo de movimiento'''
+        sql = "SELECT * from valores WHERE descripcion = :desc"
+        que = QtSql.QSqlQuery(self.db.database('registros'))
+        que.prepare(sql)
+        que.bindValue(":desc" , mov)
+
+        ej1 = self.conn.ejecuto(que, 'registros')
+        print(que.executedQuery())
+        if ej1 != False:
+            print("La query es correcta")
+            while que.next():
+                self.desc = que.value(1)
+                self.valor = que.value(2)
+                self.anual = que.value(3)
+
+##############################################################################
+
+    def coopAnual(self, dni):
+        print("entro a anual")
+        '''Busco si el alumno decidió pagar la cooperadora anual con desc'''
+        util = Utilidades()
+        ciclo = util.devuelveCiclo()
+        sql = "SELECT * from cuentas WHERE detalle = 'Cooperadora Anual' AND "\
+        "periodo = :periodo AND dni = :dni"
+        print(sql)
+        print(ciclo)
+        print(dni)
+        que = QtSql.QSqlQuery(self.db.database('registros'))
+        que.prepare(sql)
+        que.bindValue(":periodo" , ciclo)
+        que.bindValue(":dni" , dni)
+        ej1 = self.conn.ejecuto(que, 'registros')
+        print(que.executedQuery())
+        if ej1 != False:
+            print("La query es correcta")
+            if que.size() > 0:
+                print("hay al menos un pago de cooperadora anual para el alumno")
+                print(dni)
+                return True
+            else:
+                return False
+        else:
+            return False

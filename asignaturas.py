@@ -256,12 +256,16 @@ class Asignaturas(QtWidgets.QWidget):
 
                 '''Si es así, agrego el coste de matrícula al alumno'''
                 '''Obtengo el valor de matricula'''
-                sql = "SELECT valor, descripcion FROM valores WHERE descripcion = 'Matricula'"
+                sql = "SELECT * FROM valores"
                 q = self.querys(sql)
                 estado = self.ejecuto(q)
                 while estado.next():
-                    valor = q.value(0)
-                    descrip = q.value(1)
+                    if q.value(1) == 'Matricula':
+                        valor = q.value(2)
+                        descrip = q.value(1)
+                    elif q.value(1) == 'Cooperadora':
+                        descripAnual = "Cooperadora Anual"
+                        valorAnual = q.value(3)
                 sql = "SELECT * from cuentas WHERE periodo = :per AND dni "\
                 "= :dni AND detalle = :det"
                 '''sql = "INSERT INTO cuentas (Alumno, periodo, asignatura, "\
@@ -273,19 +277,25 @@ class Asignaturas(QtWidgets.QWidget):
                 q.bindValue(":dni", int(self.dni))
                 q.bindValue(":per", year)
                 estado = self.ejecuto(q)
-
+                sql = "INSERT INTO cuentas (Alumno, periodo, asignatura, "\
+                "importe, detalle, dni) VALUES (:alumno, :per, :asig, :imp, "\
+                ":det, :dni)"
                 if estado.size() == 0:
                     c = util.MensajeOkNo("¿Cobrar cooperadora anual?")
                     coop = c.exec_()
                     if coop == 1024:
-
-                    sql = "INSERT INTO cuentas (Alumno, periodo, asignatura, "\
-                    "importe, detalle, dni) VALUES (:alumno, :per, :asig, :imp, "\
-                    ":det, :dni)"
+                        q = self.querys(sql)
+                        q.bindValue(":alumno", nombre)
+                        q.bindValue(":per", year)
+                        q.bindValue(":asig", 0)
+                        q.bindValue(":imp", valorAnual)
+                        q.bindValue(":det", descripAnual)
+                        q.bindValue(":dni", int(self.dni))
+                        estado = self.ejecuto(q)
                     q = self.querys(sql)
                     q.bindValue(":alumno", nombre)
                     q.bindValue(":per", year)
-                    q.bindValue(":asig", i)
+                    q.bindValue(":asig", 0)
                     q.bindValue(":imp", valor)
                     q.bindValue(":det", descrip)
                     q.bindValue(":dni", int(self.dni))

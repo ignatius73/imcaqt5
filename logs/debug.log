@@ -68938,3 +68938,2156 @@ DEBUG:PyQt5.uic.properties:setting property windowTitle
 DEBUG:PyQt5.uic.uiparser:push Alumnos Form
 DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
 DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7ffbcc6b8d38>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7ffbcc6b8b88>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ffbcc6ab9d8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ffbcc6b8e58>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ffbcc6b8e58>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ffbcc6b8e58>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ffbcc6ab9d8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ffbcc6ab9d8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ffbcc6ab9d8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'sBIT' 41 4
+DEBUG:PIL.PngImagePlugin:b'sBIT' 41 4 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 57 8192
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'sBIT' 41 4
+DEBUG:PIL.PngImagePlugin:b'sBIT' 41 4 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 57 8192
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f1900ee6ee8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f1900ee6d38>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f1900ed0b88>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f1900e7c048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f1900e7c048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f1900e7c048>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f1900ed0b88>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f1900ed0b88>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f1900ed0b88>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7ff974803ee8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7ff974803d38>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff974807b88>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ff974799048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ff974799048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ff974799048>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff974807b88>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff974807b88>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff974807b88>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7fd4e30fdee8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7fd4e30fdd38>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e30e7b88>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fd4e3093048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fd4e3093048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fd4e3093048>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e30e7b88>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e30e7b88>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e30e7b88>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7feb4a75fee8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7feb4a75fd38>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7feb4a749b88>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7feb4a6f5048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7feb4a6f5048>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7feb4a6f5048>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7feb4a749b88>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7feb4a749b88>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7feb4a749b88>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7ff500dc20d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7ff500e2aee8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff500e2fd38>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ff500dc21f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ff500dc21f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7ff500dc21f8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff500e2fd38>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff500e2fd38>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7ff500e2fd38>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7fdfd2cdd0d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7fdfd2d48ee8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdfd2d33d38>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fdfd2cdd1f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fdfd2cdd1f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fdfd2cdd1f8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdfd2d33d38>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdfd2d33d38>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdfd2d33d38>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f910c2c40d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f910c32fee8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f910c31ad38>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f910c2c41f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f910c2c41f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f910c2c41f8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f910c31ad38>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f910c31ad38>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f910c31ad38>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f88bd81b0d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f88bd886ee8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f88bd871d38>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f88bd81b1f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f88bd81b1f8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f88bd81b1f8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f88bd871d38>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f88bd871d38>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f88bd871d38>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7fd4e9156f78>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7fd4e9156dc8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e9140c18>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fd4e90ee0d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fd4e90ee0d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fd4e90ee0d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e9140c18>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e9140c18>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fd4e9140c18>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f704ba5cf78>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f704ba5cdc8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f704ba46c18>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f704b9f40d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f704b9f40d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f704b9f40d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f704ba46c18>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f704ba46c18>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f704ba46c18>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f501e655f78>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f501e655dc8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f501e63fc18>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f501e5ed0d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f501e5ed0d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f501e5ed0d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f501e63fc18>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f501e63fc18>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f501e63fc18>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f04d037df78>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f04d037ddc8>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f04d0367c18>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f04d03150d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f04d03150d8>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f04d03150d8>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f04d0367c18>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f04d0367c18>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f04d0367c18>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7fe00a37a048>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7fe00a3e1e58>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fe00a3ccca8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fe00a37a168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fe00a37a168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fe00a37a168>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fe00a3ccca8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fe00a3ccca8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fe00a3ccca8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f4b4b2cb048>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f4b4b332e58>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f4b4b31dca8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f4b4b2cb168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f4b4b2cb168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f4b4b2cb168>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f4b4b31dca8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f4b4b31dca8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f4b4b31dca8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f235f335048>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f235f39ce58>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f235f387ca8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f235f335168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f235f335168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f235f335168>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f235f387ca8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f235f387ca8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f235f387ca8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f5cd7ab1048>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f5cd7b18e58>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f5cd7b03ca8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f5cd7ab1168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f5cd7ab1168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f5cd7ab1168>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f5cd7b03ca8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f5cd7b03ca8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f5cd7b03ca8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f7e563b9048>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f7e56420e58>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f7e5640bca8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f7e563b9168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f7e563b9168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f7e563b9168>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f7e5640bca8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f7e5640bca8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f7e5640bca8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7fdf6a592048>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7fdf6a5f9e58>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdf6a5e4ca8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fdf6a592168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fdf6a592168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7fdf6a592168>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdf6a5e4ca8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdf6a5e4ca8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7fdf6a5e4ca8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is MainWindow
+DEBUG:PyQt5.uic.uiparser:toplevel widget is VentanaPrincipal
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.properties:setting property windowIcon
+DEBUG:PyQt5.uic.uiparser:push VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt5.uic.properties:setting property pyuicMargins
+DEBUG:PyQt5.uic.uiparser:push QGridLayout gridLayout
+DEBUG:PyQt5.uic.properties:setting property widgetResizable
+DEBUG:PyQt5.uic.uiparser:push QScrollArea scrollArea
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget scrollAreaWidgetContents
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QScrollArea object at 0x7f500d3d7048>
+DEBUG:PyQt5.uic.uiparser:pop widget QScrollArea scrollArea
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QWidget object at 0x7f500d43ee58>
+DEBUG:PyQt5.uic.uiparser:pop layout QGridLayout gridLayout
+DEBUG:PyQt5.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f500d429ca8>
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f500d3d7168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdministracion
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f500d3d7168>
+DEBUG:PyQt5.uic.properties:setting property title
+DEBUG:PyQt5.uic.uiparser:push QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:pop widget QMenu menuAdmin
+DEBUG:PyQt5.uic.uiparser:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x7f500d3d7168>
+DEBUG:PyQt5.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f500d429ca8>
+DEBUG:PyQt5.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f500d429ca8>
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:pop widget QToolBar toolBar
+DEBUG:PyQt5.uic.uiparser:new topwidget <__main__.VentanaPrincipal object at 0x7f500d429ca8>
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property toolTip
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property icon
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.properties:setting property text
+DEBUG:PyQt5.uic.uiparser:pop widget VentanaPrincipal MainWindow
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to menu_Alumnos
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to menuAdministracion
+DEBUG:PyQt5.uic.uiparser:add action actionCrear_Usuario to menuAdmin
+DEBUG:PyQt5.uic.uiparser:add action menu_Alumnos to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdministracion to menubar
+DEBUG:PyQt5.uic.uiparser:add action menuAdmin to menubar
+DEBUG:PyQt5.uic.uiparser:add action action_Inicio to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Nuevo_Alumno to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Listados to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCaja to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionCoo_peradora to toolBar
+DEBUG:PyQt5.uic.uiparser:add action actionMovimientos to toolBar
+DEBUG:PyQt5.uic.uiparser:add action action_Salir to toolBar
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a registros
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Alumnos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Alumnos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Alumnos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Administracion
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Administracion Form
+DEBUG:PyQt5.uic.uiparser:pop widget Administracion Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Movimientos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Movimientos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Movimientos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Administracion
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Administracion Form
+DEBUG:PyQt5.uic.uiparser:pop widget Administracion Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Movimientos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Movimientos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Movimientos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Administracion
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Administracion Form
+DEBUG:PyQt5.uic.uiparser:pop widget Administracion Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
+WARNING:root:Atención
+WARNING:root:Conexión exitosa a Cooperadora
+DEBUG:PyQt5.uic.uiparser:UI version is 4.0
+DEBUG:PyQt5.uic.uiparser:uiname is Form
+DEBUG:PyQt5.uic.uiparser:toplevel widget is Movimientos
+DEBUG:PyQt5.uic.properties:setting property geometry
+DEBUG:PyQt5.uic.properties:setting property windowTitle
+DEBUG:PyQt5.uic.uiparser:push Movimientos Form
+DEBUG:PyQt5.uic.uiparser:pop widget Movimientos Form
+DEBUG:PyQt5.uic.uiparser:new topwidget None
