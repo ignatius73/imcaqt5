@@ -1,0 +1,4 @@
+*.sql
+*.tar.gz
+*.pdf
+/__pycache__
